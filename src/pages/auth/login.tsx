@@ -1,6 +1,11 @@
+import Form from "../../components/ui/form/form";
+import Input from "../../components/ui/form/input";
 
 export default function Login() {
   return (
-    <div>login</div>
+    <Form>
+      <Input placeholder={"Username"}/>
+      <Input placeholder={"Password"}/>
+    </Form>
   )
 }
