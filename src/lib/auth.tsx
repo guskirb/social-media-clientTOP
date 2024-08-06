@@ -1,16 +1,46 @@
-import { Navigate } from "react-router-dom";
 import axios from "./axios";
+import { z } from "zod";
+import moment from "moment";
 
-const getUser = () => {
+export const loginSchema = z.object({
+  username: z.string().min(1, { message: "Username/Email is required" }),
+  password: z
+    .string()
+    .min(5, { message: "Password must contain at least 5 characters" }),
+});
+
+export type LoginFormFields = z.infer<typeof loginSchema>;
+
+export const getUser = () => {
   return axios.get("/users/me");
 };
 
-const login = (data) => {
-  return axios.post("/users/log-in", data);
+export const login = async (data: LoginFormFields) => {
+  try {
+    const response = await axios.post("/users/log-in", data);
+    return response.data;
+  } catch (error: any) {
+    return error.response.data;
+  }
 };
 
-const register = (data) => {
-  return axios.post("/users/create", data);
+export const register = async (data) => {
+  try {
+    const response = await axios.post("/users/create", data);
+    return response.data;
+  } catch (error: any) {
+    return error.response.data;
+  }
 };
 
-const logout = () => {};
+export const logout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("expires");
+};
+
+export const setLocalStorage = (response: any) => {
+  const expires = moment().add(response.expires);
+
+  localStorage.setItem("token", response.token);
+  localStorage.setItem("expires", JSON.stringify(expires.valueOf()));
+};
