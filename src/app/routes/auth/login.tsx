@@ -1,7 +1,10 @@
 import Login from "../../../pages/auth/login";
+import Layout from "../../../components/layout/auth-layout";
 
 export const LoginRoute = () => {
   return (
-    <Login/>
-  )
-}
+    <Layout title="Log In">
+      <Login />
+    </Layout>
+  );
+};
