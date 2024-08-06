@@ -1,8 +1,8 @@
 import { QueryClient } from "@tanstack/react-query";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
-import PersistAuth from "../../lib/persist-auth";
 import RequireAuth from "../../lib/require-auth";
+import PersistAuth from "../../lib/persist-auth";
 
 export const createRouter = (queryClient: QueryClient) =>
   createBrowserRouter([

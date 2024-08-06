@@ -2,7 +2,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import useAuthStore from "../hooks/use-auth-store";
 
 export default function RequireAuth() {
-  const user = useAuthStore((state) => state.user);
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
 
-  return user !== null ? <Outlet /> : <Navigate to="/login" replace />;
+  return isLoggedIn ? <Outlet /> : <Navigate to="/login" replace />;
 }

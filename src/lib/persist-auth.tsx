@@ -1,26 +1,28 @@
-import { useEffect, useState } from "react";
-import useAuthStore from "../hooks/use-auth-store";
-import { getUser, logout } from "./auth";
 import { Outlet } from "react-router-dom";
 
+import useAuthStore from "../hooks/use-auth-store";
+import { useEffect, useState } from "react";
+import { getUser, logout } from "./auth";
+
 export default function PersistAuth() {
-  const setUser = useAuthStore((state) => state.setUser);
-  const user = useAuthStore((state) => state.user);
+  const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getAuth = async () => {
       const user = await getUser();
+      console.log(user);
       if (user.success) {
-        setUser(user.user);
+        setIsLoggedIn(true);
       } else {
         logout();
-        setUser(null);
+        setIsLoggedIn(false);
       }
       setLoading(false);
     };
 
-    if (!user) {
+    if (!isLoggedIn) {
       getAuth();
     }
   }, []);

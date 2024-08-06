@@ -24,7 +24,7 @@ export default function Login() {
     resolver: zodResolver(loginSchema),
   });
   const navigate = useNavigate();
-  const setUser = useAuthStore((state) => state.setUser);
+  const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
 
   const onSubmit: SubmitHandler<LoginFormFields> = async (data) => {
     try {
@@ -34,8 +34,8 @@ export default function Login() {
           message: "Incorrect Username/Password",
         });
       } else {
-        setUser(user.user);
         setLocalStorage(user);
+        setIsLoggedIn(true);
         navigate("/home");
       }
     } catch (err) {
