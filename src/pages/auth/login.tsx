@@ -11,7 +11,7 @@ import {
 } from "../../lib/auth";
 import Button from "../../components/ui/form/button";
 import FormLink from "../../components/ui/form/form-link";
-import useAuth from "../../hooks/use-auth";
+import useAuthStore from "../../hooks/use-auth-store";
 
 export default function Login() {
   const {
@@ -22,7 +22,7 @@ export default function Login() {
   } = useForm<LoginFormFields>({
     resolver: zodResolver(loginSchema),
   });
-  const {login} = useAuth();
+  const setUser = useAuthStore((state) => state.setUser);
 
   const onSubmit: SubmitHandler<LoginFormFields> = async (data) => {
     try {
@@ -32,8 +32,8 @@ export default function Login() {
           message: "Incorrect Username/Password",
         });
       } else {
+        setUser(user.user);
         setLocalStorage(user);
-        login();
       }
     } catch (err) {
       setError("root", {

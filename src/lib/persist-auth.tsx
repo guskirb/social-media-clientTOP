@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import useAuth from "../hooks/use-auth";
+import useAuthStore from "../hooks/use-auth-store";
 import { getUser, logout } from "./auth";
 import { Outlet } from "react-router-dom";
 
 export default function PersistAuth() {
-  const setUser = useAuth((state) => state.setUser);
-  const user = useAuth((state) => state.user);
+  const setUser = useAuthStore((state) => state.setUser);
+  const user = useAuthStore((state) => state.user);
 
   useEffect(() => {
     const getAuth = async () => {
