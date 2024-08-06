@@ -1,7 +1,8 @@
 import { QueryClient } from "@tanstack/react-query";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import PersistAuth from "../../lib/persist-auth";
+import RequireAuth from "../../lib/require-auth";
 
 export const createRouter = (queryClient: QueryClient) =>
   createBrowserRouter([
@@ -21,6 +22,22 @@ export const createRouter = (queryClient: QueryClient) =>
             const { RegisterRoute } = await import("./auth/register");
             return { Component: RegisterRoute };
           },
+        },
+        {
+          element: <RequireAuth />,
+          children: [
+            {
+              path: "/home",
+              lazy: async () => {
+                const { HomeRoute } = await import("./app/home");
+                return { Component: HomeRoute };
+              },
+            },
+            {
+              path: "*",
+              element: <Navigate to="/home" />,
+            },
+          ],
         },
       ],
     },

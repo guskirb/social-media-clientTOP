@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "react-router-dom";
 
 import Form from "../../components/ui/form/form";
 import Input from "../../components/ui/form/input";
@@ -22,6 +23,7 @@ export default function Login() {
   } = useForm<LoginFormFields>({
     resolver: zodResolver(loginSchema),
   });
+  const navigate = useNavigate();
   const setUser = useAuthStore((state) => state.setUser);
 
   const onSubmit: SubmitHandler<LoginFormFields> = async (data) => {
@@ -34,6 +36,7 @@ export default function Login() {
       } else {
         setUser(user.user);
         setLocalStorage(user);
+        navigate("/home");
       }
     } catch (err) {
       setError("root", {
