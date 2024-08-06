@@ -27,11 +27,16 @@ export const registerSchema = z
 
 export type RegisterFormFields = z.infer<typeof registerSchema>;
 
-export const getUser = () => {
-  return axios.get("/users/me");
+export const getUser = async () => {
+  try {
+    const response = await axios.get("/users/me");
+    return response.data;
+  } catch (error: any) {
+    return error.response.data;
+  }
 };
 
-export const login = async (data: LoginFormFields) => {
+export const loginUser = async (data: LoginFormFields) => {
   try {
     const response = await axios.post("/users/log-in", data);
     return response.data;

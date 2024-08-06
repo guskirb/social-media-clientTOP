@@ -4,13 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Form from "../../components/ui/form/form";
 import Input from "../../components/ui/form/input";
 import {
-  login,
+  loginUser,
   LoginFormFields,
   loginSchema,
   setLocalStorage,
 } from "../../lib/auth";
 import Button from "../../components/ui/form/button";
 import FormLink from "../../components/ui/form/form-link";
+import useAuth from "../../hooks/use-auth";
 
 export default function Login() {
   const {
@@ -21,16 +22,18 @@ export default function Login() {
   } = useForm<LoginFormFields>({
     resolver: zodResolver(loginSchema),
   });
+  const {login} = useAuth();
 
   const onSubmit: SubmitHandler<LoginFormFields> = async (data) => {
     try {
-      const user = await login(data);
+      const user = await loginUser(data);
       if (!user.success) {
         setError("root", {
           message: "Incorrect Username/Password",
         });
       } else {
         setLocalStorage(user);
+        login();
       }
     } catch (err) {
       setError("root", {
