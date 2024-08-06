@@ -1,6 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "react-router-dom";
 
 import Form from "../../components/ui/form/form";
 import Input from "../../components/ui/form/input";
@@ -11,6 +10,7 @@ import {
   setLocalStorage,
 } from "../../lib/auth";
 import Button from "../../components/ui/form/button";
+import FormLink from "../../components/ui/form/form-link";
 
 export default function Login() {
   const {
@@ -29,8 +29,9 @@ export default function Login() {
         setError("root", {
           message: "Incorrect Username/Password",
         });
+      } else {
+        setLocalStorage(user);
       }
-      setLocalStorage(user);
     } catch (err) {
       setError("root", {
         message: "Incorrect Username/Password",
@@ -52,10 +53,12 @@ export default function Login() {
         register={register("password")}
         errorMessage={errors.password?.message}
       />
-      <Button text="Log In" isSubmitting={isSubmitting}/>
-      <p className="self-center">
-        Don't have an account? <Link to="/register">Register</Link>
-      </p>
+      <Button text="Log In" isSubmitting={isSubmitting} />
+      <FormLink
+        text="Don't have an account?"
+        route="register"
+        link="Register"
+      />
     </Form>
   );
 }

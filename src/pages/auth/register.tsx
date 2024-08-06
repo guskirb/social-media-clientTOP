@@ -1,12 +1,16 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 import Form from "../../components/ui/form/form";
 import Input from "../../components/ui/form/input";
-import { RegisterFormFields, registerSchema, register } from "../../lib/auth";
+import {
+  RegisterFormFields,
+  registerSchema,
+  registerUser,
+} from "../../lib/auth";
 import Button from "../../components/ui/form/button";
+import FormLink from "../../components/ui/form/form-link";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -20,8 +24,22 @@ export default function Register() {
   });
 
   const onSubmit: SubmitHandler<RegisterFormFields> = async (data) => {
-    delete data.confirm;
-    console.log(data);
+    try {
+      delete data.confirm;
+      let user = await registerUser(data);
+      if (!user.success) {
+        setError("root", {
+          message: "Username/Email already registered",
+        });
+      } else {
+        navigate("/login", { replace: true });
+      }
+    } catch (err) {
+      console.log(err);
+      setError("root", {
+        message: "Username/Email already registered",
+      });
+    }
   };
 
   return (
@@ -50,10 +68,8 @@ export default function Register() {
         register={register("confirm")}
         errorMessage={errors.confirm?.message}
       />
-      <Button text="Register" isSubmitting={isSubmitting}/>
-      <p className="self-center">
-        Already have an account? <Link to="/login">Log In</Link>
-      </p>
+      <Button text="Register" isSubmitting={isSubmitting} />
+      <FormLink text="Already have an account?" route="login" link="Log In" />
     </Form>
   );
 }

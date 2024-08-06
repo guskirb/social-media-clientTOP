@@ -40,7 +40,7 @@ export const login = async (data: LoginFormFields) => {
   }
 };
 
-export const register = async (data: RegisterFormFields) => {
+export const registerUser = async (data: RegisterFormFields) => {
   try {
     const response = await axios.post("/users/create", data);
     return response.data;
