@@ -25,6 +25,7 @@ export default function Login() {
   });
   const navigate = useNavigate();
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
+  const setUser = useAuthStore((state) => state.setUser);
 
   const onSubmit: SubmitHandler<LoginFormFields> = async (data) => {
     try {
@@ -35,6 +36,11 @@ export default function Login() {
         });
       } else {
         setLocalStorage(user);
+        setUser({
+          username: user.user.username,
+          name: user.user.name,
+          profileImg: user.user.profileImg,
+        });
         setIsLoggedIn(true);
         navigate("/home");
       }

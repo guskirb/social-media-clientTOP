@@ -6,17 +6,23 @@ import { getUser, logout } from "./auth";
 
 export default function PersistAuth() {
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
+  const setUser = useAuthStore((state) => state.setUser);
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getAuth = async () => {
       const user = await getUser();
-      console.log(user);
       if (user.success) {
         setIsLoggedIn(true);
+        setUser({
+          username: user.user.username,
+          name: user.user.name,
+          profileImg: user.user.profileImg,
+        });
       } else {
         logout();
+        setUser(null);
         setIsLoggedIn(false);
       }
       setLoading(false);
