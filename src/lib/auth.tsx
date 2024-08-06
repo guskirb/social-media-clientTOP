@@ -11,6 +11,22 @@ export const loginSchema = z.object({
 
 export type LoginFormFields = z.infer<typeof loginSchema>;
 
+export const registerSchema = z
+  .object({
+    username: z.string().min(1, { message: "Username is required" }),
+    email: z.string().email({ message: "Invalid email address" }),
+    password: z
+      .string()
+      .min(5, { message: "Password must contain at least 5 characters" }),
+    confirm: z.string().optional(),
+  })
+  .refine((data) => data.password === data.confirm, {
+    message: "Passwords don't match",
+    path: ["confirm"],
+  });
+
+export type RegisterFormFields = z.infer<typeof registerSchema>;
+
 export const getUser = () => {
   return axios.get("/users/me");
 };
@@ -24,7 +40,7 @@ export const login = async (data: LoginFormFields) => {
   }
 };
 
-export const register = async (data) => {
+export const register = async (data: RegisterFormFields) => {
   try {
     const response = await axios.post("/users/create", data);
     return response.data;

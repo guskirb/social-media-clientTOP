@@ -10,4 +10,11 @@ export const createRouter = (queryClient: QueryClient) =>
         return { Component: LoginRoute };
       },
     },
+    {
+      path: "/register",
+      lazy: async () => {
+        const { RegisterRoute } = await import("./auth/register");
+        return { Component: RegisterRoute };
+      },
+    },
   ]);
