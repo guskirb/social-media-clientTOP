@@ -3,12 +3,15 @@ import { House, ThumbsUp, User } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 import { cn } from "../../utils/cn";
+import useAuthStore from "../../hooks/use-auth-store";
+import ProfileImg from "../ui/profile/profile-img";
 
 type LayoutProps = {
   children: ReactNode;
 };
 
 export default function Layout({ children }: LayoutProps) {
+  const user = useAuthStore((state) => state.user);
   const navigation = [
     { name: "Home", to: "/home", icon: House },
     { name: "Likes", to: "/likes", icon: ThumbsUp },
@@ -16,16 +19,16 @@ export default function Layout({ children }: LayoutProps) {
   ];
 
   return (
-    <div className="grid grid-cols-6 grid-rows-1 h-full">
-      <div className="col-start-1 col-end-2 lg:col-end-3 flex flex-col items-end">
-        <div className="flex flex-col gap-5 p-10">
+    <div className="flex h-full justify-center">
+      <div className=" flex flex-col items-end w-fit lg:w-full">
+        <div className="flex flex-col gap-5 p-5 lg:p-8 h-full items-center lg:items-start">
           {navigation.map((item) => (
             <NavLink
               key={item.name}
               to={item.to}
               className={({ isActive }) =>
                 cn(
-                  "flex gap-3 items-center w-fit justify-start",
+                  "flex gap-3 items-center w-fit justify-start hover:text-red-400 transition-all duration-200",
                   isActive && "text-red-400"
                 )
               }
@@ -34,12 +37,14 @@ export default function Layout({ children }: LayoutProps) {
               <p className="text-xl hidden lg:block">{item.name}</p>
             </NavLink>
           ))}
+          <div className="flex gap-3 items-center mt-auto w-10 h-10 lg:w-fit lg:h-fit">
+            <ProfileImg image={user!.profileImg} />
+            <p className="text-xl hidden lg:block">{user!.username}</p>
+          </div>
         </div>
       </div>
-      <main className="col-start-2 col-end-7 lg:col-start-3 xl:col-end-5 bg-gray-100">
-        {children}
-      </main>
-      <div></div>
+      <main className="bg-gray-100 w-full lg:min-w-[620px]">{children}</main>
+      <div className="hidden lg:block lg:w-full"></div>
     </div>
   );
 }

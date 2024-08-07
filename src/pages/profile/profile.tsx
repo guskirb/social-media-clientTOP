@@ -1,10 +1,11 @@
 import Container from "../../components/ui/container/container";
 
-export default function Home() {
+export default function Profile() {
 
   return (
     <Container>
-      <div>home</div>
+      <img src="" alt="" />
+      <div>profile</div>
     </Container>
   );
 }
