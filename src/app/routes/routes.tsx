@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import RequireAuth from "../../lib/require-auth";
 import PersistAuth from "../../lib/persist-auth";
+import AppRoot from "./app/root";
 
 export const createRouter = (queryClient: QueryClient) =>
   createBrowserRouter([
@@ -24,7 +25,11 @@ export const createRouter = (queryClient: QueryClient) =>
           },
         },
         {
-          element: <RequireAuth />,
+          element: (
+            <RequireAuth>
+              <AppRoot />
+            </RequireAuth>
+          ),
           children: [
             {
               path: "/home",
