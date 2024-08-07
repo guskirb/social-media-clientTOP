@@ -38,7 +38,7 @@ export const getUser = async () => {
 
 export const loginUser = async (data: LoginFormFields) => {
   try {
-    const response = await axios.post("/users/log-in", data);
+    const response = await axios.post("/users/login", data);
     return response.data;
   } catch (error: any) {
     return error.response.data;
