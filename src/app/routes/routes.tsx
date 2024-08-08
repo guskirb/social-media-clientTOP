@@ -4,6 +4,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import RequireAuth from "../../lib/require-auth";
 import PersistAuth from "../../lib/persist-auth";
 import AppRoot from "./app/root";
+import { userLoader } from "./app/profile";
 
 export const createRouter = (queryClient: QueryClient) =>
   createBrowserRouter([
@@ -37,6 +38,14 @@ export const createRouter = (queryClient: QueryClient) =>
                 const { HomeRoute } = await import("./app/home");
                 return { Component: HomeRoute };
               },
+            },
+            {
+              path: "/profile/:username",
+              lazy: async () => {
+                const { ProfileRoute } = await import("./app/profile");
+                return { Component: ProfileRoute };
+              },
+              loader: userLoader(queryClient),
             },
             {
               path: "*",
