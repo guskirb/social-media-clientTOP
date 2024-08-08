@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Users, CalendarDays } from "lucide-react";
 
 import Container from "../../components/ui/container/container";
@@ -6,9 +5,7 @@ import ProfileImg from "../../components/ui/profile/profile-img";
 import PostList from "../../components/ui/post-list/post-list";
 
 export default function Profile({ user }) {
-  useEffect(() => {
-    console.log(user);
-  }, []);
+
   return (
     <>
     <Container>

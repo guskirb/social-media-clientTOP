@@ -2,15 +2,15 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
 
-import Form from "../../components/ui/form/form";
-import Input from "../../components/ui/form/input";
+import Form from "../../components/ui/auth-form/form";
+import Input from "../../components/ui/auth-form/input";
 import {
   RegisterFormFields,
   registerSchema,
   registerUser,
 } from "../../lib/auth";
-import Button from "../../components/ui/form/button";
-import FormLink from "../../components/ui/form/form-link";
+import Button from "../../components/ui/auth-form/button";
+import FormLink from "../../components/ui/auth-form/form-link";
 
 export default function Register() {
   const navigate = useNavigate();
