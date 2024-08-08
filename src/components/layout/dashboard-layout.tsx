@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { House, ThumbsUp, User } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { House, ThumbsUp, User, Bell } from "lucide-react";
+import { NavLink, Link } from "react-router-dom";
 
 import { cn } from "../../utils/cn";
 import useAuthStore from "../../hooks/use-auth-store";
@@ -14,8 +14,9 @@ export default function Layout({ children }: LayoutProps) {
   const user = useAuthStore((state) => state.user);
   const navigation = [
     { name: "Home", to: "/home", icon: House },
+    { name: "Requests", to: "requests", icon: Bell },
     { name: "Likes", to: "/likes", icon: ThumbsUp },
-    { name: "Profile", to: "/", icon: User },
+    { name: "Profile", to: `/profile/${user!.username}`, icon: User },
   ];
 
   return (
@@ -37,10 +38,13 @@ export default function Layout({ children }: LayoutProps) {
               <p className="text-xl hidden lg:block">{item.name}</p>
             </NavLink>
           ))}
-          <div className="flex gap-3 items-center mt-auto w-10 h-10 lg:w-fit lg:h-fit">
+          <Link
+            to={`/profile/${user!.username}`}
+            className="flex gap-3 items-center mt-auto w-10 h-10 lg:w-fit lg:h-fit"
+          >
             <ProfileImg image={user!.profileImg} />
             <p className="text-xl hidden lg:block">{user!.username}</p>
-          </div>
+          </Link>
         </div>
       </div>
       <main className="bg-gray-100 w-full lg:min-w-[620px]">{children}</main>
