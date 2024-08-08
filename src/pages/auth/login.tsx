@@ -40,6 +40,7 @@ export default function Login() {
           username: user.user.username,
           name: user.user.name,
           profileImg: user.user.profileImg,
+          id: user.user.id,
         });
         setIsLoggedIn(true);
         navigate("/home");

@@ -19,6 +19,7 @@ export default function PersistAuth() {
           username: user.user.username,
           name: user.user.name,
           profileImg: user.user.profileImg,
+          id: user.user.id,
         });
       } else {
         logout();
