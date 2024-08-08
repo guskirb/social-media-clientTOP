@@ -3,12 +3,14 @@ import { Users, CalendarDays } from "lucide-react";
 
 import Container from "../../components/ui/container/container";
 import ProfileImg from "../../components/ui/profile/profile-img";
+import PostList from "../../components/ui/post-list/post-list";
 
 export default function Profile({ user }) {
   useEffect(() => {
     console.log(user);
   }, []);
   return (
+    <>
     <Container>
       <div className="flex flex-col justify-center items-center bg-white">
         <img
@@ -42,5 +44,7 @@ export default function Profile({ user }) {
         </div>
       </div>
     </Container>
+    <PostList posts={user.posts}/>
+    </>
   );
 }

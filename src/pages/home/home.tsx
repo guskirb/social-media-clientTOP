@@ -1,10 +1,8 @@
-import Container from "../../components/ui/container/container";
+import PostList from "../../components/ui/post-list/post-list";
 
-export default function Home() {
+export default function Home({posts}) {
 
   return (
-    <Container>
-      <div>home</div>
-    </Container>
+    <PostList posts={posts}/>
   );
 }

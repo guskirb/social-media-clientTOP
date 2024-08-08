@@ -14,7 +14,7 @@ export const userLoader =
     const userQuery = getUserQueryOptions(username);
 
     const user =
-      (await queryClient.getQueryData(userQuery.queryKey)) ??
+      queryClient.getQueryData(userQuery.queryKey) ??
       (await queryClient.fetchQuery(userQuery));
 
     return user;
