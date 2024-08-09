@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import useAuthStore from "../hooks/use-auth-store";
 import { useEffect, useState } from "react";
 import { getUser, logout } from "./auth";
+import Loader from "../components/ui/loader/loader";
 
 export default function PersistAuth() {
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
@@ -35,7 +36,7 @@ export default function PersistAuth() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader/>;
   }
 
   return <Outlet />;

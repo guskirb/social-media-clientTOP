@@ -6,6 +6,7 @@ import {
 } from "../../../pages/profile/api/get-user";
 import Profile from "../../../pages/profile/profile";
 import { QueryClient } from "@tanstack/react-query";
+import Loader from "../../../components/ui/loader/loader";
 
 export const userLoader =
   (queryClient: QueryClient) =>
@@ -22,6 +23,10 @@ export const userLoader =
 export const ProfileRoute = () => {
   const { username } = useParams();
   const { data: user, isLoading } = useUser(username!);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>

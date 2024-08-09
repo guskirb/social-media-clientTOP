@@ -1,4 +1,5 @@
 import Head from "../../../components/seo/head";
+import Loader from "../../../components/ui/loader/loader";
 import {
   getPostsQueryOptions,
   usePosts,
@@ -17,6 +18,10 @@ export const postsLoader = (queryClient: QueryClient) => async () => {
 
 export const HomeRoute = () => {
   const { data: posts, isLoading, refetch } = usePosts();
+
+  if(isLoading){
+    return <Loader/>
+  }
 
   return (
     <>

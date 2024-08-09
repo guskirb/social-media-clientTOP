@@ -5,6 +5,7 @@ import { NavLink, Link } from "react-router-dom";
 import { cn } from "../../utils/cn";
 import useAuthStore from "../../hooks/use-auth-store";
 import ProfileImg from "../ui/profile/profile-img";
+import Progress from "../ui/loader/progress";
 
 type LayoutProps = {
   children: ReactNode;
@@ -21,6 +22,7 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="flex h-full justify-center">
+      <Progress />
       <div className="flex flex-col items-end min-w-[80px] lg:w-full">
         <div className="fixed flex flex-col gap-5 p-5 lg:p-8 h-full items-center lg:items-start">
           {navigation.map((item) => (
