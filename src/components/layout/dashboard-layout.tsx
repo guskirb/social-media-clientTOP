@@ -31,7 +31,7 @@ export default function Layout({ children }: LayoutProps) {
               to={item.to}
               className={({ isActive }) =>
                 cn(
-                  "flex gap-3 items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white",
+                  "flex gap-3 items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white pr-3",
                   isActive && "bg-white"
                 )
               }
@@ -42,14 +42,23 @@ export default function Layout({ children }: LayoutProps) {
           ))}
           <Link
             to={`/profile/${user!.username}`}
-            className="flex gap-3 items-center mt-auto w-10 h-10 lg:w-fit lg:h-fit lg:bg-white lg:p-2 lg:rounded-xl"
+            className="flex gap-3 items-center mt-auto w-10 h-10 lg:w-fit lg:h-fit lg:bg-white lg:p-2 lg:rounded-xl lg:pr-3"
           >
             <ProfileImg image={user!.profileImg} />
-            <p className="text-xl hidden lg:block">{user!.username}</p>
+            <div>
+              <p className="text-xl hidden lg:block">
+                {user?.name || user!.username}
+              </p>
+              <p className="text-sm opacity-70 hidden -mt-1 lg:block">
+                {user!.username}
+              </p>
+            </div>
           </Link>
         </div>
       </div>
-      <main className="w-full lg:min-w-[620px] py-4">{children}</main>
+      <main className="w-full lg:min-w-[620px] py-4 pr-4 lg:pr-0">
+        {children}
+      </main>
       <div className="hidden lg:block lg:w-full"></div>
     </div>
   );

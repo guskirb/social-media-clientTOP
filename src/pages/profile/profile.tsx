@@ -17,9 +17,9 @@ export default function Profile({ user }) {
               : "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
           }
           alt=""
-          className="h-48 object-cover w-full"
+          className="h-60 object-cover w-full"
         />
-        <div className="border-4 border-white rounded-full mt-[-50px]">
+        <div className="border-[6px] border-white rounded-full mt-[-50px]">
           <ProfileImg image={user.ProfileImg} size={100} />
         </div>
         <div className="flex flex-col items-center">
