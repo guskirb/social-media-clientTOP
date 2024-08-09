@@ -21,18 +21,18 @@ export default function Layout({ children }: LayoutProps) {
   ];
 
   return (
-    <div className="flex h-full justify-center">
+    <div className="flex justify-center bg-gray-100">
       <Progress />
       <div className="flex flex-col items-end min-w-[80px] lg:w-full">
-        <div className="fixed flex flex-col gap-5 p-5 lg:p-8 h-full items-center lg:items-start">
+        <div className="fixed flex flex-col gap-3 p-5 lg:p-8 h-full items-center lg:items-start">
           {navigation.map((item) => (
             <NavLink
               key={item.name}
               to={item.to}
               className={({ isActive }) =>
                 cn(
-                  "flex gap-3 items-center w-fit justify-start hover:text-red-400 transition-all duration-200",
-                  isActive && "text-red-400"
+                  "flex gap-3 items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white",
+                  isActive && "bg-white"
                 )
               }
             >
@@ -42,14 +42,14 @@ export default function Layout({ children }: LayoutProps) {
           ))}
           <Link
             to={`/profile/${user!.username}`}
-            className="flex gap-3 items-center mt-auto w-10 h-10 lg:w-fit lg:h-fit"
+            className="flex gap-3 items-center mt-auto w-10 h-10 lg:w-fit lg:h-fit lg:bg-white lg:p-2 lg:rounded-xl"
           >
             <ProfileImg image={user!.profileImg} />
             <p className="text-xl hidden lg:block">{user!.username}</p>
           </Link>
         </div>
       </div>
-      <main className="bg-gray-100 w-full lg:min-w-[620px]">{children}</main>
+      <main className="w-full lg:min-w-[620px] py-4">{children}</main>
       <div className="hidden lg:block lg:w-full"></div>
     </div>
   );
