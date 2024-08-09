@@ -5,6 +5,7 @@ import { ThumbsUp, MessageSquare } from "lucide-react";
 import ProfileImg from "../profile/profile-img";
 import { useState } from "react";
 import useAuthStore from "../../../hooks/use-auth-store";
+import { likePost, unlikePost } from "./api/like-post";
 
 export default function Post({ post }) {
   const [currPost, setCurrPost] = useState(post);
@@ -15,6 +16,7 @@ export default function Post({ post }) {
       ...currPost,
       likedBy: [...currPost.likedBy, { id: user!.id }],
     });
+    likePost(currPost.id);
   };
 
   const onClickUnlike = () => {
@@ -22,6 +24,7 @@ export default function Post({ post }) {
       ...currPost,
       likedBy: currPost.likedBy.filter((item) => item.id !== user!.id),
     });
+    unlikePost(currPost.id);
   };
   return (
     <Container>
