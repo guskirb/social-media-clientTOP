@@ -1,15 +1,36 @@
-import Form from "../../components/ui/post-form/form";
-import Input from "../../components/ui/post-form/input";
-import PostList from "../../components/ui/post-list/post-list";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-export default function Home({posts}) {
+import PostList from "../../components/ui/post-list/post-list";
+import PostForm from "../../components/ui/post-form/post-form";
+import useAuthStore from "../../hooks/use-auth-store";
+import { CreatePostFormFields, createPostSchema } from "./api/create-post";
+
+export default function Home({ posts }) {
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm<CreatePostFormFields>({
+    resolver: zodResolver(createPostSchema),
+  });
+  const user = useAuthStore((state) => state.user);
+
+  const onSubmit: SubmitHandler<CreatePostFormFields> = async (data) => {
+    console.log(data);
+  };
 
   return (
     <>
-    <Form >
-      <Input />
-    </Form>
-    <PostList posts={posts}/>
+      <PostForm
+        onSubmit={handleSubmit(onSubmit)}
+        user={user}
+        register={register}
+        name="post"
+        placeholder="What's on your mind?"
+      />
+      <PostList posts={posts} />
     </>
   );
 }

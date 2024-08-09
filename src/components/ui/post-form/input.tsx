@@ -1,9 +1,17 @@
 import { ChangeEvent, useRef, useState } from "react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
+
 import { useAutosizeTextArea } from "../../../hooks/use-autosize-textarea";
 
-export default function Input({ register }) {
+type InputProps = {
+  placeholder: string;
+  register: UseFormRegister<FieldValues>;
+  name: string;
+};
+
+export default function Input({ placeholder, register, name }: InputProps) {
   const [value, setValue] = useState("");
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
   useAutosizeTextArea(textAreaRef.current, value);
 
@@ -12,15 +20,21 @@ export default function Input({ register }) {
     setValue(val);
   };
 
+  const { ref, ...rest } = register(name, {
+    onChange: handleChange,
+  });
+
   return (
     <textarea
-      className="p-2 resize-none"
-      onChange={handleChange}
-      ref={textAreaRef}
+      className="p-2 resize-none focus:outline-none w-full"
+      ref={(e) => {
+        ref(e);
+        textAreaRef.current = e;
+      }}
       rows={1}
       value={value}
-      placeholder="What's on your mind?"
-      {...register}
+      placeholder={placeholder}
+      {...rest}
     />
   );
 }
