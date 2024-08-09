@@ -11,3 +11,12 @@ export const createPostSchema = z
   .refine((data) => data.post || data.image, "Don't leave post empty");
 
 export type CreatePostFormFields = z.infer<typeof createPostSchema>;
+
+export const createPost = async (data: FormData) => {
+  try {
+    const response = await axios.post("/posts/create", data);
+    return response.data;
+  } catch (error: any) {
+    return error.response.data;
+  }
+};

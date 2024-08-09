@@ -7,7 +7,7 @@ import ProfileImg from "../profile/profile-img";
 export default function Post({ post }) {
   return (
     <Container>
-      <div className="p-3 flex gap-2 bg-white">
+      <div className="p-4 flex gap-2 bg-white">
         <Link to={`/profile/${post.author.username}`}>
           <ProfileImg image={post.author.profileImg} />
         </Link>
@@ -19,6 +19,9 @@ export default function Post({ post }) {
             <p className="text-sm opacity-70">{post.createdFormatted}</p>
           </div>
           <p>{post.post}</p>
+          {post.postImg && (
+            <img src={post.postImg} className="rounded-xl w-full" />
+          )}
           <div className="flex gap-5 justify-between">
             <div className="flex items-center gap-1">
               <MessageSquare size={15} color="#7a7a7a" />
