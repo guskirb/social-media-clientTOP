@@ -25,6 +25,7 @@ export default function PostForm({
   resetField,
 }: PostFormProps) {
   const [img, setImg] = useState(null);
+  const [value, setValue] = useState("");
 
   const clearImg = () => {
     setImg(null);
@@ -35,7 +36,13 @@ export default function PostForm({
     <Form onSubmit={onSubmit}>
       <ProfileImg image={user.ProfileImg} />
       <div className="w-full flex flex-col gap-2">
-        <Input placeholder={placeholder} register={register} name={name} />
+        <Input
+          placeholder={placeholder}
+          register={register}
+          name={name}
+          value={value}
+          setValue={setValue}
+        />
         {img && (
           <div className="relative">
             <div
@@ -49,7 +56,14 @@ export default function PostForm({
         )}
         <div className="flex items-center justify-between">
           <ImgUpload register={register} setImg={setImg} />
-          <button>Post</button>
+          <button
+            onClick={() => {
+              setImg(null);
+              setValue("");
+            }}
+          >
+            Post
+          </button>
         </div>
       </div>
     </Form>

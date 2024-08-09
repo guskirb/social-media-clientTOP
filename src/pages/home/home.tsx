@@ -31,10 +31,10 @@ export default function Home({ posts, refetch }) {
       if (data.image) {
         formData.append("image", data.image[0]);
       }
-      await createPost(formData);
-      resetField("post");
-      resetField("image");
-      refetch();
+      await createPost(formData).then(() => {
+        reset();
+        refetch();
+      });
     } catch (err) {
       console.log(err);
     }

@@ -21,8 +21,8 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="flex h-full justify-center">
-      <div className=" flex flex-col items-end w-fit lg:w-full">
-        <div className="flex flex-col gap-5 p-5 lg:p-8 h-full items-center lg:items-start">
+      <div className="flex flex-col items-end min-w-[80px] lg:w-full">
+        <div className="fixed flex flex-col gap-5 p-5 lg:p-8 h-full items-center lg:items-start">
           {navigation.map((item) => (
             <NavLink
               key={item.name}

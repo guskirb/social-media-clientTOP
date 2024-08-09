@@ -7,10 +7,17 @@ type InputProps = {
   placeholder: string;
   register: UseFormRegister<FieldValues>;
   name: string;
+  value: string;
+  setValue: any;
 };
 
-export default function Input({ placeholder, register, name }: InputProps) {
-  const [value, setValue] = useState("");
+export default function Input({
+  placeholder,
+  register,
+  name,
+  value,
+  setValue,
+}: InputProps) {
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
   useAutosizeTextArea(textAreaRef.current, value);

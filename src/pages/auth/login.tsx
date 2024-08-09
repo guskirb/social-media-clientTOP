@@ -1,6 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom";
 
 import Form from "../../components/ui/auth-form/form";
 import Input from "../../components/ui/auth-form/input";
@@ -23,7 +22,6 @@ export default function Login() {
   } = useForm<LoginFormFields>({
     resolver: zodResolver(loginSchema),
   });
-  const navigate = useNavigate();
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
   const setUser = useAuthStore((state) => state.setUser);
 
@@ -43,7 +41,7 @@ export default function Login() {
           id: user.user.id,
         });
         setIsLoggedIn(true);
-        navigate("/home");
+        window.location.href = "/home";
       }
     } catch (err) {
       setError("root", {

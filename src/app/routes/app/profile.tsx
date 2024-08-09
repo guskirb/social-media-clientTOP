@@ -13,16 +13,15 @@ export const userLoader =
     const username = params.username as string;
     const userQuery = getUserQueryOptions(username);
 
-    const user =
+    return (
       queryClient.getQueryData(userQuery.queryKey) ??
-      (await queryClient.fetchQuery(userQuery));
-
-    return user;
+      (await queryClient.fetchQuery(userQuery))
+    );
   };
 
 export const ProfileRoute = () => {
   const { username } = useParams();
-  const { data: user } = useUser(username!);
+  const { data: user, isLoading } = useUser(username!);
 
   return (
     <>

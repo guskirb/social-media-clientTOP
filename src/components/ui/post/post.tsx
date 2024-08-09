@@ -11,17 +11,19 @@ export default function Post({ post }) {
         <Link to={`/profile/${post.author.username}`}>
           <ProfileImg image={post.author.profileImg} />
         </Link>
-        <div className="flex flex-col gap-1 w-full">
+        <div className="flex flex-col gap-2 w-full">
           <div className="flex gap-2 items-center">
             <Link to={`/profile/${post.author.username}`}>
               <p className="font-semibold">{post.author.username}</p>
             </Link>
             <p className="text-sm opacity-70">{post.createdFormatted}</p>
           </div>
-          <p>{post.post}</p>
-          {post.postImg && (
-            <img src={post.postImg} className="rounded-xl w-full" />
-          )}
+          <div className="mt-[-5px] flex flex-col gap-1">
+            <p>{post.post}</p>
+            {post.postImg && (
+              <img src={post.postImg} className="rounded-xl w-full" />
+            )}
+          </div>
           <div className="flex gap-5 justify-between">
             <div className="flex items-center gap-1">
               <MessageSquare size={15} color="#7a7a7a" />
