@@ -5,6 +5,7 @@ import RequireAuth from "../../lib/require-auth";
 import PersistAuth from "../../lib/persist-auth";
 import AppRoot from "./app/root";
 import { userLoader } from "./app/profile";
+import { postsLoader } from "./app/home";
 
 export const createRouter = (queryClient: QueryClient) =>
   createBrowserRouter([
@@ -38,6 +39,7 @@ export const createRouter = (queryClient: QueryClient) =>
                 const { HomeRoute } = await import("./app/home");
                 return { Component: HomeRoute };
               },
+              loader: postsLoader(queryClient),
             },
             {
               path: "/profile/:username",
