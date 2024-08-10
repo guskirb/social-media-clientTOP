@@ -1,3 +1,5 @@
+import { QueryClient } from "@tanstack/react-query";
+
 import Head from "../../../components/seo/head";
 import Loader from "../../../components/ui/loader/loader";
 import {
@@ -5,7 +7,6 @@ import {
   usePosts,
 } from "../../../pages/home/api/get-posts";
 import Home from "../../../pages/home/home";
-import { QueryClient } from "@tanstack/react-query";
 
 export const postsLoader = (queryClient: QueryClient) => async () => {
   const postsQuery = getPostsQueryOptions();
@@ -19,14 +20,14 @@ export const postsLoader = (queryClient: QueryClient) => async () => {
 export const HomeRoute = () => {
   const { data: posts, isLoading, refetch } = usePosts();
 
-  if(isLoading){
-    return <Loader/>
+  if (isLoading) {
+    return <Loader />;
   }
 
   return (
     <>
       <Head title="Home" />
-      {posts?.posts ? <Home posts={posts?.posts} refetch={refetch} /> : "lol"}
+      {posts ? <Home posts={posts} refetch={refetch} /> : "No Posts"}
     </>
   );
 };

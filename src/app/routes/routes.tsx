@@ -6,6 +6,7 @@ import PersistAuth from "../../lib/persist-auth";
 import AppRoot from "./app/root";
 import { userLoader } from "./app/profile";
 import { postsLoader } from "./app/home";
+import { likesLoader } from "./app/likes";
 
 export const createRouter = (queryClient: QueryClient) =>
   createBrowserRouter([
@@ -40,6 +41,14 @@ export const createRouter = (queryClient: QueryClient) =>
                 return { Component: HomeRoute };
               },
               loader: postsLoader(queryClient),
+            },
+            {
+              path: "/likes",
+              lazy: async () => {
+                const { LikesRoute } = await import("./app/likes");
+                return { Component: LikesRoute };
+              },
+              loader: likesLoader(queryClient),
             },
             {
               path: "/profile/:username",
