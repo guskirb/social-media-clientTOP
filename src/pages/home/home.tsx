@@ -5,7 +5,7 @@ import PostList from "../../components/ui/post-list/post-list";
 import PostForm from "../../components/ui/post-form/post-form";
 import useAuthStore from "../../hooks/use-auth-store";
 import {
-  createPost,
+  useCreatePost,
   CreatePostFormFields,
   createPostSchema,
 } from "./api/create-post";
@@ -20,6 +20,7 @@ export default function Home({ posts, refetch }) {
   } = useForm<CreatePostFormFields>({
     resolver: zodResolver(createPostSchema),
   });
+  const { mutate: createPost } = useCreatePost();
   const user = useAuthStore((state) => state.user);
 
   const onSubmit: SubmitHandler<CreatePostFormFields> = async (data) => {
@@ -31,10 +32,7 @@ export default function Home({ posts, refetch }) {
       if (data.image) {
         formData.append("image", data.image[0]);
       }
-      await createPost(formData).then(() => {
-        reset();
-        refetch();
-      });
+      createPost(formData);
     } catch (err) {
       console.log(err);
     }

@@ -21,7 +21,7 @@ export default function Layout({ children }: LayoutProps) {
   ];
 
   return (
-    <div className="flex justify-center bg-gray-100">
+    <div className="flex justify-center bg-gray-100 min-h-full">
       <Progress />
       <div className="flex flex-col items-end min-w-[80px] lg:w-full">
         <div className="fixed flex flex-col gap-3 p-5 lg:p-8 h-full items-center lg:items-start">
