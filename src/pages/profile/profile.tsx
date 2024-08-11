@@ -34,7 +34,7 @@ export default function Profile({ user }) {
             <p className="text-sm opacity-70">{user.username}</p>
           </div>
           <div className="min-h-3">
-            <p>{user.bio}</p>
+            <p className="py-3 whitespace-pre-wrap">{user.bio}</p>
           </div>
           <div className="flex gap-3 pb-4">
             <div className="flex items-center gap-1">
