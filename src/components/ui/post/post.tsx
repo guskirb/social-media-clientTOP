@@ -1,6 +1,6 @@
 import Container from "../container/container";
 import { Link } from "react-router-dom";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, Clock, User } from "lucide-react";
 
 import ProfileImg from "../profile/profile-img";
 import { useState } from "react";
@@ -22,10 +22,20 @@ export default function Post({ post }) {
         </Link>
         <div className="flex flex-col gap-2 w-full">
           <div className="flex gap-2 items-center relative">
-            <Link to={`/profile/${currPost.author.username}`}>
-              <p className="font-semibold">{currPost.author.username}</p>
+            <Link
+              to={`/profile/${currPost.author.username}`}
+              className="flex items-center gap-2"
+            >
+              <p className="font-semibold">{currPost.author.name}</p>
+              <div className="flex items-center gap-1">
+                <User size={13} color="#7a7a7a" />
+                <p className="text-sm opacity-70">{currPost.author.username}</p>
+              </div>
             </Link>
-            <p className="text-sm opacity-70">{currPost.createdFormatted}</p>
+            <div className="flex items-center gap-1">
+              <Clock size={13} color="#7a7a7a" />
+              <p className="text-xs opacity-70">{currPost.createdFormatted}</p>
+            </div>
             <Dropdown
               showDropdown={showDropdown}
               setShowDropdown={setShowDropdown}

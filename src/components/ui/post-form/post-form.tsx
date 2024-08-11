@@ -1,6 +1,7 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { useState } from "react";
 import { X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import Form from "./form";
 import Input from "./input";
@@ -34,7 +35,9 @@ export default function PostForm({
 
   return (
     <Form onSubmit={onSubmit}>
-      <ProfileImg image={user.ProfileImg} />
+      <Link to={`/profile/${user.username}`}>
+        <ProfileImg image={user.ProfileImg} />
+      </Link>
       <div className="w-full flex flex-col gap-2">
         <Input
           placeholder={placeholder}

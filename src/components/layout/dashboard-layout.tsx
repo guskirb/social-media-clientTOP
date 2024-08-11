@@ -31,7 +31,7 @@ export default function Layout({ children }: LayoutProps) {
               to={item.to}
               className={({ isActive }) =>
                 cn(
-                  "flex gap-3 items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white pr-3",
+                  "flex gap-3 font-medium items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white pr-3",
                   isActive && "bg-white"
                 )
               }
@@ -46,7 +46,7 @@ export default function Layout({ children }: LayoutProps) {
           >
             <ProfileImg image={user!.profileImg} />
             <div>
-              <p className="text-xl hidden lg:block">
+              <p className="text-xl font-medium hidden lg:block">
                 {user?.name || user!.username}
               </p>
               <p className="text-sm opacity-70 hidden -mt-1 lg:block">
