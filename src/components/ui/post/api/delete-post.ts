@@ -14,18 +14,11 @@ export const deletePost = async (postId: string) => {
 };
 
 export const useDeletePost = () => {
-  const user = useAuthStore((state) => state.user);
   return useMutation({
     mutationFn: (postId: string) => deletePost(postId),
     onSuccess: (data) => {
-      queryClient.setQueriesData({ queryKey: ["posts", "likes"] }, (posts) => {
+      queryClient.setQueriesData(["posts", "likes"], (posts) => {
         return posts.filter((post) => post.id !== data.id);
-      });
-      queryClient.setQueryData(["user", user?.username], (user: object) => {
-        return {
-          ...user,
-          posts: user.posts.filter((post) => post.id !== data.id),
-        };
       });
     },
   });

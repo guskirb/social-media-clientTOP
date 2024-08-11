@@ -25,7 +25,7 @@ export const useLikePost = () => {
   return useMutation({
     mutationFn: (postId: string) => likePost(postId),
     onSuccess: (data) => {
-      queryClient.setQueriesData({ queryKey: ["posts", "likes"] }, (posts) => {
+      queryClient.setQueriesData(["posts", "likes"], (posts) => {
         return posts.map((post) =>
           post.id === data.post.id ? data.post : post
         );
@@ -38,7 +38,7 @@ export const useUnlikePost = () => {
   return useMutation({
     mutationFn: (postId: string) => unlikePost(postId),
     onSuccess: (data) => {
-      queryClient.setQueriesData({ queryKey: ["posts", "likes"] }, (posts) => {
+      queryClient.setQueriesData(["posts", "likes"], (posts) => {
         return posts.map((post) =>
           post.id === data.post.id ? data.post : post
         );
