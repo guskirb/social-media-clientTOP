@@ -30,14 +30,8 @@ export const ProfileRoute = () => {
 
   return (
     <>
-      <Head
-        title={
-          user.user?.username
-            ? user.user?.name || user.user?.username
-            : username
-        }
-      />
-      {user.user ? <Profile user={user?.user} /> : <div>Hi</div>}
+      <Head title={user?.username ? user?.name || user?.username : username} />
+      {user ? <Profile user={user} /> : <div>Hi</div>}
     </>
   );
 };

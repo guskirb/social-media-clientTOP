@@ -56,7 +56,7 @@ export default function Layout({ children }: LayoutProps) {
           </Link>
         </div>
       </div>
-      <main className="w-full lg:min-w-[620px] py-4 pr-4 lg:pr-0">
+      <main className="w-full lg:min-w-[620px] py-4 pr-4 lg:pr-0 flex flex-col gap-4">
         {children}
       </main>
       <div className="hidden lg:block lg:w-full"></div>
