@@ -1,15 +1,18 @@
 import Container from "../container/container";
 import { Link } from "react-router-dom";
-import { MessageSquare, Ellipsis } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 
 import ProfileImg from "../profile/profile-img";
 import { useState } from "react";
 import useAuthStore from "../../../hooks/use-auth-store";
 import LikeButton from "./like-button";
+import Dropdown from "../dropdown/dropdown";
+import PostSettings from "./post-settings";
 
 export default function Post({ post }) {
   const [currPost, setCurrPost] = useState(post);
   const user = useAuthStore((state) => state.user);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   return (
     <Container>
@@ -18,12 +21,21 @@ export default function Post({ post }) {
           <ProfileImg image={currPost.author.profileImg} />
         </Link>
         <div className="flex flex-col gap-2 w-full">
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center relative">
             <Link to={`/profile/${currPost.author.username}`}>
               <p className="font-semibold">{currPost.author.username}</p>
             </Link>
             <p className="text-sm opacity-70">{currPost.createdFormatted}</p>
-            <Ellipsis size={17} color="#7a7a7a" className="ml-auto"/>
+            <Dropdown
+              showDropdown={showDropdown}
+              setShowDropdown={setShowDropdown}
+            >
+              <PostSettings
+                user={user}
+                post={currPost}
+                setShowDropdown={setShowDropdown}
+              />
+            </Dropdown>
           </div>
           <div className="mt-[-5px] flex flex-col gap-1">
             <p className="whitespace-pre-wrap">{currPost.post}</p>
