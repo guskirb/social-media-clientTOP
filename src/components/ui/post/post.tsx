@@ -1,5 +1,5 @@
 import Container from "../container/container";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MessageSquare, Clock, User } from "lucide-react";
 
 import ProfileImg from "../profile/profile-img";
@@ -13,17 +13,28 @@ export default function Post({ post }) {
   const [currPost, setCurrPost] = useState(post);
   const user = useAuthStore((state) => state.user);
   const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <Container>
       <div className="p-4 flex gap-2 bg-white">
-        <Link to={`/profile/${currPost.author.username}`}>
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            navigate(`/profile/${currPost.author.username}`);
+          }}
+        >
           <ProfileImg image={currPost.author.profileImg} />
-        </Link>
+        </div>
         <div className="flex flex-col gap-2 w-full">
           <div className="flex gap-2 items-center relative">
-            <Link
-              to={`/profile/${currPost.author.username}`}
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                navigate(`/profile/${currPost.author.username}`);
+              }}
               className="flex items-center gap-2"
             >
               <p className="font-semibold">{currPost.author.name}</p>
@@ -31,7 +42,7 @@ export default function Post({ post }) {
                 <User size={13} color="#7a7a7a" />
                 <p className="text-sm opacity-70">{currPost.author.username}</p>
               </div>
-            </Link>
+            </div>
             <div className="flex items-center gap-1">
               <Clock size={13} color="#7a7a7a" />
               <p className="text-xs opacity-70">{currPost.createdFormatted}</p>
