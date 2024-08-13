@@ -51,6 +51,13 @@ export const createRouter = (queryClient: QueryClient) =>
               loader: likesLoader(queryClient),
             },
             {
+              path: "/post/:id",
+              lazy: async () => {
+                const { PostRoute } = await import("./app/post");
+                return { Component: PostRoute };
+              },
+            },
+            {
               path: "/profile/:username",
               lazy: async () => {
                 const { ProfileRoute } = await import("./app/profile");

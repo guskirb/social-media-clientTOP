@@ -30,7 +30,6 @@ export default function LikeButton({ post, setCurrPost }) {
         <ThumbsUp
           size={17}
           color="#ef4444"
-          fill="#f87171"
           className="cursor-pointer"
           onClick={onClickUnlike}
         />
@@ -38,7 +37,7 @@ export default function LikeButton({ post, setCurrPost }) {
         <ThumbsUp
           size={17}
           color="#7a7a7a"
-          className="cursor-pointer hover:scale-110 hover:rotate-12 hover:stroke-red-400 transition-all"
+          className="cursor-pointer hover:scale-110 hover:rotate-12 hover:stroke-red-500 transition-all"
           onClick={onClickLike}
         />
       )}

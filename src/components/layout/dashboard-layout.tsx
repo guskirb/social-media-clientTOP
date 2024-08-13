@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { House, ThumbsUp, User, Bell } from "lucide-react";
+import { House, ThumbsUp, User, Bell, Ellipsis } from "lucide-react";
 import { NavLink, Link } from "react-router-dom";
 
 import { cn } from "../../utils/cn";
@@ -31,7 +31,7 @@ export default function Layout({ children }: LayoutProps) {
               to={item.to}
               className={({ isActive }) =>
                 cn(
-                  "flex gap-3 font-medium items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white pr-3",
+                  "flex gap-3 font-medium items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white lg:pr-3",
                   isActive && "bg-white"
                 )
               }
@@ -53,6 +53,7 @@ export default function Layout({ children }: LayoutProps) {
                 {user!.username}
               </p>
             </div>
+            <Ellipsis size={18} color="#7a7a7a" className="ml-auto" />
           </Link>
         </div>
       </div>
