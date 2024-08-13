@@ -65,7 +65,7 @@ export default function PostForm({
               setValue("");
             }}
           >
-            Post
+            {name === "post" ? "Post" : "Comment"}
           </button>
         </div>
       </div>

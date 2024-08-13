@@ -24,6 +24,7 @@ export default function Post({ post }) {
             e.preventDefault();
             navigate(`/profile/${currPost.author.username}`);
           }}
+          className="cursor-pointer"
         >
           <ProfileImg image={currPost.author.profileImg} />
         </div>
@@ -35,9 +36,11 @@ export default function Post({ post }) {
                 e.preventDefault();
                 navigate(`/profile/${currPost.author.username}`);
               }}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 cursor-pointer"
             >
-              <p className="font-semibold">{currPost.author.name}</p>
+              <p className="font-semibold">
+                {currPost.author.name || currPost.author.username}
+              </p>
               <div className="flex items-center gap-1">
                 <User size={13} color="#7a7a7a" />
                 <p className="text-sm opacity-70">{currPost.author.username}</p>

@@ -33,7 +33,7 @@ export const ProfileRoute = () => {
       <Head
         title={user?.name ? `${user.name} (${user.username})` : user.username}
       />
-      {user ? <Profile user={user} /> : <div>Hi</div>}
+      {user ? <Profile user={user} /> : <Loader />}
     </>
   );
 };

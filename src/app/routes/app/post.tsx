@@ -1,19 +1,30 @@
-import { useLocation } from "react-router-dom";
-import Head from "../../../components/seo/head";
-import PostPage from "../../../pages/post/post";
 import { useEffect } from "react";
 
+import Head from "../../../components/seo/head";
+import PostPage from "../../../pages/post/post";
+import { usePosts } from "../../../pages/home/api/get-posts";
+import { useParams } from "react-router-dom";
+import { usePost } from "../../../pages/post/api/get-post";
+import Loader from "../../../components/ui/loader/loader";
+
 export const PostRoute = () => {
-  const location = useLocation();
-  const { post } = location.state;
+  const { id } = useParams();
+  const { data: posts } = usePosts();
+  const currPost = posts ? posts.find((item) => item.id === id) : null;
+  const { data: post } = usePost(currPost, id!);
 
   useEffect(() => {
     console.log(post);
   }, []);
+
   return (
     <>
-      <Head />
-      {/* <PostPage post={post} /> */}
+      <Head
+        title={`${
+          post?.author?.name ? post?.author.name : post?.author.username
+        }: "${post?.post}"`}
+      />
+      {post ? <PostPage post={post} /> : <Loader />}
     </>
   );
 };
