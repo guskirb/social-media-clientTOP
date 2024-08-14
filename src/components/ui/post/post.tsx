@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { MessageSquare, Clock, User } from "lucide-react";
 
 import ProfileImg from "../profile/profile-img";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuthStore from "../../../hooks/use-auth-store";
 import LikeButton from "./like-button";
 import Dropdown from "../dropdown/dropdown";
@@ -14,6 +14,10 @@ export default function Post({ post }) {
   const user = useAuthStore((state) => state.user);
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setCurrPost(post);
+  }, [post]);
 
   return (
     <Container>

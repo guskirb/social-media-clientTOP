@@ -9,6 +9,7 @@ import useAuthStore from "../../hooks/use-auth-store";
 import {
   CreateCommentFormFields,
   createCommentSchema,
+  useCreateComment,
 } from "./api/create-comment";
 
 export default function PostPage({ post }) {
@@ -22,9 +23,21 @@ export default function PostPage({ post }) {
     resolver: zodResolver(createCommentSchema),
   });
   const user = useAuthStore((state) => state.user);
+  const { mutate: createComment } = useCreateComment();
 
   const onSubmit: SubmitHandler<CreateCommentFormFields> = async (data) => {
-    console.log(data);
+    try {
+      const formData = new FormData();
+      if (data.comment) {
+        formData.append("comment", data.comment);
+      }
+      if (data.image) {
+        formData.append("image", data.image[0]);
+      }
+      createComment({ data: formData, id: post.id });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

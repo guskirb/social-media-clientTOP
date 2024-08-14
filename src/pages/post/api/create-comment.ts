@@ -13,3 +13,26 @@ export const createCommentSchema = z
   .refine((data) => data.comment || data.image, "Don't leave comment empty");
 
 export type CreateCommentFormFields = z.infer<typeof createCommentSchema>;
+
+export const createComment = async (data: FormData, id: string) => {
+  try {
+    const response = await axios.post(`/posts/${id}/comments`, data);
+    return response.data.comment;
+  } catch (error: any) {
+    return error.response.data;
+  }
+};
+
+export const useCreateComment = () => {
+  return useMutation({
+    mutationFn: ({ data, id }: { data: FormData; id: string }) =>
+      createComment(data, id),
+    onSuccess: (data) => {
+      console.log(data);
+      queryClient.setQueryData(["post", data.postId], (post: object) => {
+        console.log(post);
+        return { ...post, comments: [data, ...post.comments] };
+      });
+    },
+  });
+};

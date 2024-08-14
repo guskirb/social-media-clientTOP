@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 
 import Head from "../../../components/seo/head";
 import PostPage from "../../../pages/post/post";
@@ -12,10 +11,6 @@ export const PostRoute = () => {
   const { data: posts } = usePosts();
   const currPost = posts ? posts.find((item) => item.id === id) : null;
   const { data: post } = usePost(currPost, id!);
-
-  useEffect(() => {
-    console.log(post);
-  }, []);
 
   return (
     <>
