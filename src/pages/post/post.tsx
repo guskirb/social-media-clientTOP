@@ -1,5 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import PostForm from "../../components/ui/post-form/post-form";
 import Post from "../../components/ui/post/post";
@@ -27,6 +29,12 @@ export default function PostPage({ post }) {
 
   return (
     <>
+      <div className="flex items-center gap-5">
+        <Link to={"/home"}>
+          <ArrowLeft />
+        </Link>
+        <p className="text-xl">Post</p>
+      </div>
       <Post post={post} />
       <PostForm
         onSubmit={handleSubmit(onSubmit)}

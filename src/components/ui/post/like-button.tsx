@@ -1,4 +1,5 @@
 import { ThumbsUp } from "lucide-react";
+import React from "react";
 
 import useAuthStore from "../../../hooks/use-auth-store";
 import { useLikePost, useUnlikePost } from "./api/like-post";
@@ -8,7 +9,8 @@ export default function LikeButton({ post, setCurrPost }) {
   const { mutate: likePost } = useLikePost();
   const { mutate: unlikePost } = useUnlikePost();
 
-  const onClickLike = () => {
+  const onClickLike = (e: React.MouseEvent) => {
+    e.preventDefault();
     setCurrPost({
       ...post,
       likedBy: [...post.likedBy, { id: user!.id }],
@@ -16,7 +18,8 @@ export default function LikeButton({ post, setCurrPost }) {
     likePost(post.id);
   };
 
-  const onClickUnlike = () => {
+  const onClickUnlike = (e: React.MouseEvent) => {
+    e.preventDefault();
     setCurrPost({
       ...post,
       likedBy: post.likedBy.filter((item) => item.id !== user!.id),

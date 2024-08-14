@@ -29,6 +29,11 @@ export default function Dropdown({
     e.stopPropagation();
   }
 
+  function dropdownClick(e: React.MouseEvent) {
+    e.preventDefault();
+    setShowDropdown(!showDropdown);
+  }
+
   useEffect(() => {
     document.addEventListener("mousedown", handleOutsideClick);
     return () => {
@@ -40,7 +45,7 @@ export default function Dropdown({
     <>
       <div
         className="ml-auto cursor-pointer"
-        onClick={() => setShowDropdown(!showDropdown)}
+        onClick={dropdownClick}
         ref={buttonRef}
       >
         <Ellipsis size={17} color="#7a7a7a" />
