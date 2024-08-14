@@ -1,13 +1,21 @@
 import { Link } from "react-router-dom";
 import Post from "../post/post";
+import CommentList from "../comment-list/comment-list";
 
 export default function PostList({ posts }) {
   return (
     <div className="flex flex-col gap-4">
       {posts.length !== 0 ? (
         posts.map((post) => (
-          <Link to={`/post/${post.id}`}>
-            <Post post={post} key={post.id} />
+          <Link
+            to={`/post/${post.id}`}
+            key={post.id}
+            className="flex flex-col gap-3"
+          >
+            <Post post={post} />
+            {post.comments.length > 0 && (
+              <CommentList comments={post.comments.slice(0, 1)} />
+            )}
           </Link>
         ))
       ) : (

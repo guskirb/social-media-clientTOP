@@ -28,7 +28,7 @@ export default function Post({ post }) {
             e.preventDefault();
             navigate(`/profile/${currPost.author.username}`);
           }}
-          className="cursor-pointer"
+          className="cursor-pointer w-[45px] h-[45px]"
         >
           <ProfileImg image={currPost.author.profileImg} />
         </div>

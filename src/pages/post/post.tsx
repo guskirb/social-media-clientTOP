@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import PostForm from "../../components/ui/post-form/post-form";
 import Post from "../../components/ui/post/post";
@@ -11,6 +11,7 @@ import {
   createCommentSchema,
   useCreateComment,
 } from "./api/create-comment";
+import CommentList from "../../components/ui/comment-list/comment-list";
 
 export default function PostPage({ post }) {
   const {
@@ -24,6 +25,7 @@ export default function PostPage({ post }) {
   });
   const user = useAuthStore((state) => state.user);
   const { mutate: createComment } = useCreateComment();
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<CreateCommentFormFields> = async (data) => {
     try {
@@ -43,9 +45,9 @@ export default function PostPage({ post }) {
   return (
     <>
       <div className="flex items-center gap-5">
-        <Link to={"/home"}>
+        <div onClick={() => navigate(-1)} className="cursor-pointer">
           <ArrowLeft />
-        </Link>
+        </div>
         <p className="text-xl">Post</p>
       </div>
       <Post post={post} />
@@ -57,6 +59,7 @@ export default function PostPage({ post }) {
         placeholder="Post a comment"
         resetField={resetField}
       />
+      <CommentList comments={post.comments} />
     </>
   );
 }

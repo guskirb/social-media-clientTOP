@@ -35,7 +35,7 @@ export default function PostForm({
 
   return (
     <Form onSubmit={onSubmit}>
-      <Link to={`/profile/${user.username}`}>
+      <Link to={`/profile/${user.username}`} className="w-[45px] h-[45px]">
         <ProfileImg image={user.ProfileImg} />
       </Link>
       <div className="w-full flex flex-col gap-2">
