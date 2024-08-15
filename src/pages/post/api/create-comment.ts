@@ -28,9 +28,7 @@ export const useCreateComment = () => {
     mutationFn: ({ data, id }: { data: FormData; id: string }) =>
       createComment(data, id),
     onSuccess: (data) => {
-      console.log(data);
       queryClient.setQueryData(["post", data.postId], (post: object) => {
-        console.log(post);
         return { ...post, comments: [data, ...post.comments] };
       });
     },

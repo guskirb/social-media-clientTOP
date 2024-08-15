@@ -1,4 +1,5 @@
 import { Trash2 } from "lucide-react";
+
 import { useDeletePost } from "./api/delete-post";
 
 type PostSettingsProps = {

@@ -2,7 +2,6 @@ import { useMutation } from "@tanstack/react-query";
 
 import axios from "../../../../lib/axios";
 import { queryClient } from "../../../../lib/react-query";
-import useAuthStore from "../../../../hooks/use-auth-store";
 
 export const deletePost = async (postId: string) => {
   try {
