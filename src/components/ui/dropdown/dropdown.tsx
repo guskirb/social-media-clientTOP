@@ -27,6 +27,7 @@ export default function Dropdown({
 
   function stopPropogation(e: React.MouseEvent) {
     e.stopPropagation();
+    e.preventDefault();
   }
 
   function dropdownClick(e: React.MouseEvent) {

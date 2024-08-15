@@ -14,7 +14,10 @@ export default function Profile({ user }) {
   return (
     <>
       <Container>
-        <div className="flex flex-col justify-center items-center bg-white relative">
+          {showEditModal && (
+            <EditProfile user={user} setShowModal={setShowEditModal} />
+          )}
+        <div className="flex flex-col justify-center items-center bg-white relative z-[0]">
           <img
             src={
               user.coverImg
@@ -53,9 +56,6 @@ export default function Profile({ user }) {
             >
               Edit Profile
             </button>
-          )}
-          {showEditModal && (
-            <EditProfile user={user} setShowModal={setShowEditModal} />
           )}
         </div>
       </Container>
