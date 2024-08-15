@@ -1,12 +1,13 @@
 import { Trash2 } from "lucide-react";
 
 import { useDeletePost } from "./api/delete-post";
+import { Post, User } from "../../../types/types";
 
-type PostSettingsProps = {
-  user: any;
-  post: any;
-  setShowDropdown: any;
-};
+interface PostSettingsProps {
+  user: User;
+  post: Post;
+  setShowDropdown: (showDropdown: boolean) => void;
+}
 
 export default function PostSettings({
   user,

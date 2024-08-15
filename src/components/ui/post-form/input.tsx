@@ -3,13 +3,13 @@ import { FieldValues, UseFormRegister } from "react-hook-form";
 
 import { useAutosizeTextArea } from "../../../hooks/use-autosize-textarea";
 
-type InputProps = {
+interface InputProps {
   placeholder: string;
   register: UseFormRegister<FieldValues>;
   name: string;
   value: string;
-  setValue: any;
-};
+  setValue: (value: string) => void;
+}
 
 export default function Input({
   placeholder,

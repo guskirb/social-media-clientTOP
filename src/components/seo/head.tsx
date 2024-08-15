@@ -1,9 +1,9 @@
 import { Helmet, HelmetData } from "react-helmet-async";
 
-type HeadProps = {
+interface HeadProps {
   title?: string;
   description?: string;
-};
+}
 
 const helmetData = new HelmetData({});
 

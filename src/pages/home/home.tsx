@@ -11,7 +11,7 @@ import {
 } from "./api/create-post";
 import { Post } from "../../types/types";
 
-type HomeProps = {
+interface HomeProps {
   posts: Array<Post>;
   refetch: any;
 };

@@ -24,11 +24,7 @@ import {
   useCreatePost,
 } from "../../pages/home/api/create-post";
 
-type LayoutProps = {
-  children: ReactNode;
-};
-
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children }: { children: ReactNode }) {
   const {
     register,
     handleSubmit,

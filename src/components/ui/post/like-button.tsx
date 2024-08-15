@@ -3,12 +3,12 @@ import React from "react";
 
 import useAuthStore from "../../../hooks/use-auth-store";
 import { useLikePost, useUnlikePost } from "./api/like-post";
-import { Post } from "../../../types/types";
+import { Post, User } from "../../../types/types";
 
-type LikeButtonProps = {
+interface LikeButtonProps {
   post: Post;
-  setCurrPost: any;
-};
+  setCurrPost: (post: any) => void;
+}
 
 export default function LikeButton({ post, setCurrPost }: LikeButtonProps) {
   const user = useAuthStore((state) => state.user);
@@ -19,7 +19,7 @@ export default function LikeButton({ post, setCurrPost }: LikeButtonProps) {
     e.preventDefault();
     setCurrPost({
       ...post,
-      likedBy: [...post.likedBy!, { id: user!.id }],
+      likedBy: [...(post.likedBy as Array<User>), { id: user!.id }],
     });
     likePost(post.id);
   };

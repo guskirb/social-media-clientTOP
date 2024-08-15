@@ -1,11 +1,11 @@
 import React, { ReactNode } from "react";
 import { X } from "lucide-react";
 
-type ModalProps = {
+interface ModalProps {
   title: string;
-  setShowModal: any;
+  setShowModal: (showModal: boolean) => void;
   children: ReactNode;
-};
+}
 
 export default function Modal({ title, setShowModal, children }: ModalProps) {
   function closeModal(e: React.MouseEvent) {

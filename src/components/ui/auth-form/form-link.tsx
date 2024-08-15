@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-type FormLinkProps = {
+interface FormLinkProps {
   text: string;
   route: string;
   link: string;
-};
+}
 
 export default function FormLink({ text, route, link }: FormLinkProps) {
   return (

@@ -2,10 +2,10 @@ import { ReactNode } from "react";
 
 import Error from "./error";
 
-type FieldWrapperProps = {
+interface FieldWrapperProps {
   children: ReactNode;
   errorMessage?: string | null;
-};
+}
 
 export default function FieldWrapper({
   children,

@@ -2,11 +2,11 @@ import { Trash2 } from "lucide-react";
 
 import { useDeleteComment } from "./api/delete-comment";
 
-type CommentSettingsProps = {
+interface CommentSettingsProps {
   user: any;
   comment: any;
   setShowDropdown: any;
-};
+}
 
 export default function CommentSettings({
   user,

@@ -4,10 +4,10 @@ import Picker from "@emoji-mart/react";
 import { useState } from "react";
 import { useRef, useEffect } from "react";
 
-type EmojiProps = {
+interface EmojiProps {
   value: string;
   setValue: (value: string) => void;
-};
+}
 
 export default function Emoji({ value, setValue }: EmojiProps) {
   const [showDropdown, setShowDropdown] = useState(false);

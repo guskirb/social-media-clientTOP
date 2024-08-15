@@ -14,10 +14,10 @@ import {
 } from "./api/edit-user";
 import { User } from "../../../types/types";
 
-type EditProfileProps = {
+interface EditProfileProps {
   user: User;
-  setShowModal: any;
-};
+  setShowModal: (showModal: boolean) => void;
+}
 
 export default function EditProfile({ user, setShowModal }: EditProfileProps) {
   const {

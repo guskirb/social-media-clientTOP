@@ -1,7 +1,7 @@
-type ProfileImgProps = {
+interface ProfileImgProps {
   image: string;
   size?: number;
-};
+}
 
 export default function ProfileImg({ image, size = 40 }: ProfileImgProps) {
   return (

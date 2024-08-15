@@ -8,15 +8,16 @@ import Input from "./input";
 import ProfileImg from "../profile/profile-img";
 import ImgUpload from "./img-upload";
 import Emoji from "./emoji";
+import { User } from "../../../types/types";
 
-type PostFormProps = {
+interface PostFormProps {
   onSubmit: any;
-  user: any;
+  user: User;
   register: UseFormRegister<FieldValues>;
   name: string;
   placeholder: string;
   resetField: any;
-};
+}
 
 export default function PostForm({
   onSubmit,
@@ -37,7 +38,7 @@ export default function PostForm({
   return (
     <Form onSubmit={onSubmit}>
       <Link to={`/profile/${user.username}`} className="w-[45px] h-[45px]">
-        <ProfileImg image={user.profileImg} />
+        <ProfileImg image={user.profileImg!} />
       </Link>
       <div className="w-full flex flex-col gap-2">
         <Input
@@ -60,7 +61,7 @@ export default function PostForm({
         )}
         <div className="flex items-center gap-3">
           <ImgUpload register={register} setImg={setImg} />
-          <Emoji value={value} setValue={setValue}/>
+          <Emoji value={value} setValue={setValue} />
           <button
             onClick={() => {
               setImg(null);

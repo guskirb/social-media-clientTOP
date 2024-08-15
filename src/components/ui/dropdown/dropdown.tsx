@@ -1,11 +1,11 @@
 import { Ellipsis } from "lucide-react";
 import React, { ReactNode, useEffect, useRef } from "react";
 
-type DropdownProps = {
+interface DropdownProps {
   showDropdown: boolean;
-  setShowDropdown: any;
+  setShowDropdown: (showDropdown: boolean) => void;
   children: ReactNode;
-};
+}
 
 export default function Dropdown({
   showDropdown,
@@ -49,7 +49,11 @@ export default function Dropdown({
         onClick={dropdownClick}
         ref={buttonRef}
       >
-        <Ellipsis size={24} color="#7a7a7a"  className="hover:bg-gray-100 rounded-xl p-1"/>
+        <Ellipsis
+          size={24}
+          color="#7a7a7a"
+          className="hover:bg-gray-100 rounded-xl p-1"
+        />
       </div>
       {showDropdown && (
         <div

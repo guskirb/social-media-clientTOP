@@ -35,6 +35,7 @@ export default function Login() {
         });
       } else {
         setLocalStorage(user);
+        window.location.href = "/home";
         setUser({
           username: user.user.username,
           name: user.user.name,
@@ -47,7 +48,6 @@ export default function Login() {
           id: user.user.id,
         });
         setIsLoggedIn(true);
-        window.location.href = "/home";
       }
     } catch (err) {
       setError("root", {

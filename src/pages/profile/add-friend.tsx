@@ -1,10 +1,10 @@
 import { User } from "../../types/types";
 import { useSendRequest } from "./api/send-friend-request";
 
-type AddFriendProps = {
+interface AddFriendProps {
   myUser: User;
   user: User;
-};
+}
 
 export default function AddFriend({ myUser, user }: AddFriendProps) {
   const { mutate: sendRequest } = useSendRequest();

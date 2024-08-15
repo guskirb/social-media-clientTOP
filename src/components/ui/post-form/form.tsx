@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import Container from "../container/container";
 
-type FormProps = {
+interface FormProps {
   children: ReactNode;
   onSubmit: any;
 };

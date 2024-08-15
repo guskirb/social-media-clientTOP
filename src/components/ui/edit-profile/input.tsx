@@ -1,11 +1,11 @@
 import FieldWrapper from "../auth-form/field-wrapper";
 
-type InputProps = {
+interface InputProps {
   errorMessage?: string | null;
   placeholder: string;
   register: any;
   value: string;
-};
+}
 
 export default function Input({
   errorMessage,

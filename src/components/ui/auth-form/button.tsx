@@ -1,4 +1,4 @@
-type ButtonProps = {
+interface ButtonProps {
   text: string;
   isSubmitting: boolean;
 };

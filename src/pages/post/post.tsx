@@ -54,7 +54,7 @@ export default function PostPage({ post }: { post: PostType }) {
       <Post post={post} />
       <PostForm
         onSubmit={handleSubmit(onSubmit)}
-        user={user}
+        user={user!}
         register={register}
         name="comment"
         placeholder="Post a comment"

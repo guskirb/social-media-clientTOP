@@ -2,10 +2,10 @@ import { Image } from "lucide-react";
 import { ChangeEvent, useRef } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 
-type ImgUploadProps = {
+interface ImgUploadProps {
   register: UseFormRegister<FieldValues>;
-  setImg: any;
-};
+  setImg: (img: any) => void;
+}
 
 export default function ImgUpload({ register, setImg }: ImgUploadProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);

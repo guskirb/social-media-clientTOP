@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
-type FormProps = {
+interface FormProps {
   children: ReactNode;
   onSubmit: any;
   title: string;
-};
+}
 
 export default function Form({ children, onSubmit, title }: FormProps) {
   return (

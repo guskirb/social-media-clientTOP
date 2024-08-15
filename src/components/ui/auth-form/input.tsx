@@ -1,11 +1,11 @@
 import FieldWrapper from "./field-wrapper";
 
-type InputProps = {
+interface InputProps {
   errorMessage?: string | null;
   type: string;
   placeholder: string;
   register: any;
-};
+}
 
 export default function Input({
   errorMessage,
