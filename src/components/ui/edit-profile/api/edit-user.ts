@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "../../../../lib/axios";
 import { queryClient } from "../../../../lib/react-query";
 import useAuthStore from "../../../../hooks/use-auth-store";
+import { User } from "../../../../types/types";
 
 export const editUserSchema = z.object({
   name: z.string().min(1, { message: "Enter a name" }),
@@ -30,7 +31,7 @@ export const useEditUser = () => {
   return useMutation({
     mutationFn: (data: FormData) => editUser(data),
     onSuccess: (data) => {
-      queryClient.setQueryData(["user", authUser!.username], (user: object) => {
+      queryClient.setQueryData(["user", authUser!.username], (user: User) => {
         setUser({
           ...authUser!,
           name: data.name,

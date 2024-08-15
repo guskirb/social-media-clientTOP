@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+
 import Post from "../post/post";
 import CommentList from "../comment-list/comment-list";
+import { Post as PostType } from "../../../types/types";
 
-export default function PostList({ posts }) {
+export default function PostList({ posts }: { posts: Array<PostType> }) {
   return (
     <div className="flex flex-col gap-4">
       {posts.length !== 0 ? (

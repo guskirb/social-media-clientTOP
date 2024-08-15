@@ -3,6 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 
 import axios from "../../../lib/axios";
 import { queryClient } from "../../../lib/react-query";
+import { Post } from "../../../types/types";
 
 export const createPostSchema = z
   .object({
@@ -27,7 +28,7 @@ export const useCreatePost = () => {
   return useMutation({
     mutationFn: (data: FormData) => createPost(data),
     onSuccess: (data) => {
-      queryClient.setQueryData(["posts"], (posts) => {
+      queryClient.setQueryData(["posts"], (posts: Array<Post>) => {
         return [data.post, ...posts];
       });
     },

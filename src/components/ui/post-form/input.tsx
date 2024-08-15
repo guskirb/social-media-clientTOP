@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useRef } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 
 import { useAutosizeTextArea } from "../../../hooks/use-autosize-textarea";

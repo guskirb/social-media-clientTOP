@@ -12,8 +12,9 @@ import {
   useCreateComment,
 } from "./api/create-comment";
 import CommentList from "../../components/ui/comment-list/comment-list";
+import { Post as PostType } from "../../types/types";
 
-export default function PostPage({ post }) {
+export default function PostPage({ post }: { post: PostType }) {
   const {
     register,
     handleSubmit,

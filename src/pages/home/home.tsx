@@ -9,8 +9,14 @@ import {
   CreatePostFormFields,
   createPostSchema,
 } from "./api/create-post";
+import { Post } from "../../types/types";
 
-export default function Home({ posts, refetch }) {
+type HomeProps = {
+  posts: Array<Post>;
+  refetch: any;
+};
+
+export default function Home({ posts, refetch }: HomeProps) {
   const {
     register,
     handleSubmit,

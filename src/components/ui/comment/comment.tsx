@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { User, Clock } from "lucide-react";
 import { useState } from "react";
 
@@ -7,8 +7,9 @@ import ProfileImg from "../profile/profile-img";
 import Dropdown from "../dropdown/dropdown";
 import CommentSettings from "./comment-settings";
 import useAuthStore from "../../../hooks/use-auth-store";
+import { Comment as CommentType } from "../../../types/types";
 
-export default function Comment({ comment }) {
+export default function Comment({ comment }: { comment: CommentType }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const user = useAuthStore((state) => state.user);
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export default function Comment({ comment }) {
           }}
           className="w-[45px] h-[45px]"
         >
-          <ProfileImg image={comment.author.profileImg} />
+          <ProfileImg image={comment.author.profileImg!} />
         </div>
         <div className="flex flex-col gap-2 w-full">
           <div className="flex gap-2 items-center relative">
@@ -61,8 +62,8 @@ export default function Comment({ comment }) {
           </div>
           <div className="mt-[-5px] flex flex-col gap-1">
             <p className="whitespace-pre-wrap">{comment.comment}</p>
-            {comment.postImg && (
-              <img src={comment.postImg} className="rounded-xl w-full" />
+            {comment.commentImg && (
+              <img src={comment.commentImg} className="rounded-xl w-full" />
             )}
           </div>
         </div>

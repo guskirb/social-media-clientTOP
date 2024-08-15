@@ -1,7 +1,8 @@
-import { useMutation } from "@tanstack/react-query";
+import { QueryFilters, useMutation } from "@tanstack/react-query";
 
 import axios from "../../../../lib/axios";
 import { queryClient } from "../../../../lib/react-query";
+import { Post } from "../../../../types/types";
 
 export const likePost = async (postId: string) => {
   try {
@@ -25,8 +26,8 @@ export const useLikePost = () => {
   return useMutation({
     mutationFn: (postId: string) => likePost(postId),
     onSuccess: (data) => {
-      queryClient.setQueriesData({ queryKey: ["posts", "likes"] }, (posts) => {
-        return posts.map((post) =>
+      queryClient.setQueryData(["posts"], (posts?: Array<Post>) => {
+        return posts!.map((post) =>
           post.id === data.post.id ? data.post : post
         );
       });
@@ -38,8 +39,8 @@ export const useUnlikePost = () => {
   return useMutation({
     mutationFn: (postId: string) => unlikePost(postId),
     onSuccess: (data) => {
-      queryClient.setQueriesData(["posts", "likes"], (posts) => {
-        return posts.map((post) =>
+      queryClient.setQueryData(["posts"], (posts?: Array<Post>) => {
+        return posts!.map((post) =>
           post.id === data.post.id ? data.post : post
         );
       });

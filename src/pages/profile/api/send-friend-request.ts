@@ -21,7 +21,7 @@ export const useSendRequest = () => {
     onSuccess: (data) => {
       setUser({
         ...user!,
-        outgoingRequests: [data.request.toUserId, ...user?.outgoingRequests],
+        outgoingRequests: [data.request.toUserId, ...user?.outgoingRequests!],
       });
 
       queryClient.setQueryData(["requests"], (requests) => {

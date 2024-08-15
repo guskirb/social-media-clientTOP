@@ -8,8 +8,9 @@ import useAuthStore from "../../../hooks/use-auth-store";
 import LikeButton from "./like-button";
 import Dropdown from "../dropdown/dropdown";
 import PostSettings from "./post-settings";
+import { Post as PostType } from "../../../types/types";
 
-export default function Post({ post }) {
+export default function Post({ post }: { post: PostType }) {
   const [currPost, setCurrPost] = useState(post);
   const user = useAuthStore((state) => state.user);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -26,11 +27,11 @@ export default function Post({ post }) {
           onClick={(e) => {
             e.stopPropagation();
             e.preventDefault();
-            navigate(`/profile/${currPost.author.username}`);
+            navigate(`/profile/${currPost.author!.username}`);
           }}
           className="cursor-pointer w-[45px] h-[45px]"
         >
-          <ProfileImg image={currPost.author.profileImg} />
+          <ProfileImg image={currPost.author!.profileImg!} />
         </div>
         <div className="flex flex-col gap-2 w-full">
           <div className="flex gap-2 items-center relative">
@@ -38,16 +39,16 @@ export default function Post({ post }) {
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                navigate(`/profile/${currPost.author.username}`);
+                navigate(`/profile/${currPost.author!.username}`);
               }}
               className="flex items-center gap-2 cursor-pointer"
             >
               <p className="font-semibold">
-                {currPost.author.name || currPost.author.username}
+                {currPost.author!.name || currPost.author!.username}
               </p>
               <div className="flex items-center gap-1">
                 <User size={13} color="#7a7a7a" />
-                <p className="text-sm opacity-70">{currPost.author.username}</p>
+                <p className="text-sm opacity-70">{currPost.author!.username}</p>
               </div>
             </div>
             <div className="flex items-center gap-1">

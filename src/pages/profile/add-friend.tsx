@@ -1,6 +1,12 @@
+import { User } from "../../types/types";
 import { useSendRequest } from "./api/send-friend-request";
 
-export default function AddFriend({ myUser, user }) {
+type AddFriendProps = {
+  myUser: User;
+  user: User;
+};
+
+export default function AddFriend({ myUser, user }: AddFriendProps) {
   const { mutate: sendRequest } = useSendRequest();
 
   const onClickSendRequest = () => {
@@ -11,7 +17,7 @@ export default function AddFriend({ myUser, user }) {
     return null;
   }
 
-  if (myUser.outgoingRequests.includes(user.id)) {
+  if (myUser.outgoingRequests!.includes(user.id)) {
     return (
       <button
         onClick={onClickSendRequest}
@@ -23,7 +29,7 @@ export default function AddFriend({ myUser, user }) {
     );
   }
 
-  if (!myUser?.friends.includes(user.id)) {
+  if (!myUser?.friends!.includes(user.id)) {
     return (
       <button
         onClick={onClickSendRequest}

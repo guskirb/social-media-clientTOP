@@ -12,9 +12,10 @@ import {
   editUserSchema,
   useEditUser,
 } from "./api/edit-user";
+import { User } from "../../../types/types";
 
 type EditProfileProps = {
-  user: any;
+  user: User;
   setShowModal: any;
 };
 
@@ -100,7 +101,7 @@ export default function EditProfile({ user, setShowModal }: EditProfileProps) {
           <Pencil size={20} color="#ffff" />
         </div>
         <div className="border-[6px] border-white rounded-full mt-[-50px] relative">
-          <ProfileImg image={profileImg} size={100} />
+          <ProfileImg image={profileImg!} size={100} />
           <div
             onClick={handleProfileClick}
             className="absolute bg-[#00000098] p-2 rounded-full translate-x-[32px] -translate-y-[68px] cursor-pointer"
@@ -121,7 +122,7 @@ export default function EditProfile({ user, setShowModal }: EditProfileProps) {
         />
         <Textarea
           placeholder="Bio"
-          value={user.bio}
+          value={user.bio!}
           register={register("bio")}
         />
         <input

@@ -3,8 +3,14 @@ import React from "react";
 
 import useAuthStore from "../../../hooks/use-auth-store";
 import { useLikePost, useUnlikePost } from "./api/like-post";
+import { Post } from "../../../types/types";
 
-export default function LikeButton({ post, setCurrPost }) {
+type LikeButtonProps = {
+  post: Post;
+  setCurrPost: any;
+};
+
+export default function LikeButton({ post, setCurrPost }: LikeButtonProps) {
   const user = useAuthStore((state) => state.user);
   const { mutate: likePost } = useLikePost();
   const { mutate: unlikePost } = useUnlikePost();
@@ -13,7 +19,7 @@ export default function LikeButton({ post, setCurrPost }) {
     e.preventDefault();
     setCurrPost({
       ...post,
-      likedBy: [...post.likedBy, { id: user!.id }],
+      likedBy: [...post.likedBy!, { id: user!.id }],
     });
     likePost(post.id);
   };
@@ -22,14 +28,14 @@ export default function LikeButton({ post, setCurrPost }) {
     e.preventDefault();
     setCurrPost({
       ...post,
-      likedBy: post.likedBy.filter((item) => item.id !== user!.id),
+      likedBy: post.likedBy!.filter((item) => item.id !== user!.id),
     });
     unlikePost(post.id);
   };
 
   return (
     <>
-      {post.likedBy.find((like) => like.id === user!.id) ? (
+      {post.likedBy!.find((like) => like.id === user!.id) ? (
         <ThumbsUp
           size={17}
           color="#ef4444"

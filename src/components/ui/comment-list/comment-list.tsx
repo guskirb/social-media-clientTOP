@@ -1,6 +1,11 @@
+import { Comment as CommentType } from "../../../types/types";
 import Comment from "../comment/comment";
 
-export default function CommentList({ comments }) {
+export default function CommentList({
+  comments,
+}: {
+  comments: Array<CommentType>;
+}) {
   return (
     <div className="flex flex-col gap-3">
       {comments.length !== 0 ? (

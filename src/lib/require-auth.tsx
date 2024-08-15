@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import useAuthStore from "../hooks/use-auth-store";
 import { ReactNode } from "react";
 
