@@ -39,7 +39,7 @@ export default function Profile({ user }) {
           <div className="min-h-3">
             <p className="py-3 whitespace-pre-wrap">{user.bio}</p>
           </div>
-          <div className="flex gap-3 pb-4">
+          <div className="flex gap-5 pb-4">
             <div className="flex items-center gap-1">
               <Pencil size={15} color="#7a7a7a" />
               <p>{user.posts.length + " Posts"}</p>

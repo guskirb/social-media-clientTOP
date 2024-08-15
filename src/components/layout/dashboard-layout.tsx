@@ -92,8 +92,8 @@ export default function Layout({ children }: LayoutProps) {
               to={item.to}
               className={({ isActive }) =>
                 cn(
-                  "flex gap-3 font-medium items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white lg:pr-3 hover:shadow-sm",
-                  isActive && "bg-white shadow-sm"
+                  "flex gap-3 font-medium items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white lg:pr-3 hover:shadow-sm opacity-70 hover:opacity-100",
+                  isActive && "bg-white shadow-sm opacity-1"
                 )
               }
             >
@@ -102,7 +102,7 @@ export default function Layout({ children }: LayoutProps) {
             </NavLink>
           ))}
           <div
-            className="w-full flex gap-3 font-medium items-center justify-center transition-all duration-200 rounded-xl p-2 bg-blue-500 lg:pr-3 cursor-pointer"
+            className="w-full flex font-medium items-center justify-center transition-all duration-200 rounded-xl p-2 bg-blue-500 lg:pr-3 cursor-pointer mt-5"
             onClick={() => setShowPostModal(true)}
           >
             <Pencil color="#ffffff" className="lg:hidden block" />

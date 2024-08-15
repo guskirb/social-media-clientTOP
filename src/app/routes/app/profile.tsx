@@ -31,9 +31,21 @@ export const ProfileRoute = () => {
   return (
     <>
       <Head
-        title={user?.name ? `${user.name} (${user.username})` : user.username}
+        title={
+          user
+            ? user?.name
+              ? `${user.name} (${user.username})`
+              : user.username
+            : username
+        }
       />
-      {user ? <Profile user={user} /> : <Loader />}
+      {user ? (
+        <Profile user={user} />
+      ) : (
+        <div className="w-full flex justify-center items-center p-5">
+          <p className="text-lg font-normal">User not found</p>
+        </div>
+      )}
     </>
   );
 };
