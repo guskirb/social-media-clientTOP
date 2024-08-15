@@ -7,6 +7,7 @@ import Form from "./form";
 import Input from "./input";
 import ProfileImg from "../profile/profile-img";
 import ImgUpload from "./img-upload";
+import Emoji from "./emoji";
 
 type PostFormProps = {
   onSubmit: any;
@@ -36,7 +37,7 @@ export default function PostForm({
   return (
     <Form onSubmit={onSubmit}>
       <Link to={`/profile/${user.username}`} className="w-[45px] h-[45px]">
-        <ProfileImg image={user.ProfileImg} />
+        <ProfileImg image={user.profileImg} />
       </Link>
       <div className="w-full flex flex-col gap-2">
         <Input
@@ -57,13 +58,15 @@ export default function PostForm({
             <img src={img} className="rounded-xl w-full" />
           </div>
         )}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
           <ImgUpload register={register} setImg={setImg} />
+          <Emoji value={value} setValue={setValue}/>
           <button
             onClick={() => {
               setImg(null);
               setValue("");
             }}
+            className="ml-auto"
           >
             {name === "post" ? "Post" : "Comment"}
           </button>
