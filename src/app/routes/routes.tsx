@@ -7,6 +7,7 @@ import AppRoot from "./app/root";
 import { userLoader } from "./app/profile";
 import { postsLoader } from "./app/home";
 import { likesLoader } from "./app/likes";
+import { requestsLoader } from "./app/requests";
 
 export const createRouter = (queryClient: QueryClient) =>
   createBrowserRouter([
@@ -41,6 +42,14 @@ export const createRouter = (queryClient: QueryClient) =>
                 return { Component: HomeRoute };
               },
               loader: postsLoader(queryClient),
+            },
+            {
+              path: "/requests",
+              lazy: async () => {
+                const { RequestsRoute } = await import("./app/requests");
+                return { Component: RequestsRoute };
+              },
+              loader: requestsLoader(queryClient),
             },
             {
               path: "/likes",
