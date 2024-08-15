@@ -21,6 +21,7 @@ export default function PersistAuth() {
           name: user.user.name,
           profileImg: user.user.profileImg,
           notifications: user.user.requests.length,
+          friends: user.user.friends.map((user) => user.id),
           id: user.user.id,
         });
       } else {
