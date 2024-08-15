@@ -5,9 +5,12 @@ import { useState } from "react";
 import Container from "../container/container";
 import ProfileImg from "../profile/profile-img";
 import Dropdown from "../dropdown/dropdown";
+import CommentSettings from "./comment-settings";
+import useAuthStore from "../../../hooks/use-auth-store";
 
 export default function Comment({ comment }) {
   const [showDropdown, setShowDropdown] = useState(false);
+  const user = useAuthStore((state) => state.user);
   const navigate = useNavigate();
 
   return (
@@ -48,7 +51,13 @@ export default function Comment({ comment }) {
             <Dropdown
               showDropdown={showDropdown}
               setShowDropdown={setShowDropdown}
-            ></Dropdown>
+            >
+              <CommentSettings
+                user={user}
+                comment={comment}
+                setShowDropdown={setShowDropdown}
+              />
+            </Dropdown>
           </div>
           <div className="mt-[-5px] flex flex-col gap-1">
             <p className="whitespace-pre-wrap">{comment.comment}</p>
