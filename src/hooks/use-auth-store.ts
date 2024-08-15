@@ -11,8 +11,9 @@ type UserObject = {
   username: string;
   name: string;
   profileImg: string;
-  notifications: number;
   friends: Array<string>;
+  requests: Array<string>;
+  outgoingRequests: Array<string>;
   id: string;
 };
 

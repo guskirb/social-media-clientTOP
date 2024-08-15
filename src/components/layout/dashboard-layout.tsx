@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import {
   House,
   ThumbsUp,
@@ -46,7 +46,7 @@ export default function Layout({ children }: LayoutProps) {
     {
       name: "Requests",
       to: "requests",
-      icon: user!.notifications === 0 ? Bell : BellDot,
+      icon: user!.requests.length === 0 ? Bell : BellDot,
     },
     { name: "Likes", to: "/likes", icon: ThumbsUp },
     { name: "Profile", to: `/profile/${user!.username}`, icon: User },
@@ -68,6 +68,10 @@ export default function Layout({ children }: LayoutProps) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return (
     <div className="flex justify-center bg-gray-100 min-h-full">

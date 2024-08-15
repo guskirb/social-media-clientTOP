@@ -38,8 +38,11 @@ export default function Login() {
           username: user.user.username,
           name: user.user.name,
           profileImg: user.user.profileImg,
-          notifications: user.user.requests.length,
           friends: user.user.friends.map((user) => user.id),
+          requests: user.user.requests.map((request) => request.fromUserId),
+          outgoingRequests: user.user.outgoingRequests.map(
+            (request) => request.toUserId
+          ),
           id: user.user.id,
         });
         setIsLoggedIn(true);

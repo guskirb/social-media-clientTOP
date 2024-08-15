@@ -6,6 +6,7 @@ import ProfileImg from "../../components/ui/profile/profile-img";
 import PostList from "../../components/ui/post-list/post-list";
 import useAuthStore from "../../hooks/use-auth-store";
 import EditProfile from "../../components/ui/edit-profile/edit-profile";
+import AddFriend from "./add-friend";
 
 export default function Profile({ user }) {
   const myUser = useAuthStore((state) => state.user);
@@ -61,6 +62,7 @@ export default function Profile({ user }) {
               Edit Profile
             </button>
           )}
+          <AddFriend myUser={myUser} user={user} />
         </div>
       </Container>
       <PostList posts={user.posts} />

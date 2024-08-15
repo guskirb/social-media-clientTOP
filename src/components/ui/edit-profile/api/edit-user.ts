@@ -24,18 +24,17 @@ export const editUser = async (data: FormData) => {
 };
 
 export const useEditUser = () => {
-  const user = useAuthStore((state) => state.user);
+  const authUser = useAuthStore((state) => state.user);
   const setUser = useAuthStore((state) => state.setUser);
 
   return useMutation({
     mutationFn: (data: FormData) => editUser(data),
     onSuccess: (data) => {
-      queryClient.setQueryData(["user", user?.username], (user: object) => {
+      queryClient.setQueryData(["user", authUser!.username], (user: object) => {
         setUser({
-          username: data.username,
+          ...authUser!,
           name: data.name,
           profileImg: data.profileImg,
-          id: data.id,
         });
         return {
           ...user,
