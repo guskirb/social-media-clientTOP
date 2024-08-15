@@ -1,5 +1,13 @@
 import { ReactNode, useState } from "react";
-import { House, ThumbsUp, User, Bell, Ellipsis, Pencil } from "lucide-react";
+import {
+  House,
+  ThumbsUp,
+  User,
+  Bell,
+  BellDot,
+  Ellipsis,
+  Pencil,
+} from "lucide-react";
 import { NavLink, Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -35,7 +43,11 @@ export default function Layout({ children }: LayoutProps) {
   const { mutate: createPost } = useCreatePost();
   const navigation = [
     { name: "Home", to: "/home", icon: House },
-    { name: "Requests", to: "requests", icon: Bell },
+    {
+      name: "Requests",
+      to: "requests",
+      icon: user!.notifications === 0 ? Bell : BellDot,
+    },
     { name: "Likes", to: "/likes", icon: ThumbsUp },
     { name: "Profile", to: `/profile/${user!.username}`, icon: User },
   ];

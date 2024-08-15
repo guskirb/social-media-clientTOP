@@ -11,7 +11,8 @@ type UserObject = {
   username: string;
   name: string;
   profileImg: string;
-  id: string;
+  notifications: number;
+  id: string; 
 };
 
 const useAuthStore = create<UseAuthStore>((set) => ({

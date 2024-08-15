@@ -20,6 +20,7 @@ export default function PersistAuth() {
           username: user.user.username,
           name: user.user.name,
           profileImg: user.user.profileImg,
+          notifications: user.user.requests.length,
           id: user.user.id,
         });
       } else {
@@ -36,7 +37,7 @@ export default function PersistAuth() {
   }, []);
 
   if (loading) {
-    return <Loader/>;
+    return <Loader />;
   }
 
   return <Outlet />;

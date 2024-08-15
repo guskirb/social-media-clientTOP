@@ -38,6 +38,7 @@ export default function Login() {
           username: user.user.username,
           name: user.user.name,
           profileImg: user.user.profileImg,
+          notifications: user.user.requests.length,
           id: user.user.id,
         });
         setIsLoggedIn(true);
