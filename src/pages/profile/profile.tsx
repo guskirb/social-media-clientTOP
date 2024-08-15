@@ -1,10 +1,10 @@
-import { Users, CalendarDays } from "lucide-react";
+import { Users, CalendarDays, Pencil } from "lucide-react";
+import { useState } from "react";
 
 import Container from "../../components/ui/container/container";
 import ProfileImg from "../../components/ui/profile/profile-img";
 import PostList from "../../components/ui/post-list/post-list";
 import useAuthStore from "../../hooks/use-auth-store";
-import { useState } from "react";
 import EditProfile from "../../components/ui/edit-profile/edit-profile";
 
 export default function Profile({ user }) {
@@ -14,9 +14,9 @@ export default function Profile({ user }) {
   return (
     <>
       <Container>
-          {showEditModal && (
-            <EditProfile user={user} setShowModal={setShowEditModal} />
-          )}
+        {showEditModal && (
+          <EditProfile user={user} setShowModal={setShowEditModal} />
+        )}
         <div className="flex flex-col justify-center items-center bg-white relative z-[0]">
           <img
             src={
@@ -28,7 +28,7 @@ export default function Profile({ user }) {
             className="h-60 object-cover w-full"
           />
           <div className="border-[6px] border-white rounded-full mt-[-50px]">
-            <ProfileImg image={user.ProfileImg} size={100} />
+            <ProfileImg image={user.profileImg} size={100} />
           </div>
           <div className="flex flex-col items-center">
             <p className="text-lg font-semibold">
@@ -40,6 +40,10 @@ export default function Profile({ user }) {
             <p className="py-3 whitespace-pre-wrap">{user.bio}</p>
           </div>
           <div className="flex gap-3 pb-4">
+            <div className="flex items-center gap-1">
+              <Pencil size={15} color="#7a7a7a" />
+              <p>{user.posts.length + " Posts"}</p>
+            </div>
             <div className="flex items-center gap-1">
               <Users size={15} color="#7a7a7a" />
               <p>{user.friends.length + " Friends"}</p>

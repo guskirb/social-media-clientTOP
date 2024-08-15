@@ -36,9 +36,10 @@ export default function ImgUpload({ register, setImg }: ImgUploadProps) {
         {...rest}
       />
       <Image
-        color="#7a7a7a"
-        strokeWidth={1}
-        className="cursor-pointer"
+        color="#9ca3af"
+        size={30}
+        strokeWidth={1.5}
+        className="cursor-pointer hover:bg-gray-100 rounded-xl p-1"
         onClick={handleImageClick}
       />
     </div>

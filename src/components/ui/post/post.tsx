@@ -1,5 +1,5 @@
 import Container from "../container/container";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MessageSquare, Clock, User } from "lucide-react";
 
 import ProfileImg from "../profile/profile-img";

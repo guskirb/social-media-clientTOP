@@ -49,11 +49,11 @@ export default function Dropdown({
         onClick={dropdownClick}
         ref={buttonRef}
       >
-        <Ellipsis size={17} color="#7a7a7a" />
+        <Ellipsis size={24} color="#7a7a7a"  className="hover:bg-gray-100 rounded-xl p-1"/>
       </div>
       {showDropdown && (
         <div
-          className="absolute w-fit top-0 right-0 bg-zinc-200 rounded-xl p-3 translate-x-2 -translate-y-2"
+          className="absolute w-fit top-0 right-0 bg-gray-100 rounded-xl p-3 translate-x-2 -translate-y-2"
           onClick={stopPropogation}
           ref={dropdownRef}
         >

@@ -10,7 +10,7 @@ export default function PostList({ posts }) {
           <Link
             to={`/post/${post.id}`}
             key={post.id}
-            className="flex flex-col gap-3"
+            className="flex flex-col gap-2"
           >
             <Post post={post} />
             {post.comments.length > 0 && (

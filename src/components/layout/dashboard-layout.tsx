@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { House, ThumbsUp, User, Bell, Ellipsis } from "lucide-react";
+import { House, ThumbsUp, User, Bell, Ellipsis, Pencil } from "lucide-react";
 import { NavLink, Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -73,15 +73,15 @@ export default function Layout({ children }: LayoutProps) {
         </Modal>
       )}
       <div className="flex flex-col items-end min-w-[80px] lg:w-full">
-        <div className="fixed flex flex-col gap-3 p-5 lg:p-8 h-full items-center lg:items-start">
+        <div className="fixed flex flex-col gap-3 px-5 py-4 lg:px-8 h-full items-center lg:items-start">
           {navigation.map((item) => (
             <NavLink
               key={item.name}
               to={item.to}
               className={({ isActive }) =>
                 cn(
-                  "flex gap-3 font-medium items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white lg:pr-3",
-                  isActive && "bg-white"
+                  "flex gap-3 font-medium items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white lg:pr-3 hover:shadow-sm",
+                  isActive && "bg-white shadow-sm"
                 )
               }
             >
@@ -89,10 +89,16 @@ export default function Layout({ children }: LayoutProps) {
               <p className="text-xl hidden lg:block">{item.name}</p>
             </NavLink>
           ))}
-          <div onClick={() => setShowPostModal(true)}>Post</div>
+          <div
+            className="w-full flex gap-3 font-medium items-center justify-center transition-all duration-200 rounded-xl p-2 bg-blue-500 lg:pr-3 cursor-pointer"
+            onClick={() => setShowPostModal(true)}
+          >
+            <Pencil color="#ffffff" className="lg:hidden block" />
+            <p className="text-xl hidden lg:block text-white">Post</p>
+          </div>
           <Link
             to={`/profile/${user!.username}`}
-            className="flex gap-3 items-center mt-auto w-10 h-10 lg:w-fit lg:h-fit lg:bg-white lg:p-2 lg:rounded-xl lg:pr-3"
+            className="flex gap-3 items-center mt-auto w-10 h-10 lg:w-fit lg:h-fit lg:bg-white lg:p-2 lg:rounded-xl lg:pr-3 shadow-sm"
           >
             <ProfileImg image={user!.profileImg} />
             <div>

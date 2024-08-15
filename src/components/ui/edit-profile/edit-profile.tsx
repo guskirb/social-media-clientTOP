@@ -116,7 +116,7 @@ export default function EditProfile({ user, setShowModal }: EditProfileProps) {
       >
         <Input
           placeholder="Name"
-          value={user.name}
+          value={user.name ? user.name : user.username}
           register={register("name")}
         />
         <Textarea
