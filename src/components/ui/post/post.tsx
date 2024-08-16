@@ -60,7 +60,7 @@ export default function Post({ post }: { post: PostType }) {
               setShowDropdown={setShowDropdown}
             >
               <PostSettings
-                user={user}
+                user={user!}
                 post={currPost}
                 setShowDropdown={setShowDropdown}
               />

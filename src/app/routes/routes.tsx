@@ -41,7 +41,7 @@ export const createRouter = (queryClient: QueryClient) =>
                 const { HomeRoute } = await import("./app/home");
                 return { Component: HomeRoute };
               },
-              loader: postsLoader(queryClient),
+              // loader: postsLoader(queryClient),
             },
             {
               path: "/requests",

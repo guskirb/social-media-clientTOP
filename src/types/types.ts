@@ -41,3 +41,12 @@ export interface Comment {
   createdAt: string;
   createdFormatted: string;
 }
+
+export interface Request {
+  id: string;
+  to: User;
+  toUserId: string;
+  from: User;
+  fromUserId: string;
+  sentAt: string;
+}

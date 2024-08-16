@@ -23,7 +23,7 @@ export default function Comment({ comment }: { comment: CommentType }) {
             e.preventDefault();
             navigate(`/profile/${comment.author.username}`);
           }}
-          className="w-[45px] h-[45px]"
+          className="w-[45px] h-[45px] cursor-pointer" 
         >
           <ProfileImg image={comment.author.profileImg!} />
         </div>
@@ -35,7 +35,7 @@ export default function Comment({ comment }: { comment: CommentType }) {
                 e.preventDefault();
                 navigate(`/profile/${comment.author.username}`);
               }}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 cursor-pointer"
             >
               <p className="font-semibold">
                 {comment.author.name || comment.author.username}
