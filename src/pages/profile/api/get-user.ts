@@ -10,7 +10,7 @@ export const getUserQueryOptions = (username: string) => {
 
 export const getUser = async (username: string) => {
   try {
-    const response = await axios.get(`/users/username/${username}`);
+    const response = await axios.get(`/users/${username}`);
     return response.data.user;
   } catch (error: any) {
     return error.response.data;

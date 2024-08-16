@@ -1,4 +1,4 @@
-import { QueryClient } from "@tanstack/react-query";
+import { InfiniteData, QueryClient } from "@tanstack/react-query";
 
 import Head from "../../../components/seo/head";
 import {
@@ -6,7 +6,7 @@ import {
   usePosts,
 } from "../../../pages/home/api/get-posts";
 import Home from "../../../pages/home/home";
-import { useEffect } from "react";
+import { Page } from "../../../types/types";
 
 // export const postsLoader = (queryClient: QueryClient) => async () => {
 //   const postsQuery = getPostsQueryOptions();
@@ -24,15 +24,12 @@ export const HomeRoute = () => {
     fetchNextPage,
     isFetchingNextPage,
   } = usePosts();
-  useEffect(() => {
-    console.log(posts);
-  }, [posts]);
 
   return (
     <>
       <Head title="Home" />
       <Home
-        posts={posts?.pages}
+        posts={posts as InfiniteData<Page, string | null>}
         isLoading={isLoading}
         fetchNextPage={fetchNextPage}
         isFetchingNextPage={isFetchingNextPage}

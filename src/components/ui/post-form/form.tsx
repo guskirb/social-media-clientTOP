@@ -4,7 +4,7 @@ import Container from "../container/container";
 interface FormProps {
   children: ReactNode;
   onSubmit: any;
-};
+}
 
 export default function Form({ children, onSubmit }: FormProps) {
   return (
@@ -12,7 +12,7 @@ export default function Form({ children, onSubmit }: FormProps) {
       <form
         method="post"
         action=""
-        className="flex p-4 bg-white"
+        className="flex p-4 bg-white rounded-xl"
         onSubmit={onSubmit}
       >
         {children}

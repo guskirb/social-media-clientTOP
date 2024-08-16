@@ -30,7 +30,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     handleSubmit,
     resetField,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm<CreatePostFormFields>({
     resolver: zodResolver(createPostSchema),
   });
@@ -76,7 +76,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <Modal title={"Post"} setShowModal={setShowPostModal}>
           <PostForm
             onSubmit={handleSubmit(onSubmit)}
-            user={user}
+            user={user!}
             register={register}
             name="post"
             placeholder="What's on your mind?"

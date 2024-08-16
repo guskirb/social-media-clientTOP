@@ -16,7 +16,7 @@ export default function Comment({ comment }: { comment: CommentType }) {
 
   return (
     <Container>
-      <div className="p-4 flex gap-2 bg-white">
+      <div className="p-4 flex gap-2 bg-white rounded-xl">
         <div
           onClick={(e) => {
             e.stopPropagation();

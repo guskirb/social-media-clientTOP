@@ -16,6 +16,10 @@ export interface User {
   requests?: Array<any>;
   outgoingRequests?: Array<any>;
   joinedFormatted?: string;
+  _count?: {
+    posts: number;
+    friends: number;
+  };
 }
 
 export interface Post {
@@ -49,4 +53,10 @@ export interface Request {
   from: User;
   fromUserId: string;
   sentAt: string;
+}
+
+export interface Page {
+  success?: boolean;
+  posts: Post[];
+  nextPage: string | null;
 }
