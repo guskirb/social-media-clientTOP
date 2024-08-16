@@ -1,7 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
 
 import PostList from "../../components/ui/post-list/post-list";
 import PostForm from "../../components/ui/post-form/post-form";
@@ -11,7 +9,7 @@ import {
   CreatePostFormFields,
   createPostSchema,
 } from "./api/create-post";
-import { Page, Post } from "../../types/types";
+import { Page } from "../../types/types";
 import Loader from "../../components/ui/loader/loader";
 import { InfiniteData } from "@tanstack/react-query";
 
@@ -39,7 +37,6 @@ export default function Home({
   });
   const { mutate: createPost } = useCreatePost();
   const user = useAuthStore((state) => state.user);
-  const { ref, inView } = useInView();
 
   const onSubmit: SubmitHandler<CreatePostFormFields> = async (data) => {
     try {
@@ -56,12 +53,6 @@ export default function Home({
     }
   };
 
-  useEffect(() => {
-    if (inView) {
-      fetchNextPage();
-    }
-  }, [inView, fetchNextPage]);
-
   return (
     <>
       <PostForm
@@ -75,22 +66,11 @@ export default function Home({
       {isLoading ? (
         <Loader />
       ) : (
-        <>
-          {posts!.pages.map((page, index) => {
-            return (
-              <div key={index}>
-                <PostList posts={page.posts} />
-              </div>
-            );
-          })}
-          <div ref={ref}>
-            {isFetchingNextPage && (
-              <div className="h-[100px]">
-                <Loader />
-              </div>
-            )}
-          </div>
-        </>
+        <PostList
+          posts={posts}
+          isFetchingNextPage={isFetchingNextPage}
+          fetchNextPage={fetchNextPage}
+        />
       )}
     </>
   );

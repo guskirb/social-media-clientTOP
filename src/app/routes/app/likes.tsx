@@ -1,33 +1,41 @@
-import { QueryClient } from "@tanstack/react-query";
+import { InfiniteData, QueryClient } from "@tanstack/react-query";
 
 import Head from "../../../components/seo/head";
-import Loader from "../../../components/ui/loader/loader";
 import {
   getLikesQueryOptions,
   useLikes,
 } from "../../../pages/likes/api/get-likes";
 import Likes from "../../../pages/likes/likes";
+import useAuthStore from "../../../hooks/use-auth-store";
+import { Page } from "../../../types/types";
 
-export const likesLoader = (queryClient: QueryClient) => async () => {
-  const likesQuery = getLikesQueryOptions();
+// export const likesLoader = (queryClient: QueryClient) => async () => {
+//   const likesQuery = getLikesQueryOptions();
 
-  return (
-    queryClient.getQueryData(likesQuery.queryKey) ??
-    (await queryClient.fetchQuery(likesQuery))
-  );
-};
+//   return (
+//     queryClient.getQueryData(likesQuery.queryKey) ??
+//     (await queryClient.fetchQuery(likesQuery))
+//   );
+// };
 
 export const LikesRoute = () => {
-  const { data: posts, isLoading } = useLikes();
-
-  if (isLoading) {
-    return <Loader />;
-  }
+  const user = useAuthStore((state) => state.user);
+  const {
+    data: posts,
+    isLoading,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useLikes(user!.username);
 
   return (
     <>
       <Head title="Likes" />
-      <Likes posts={posts} />
+      <Likes
+        posts={posts as InfiniteData<Page, string | null>}
+        isLoading={isLoading}
+        fetchNextPage={fetchNextPage}
+        isFetchingNextPage={isFetchingNextPage}
+      />
     </>
   );
 };

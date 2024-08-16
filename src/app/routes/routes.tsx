@@ -57,7 +57,7 @@ export const createRouter = (queryClient: QueryClient) =>
                 const { LikesRoute } = await import("./app/likes");
                 return { Component: LikesRoute };
               },
-              loader: likesLoader(queryClient),
+              // loader: likesLoader(queryClient),
             },
             {
               path: "/post/:id",

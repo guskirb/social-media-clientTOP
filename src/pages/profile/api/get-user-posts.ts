@@ -1,16 +1,16 @@
 import { infiniteQueryOptions, useInfiniteQuery } from "@tanstack/react-query";
 import axios from "../../../lib/axios";
 
-export const getLikesQueryOptions = (username: string) => {
+export const getUserPostsQueryOptions = (username: string) => {
   return infiniteQueryOptions({
-    queryKey: ["likes", username],
-    queryFn: ({ pageParam = 1 }) => getLikes({ username, pageParam }),
+    queryKey: ["posts", username],
+    queryFn: ({ pageParam = 1 }) => getUserPosts({ username, pageParam }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage ?? undefined,
   });
 };
 
-export const getLikes = async ({
+export const getUserPosts = async ({
   username,
   pageParam,
 }: {
@@ -19,7 +19,7 @@ export const getLikes = async ({
 }) => {
   try {
     const response = await axios.get(
-      `/users/${username}/likes?page=${pageParam}&limit=10`
+      `/users/${username}/posts?page=${pageParam}&limit=10`
     );
     return response.data;
   } catch (error: any) {
@@ -27,6 +27,6 @@ export const getLikes = async ({
   }
 };
 
-export const useLikes = (username: string) => {
-  return useInfiniteQuery({ ...getLikesQueryOptions(username) });
+export const useUserPosts = (username: string) => {
+  return useInfiniteQuery({ ...getUserPostsQueryOptions(username) });
 };
