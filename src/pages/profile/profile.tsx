@@ -1,5 +1,5 @@
 import { Users, CalendarDays, Pencil } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Container from "../../components/ui/container/container";
 import ProfileImg from "../../components/ui/profile/profile-img";
@@ -8,18 +8,23 @@ import useAuthStore from "../../hooks/use-auth-store";
 import EditProfile from "../../components/ui/edit-profile/edit-profile";
 import AddFriend from "./add-friend";
 import { User } from "../../types/types";
+import ProfileFeed from "./profile-feed";
 
 export default function Profile({ user }: { user: User }) {
   const myUser = useAuthStore((state) => state.user);
   const [showEditModal, setShowEditModal] = useState(false);
 
+  useEffect(() => {
+   console.log(user)
+  },[user])
+  
   return (
     <>
       <Container>
         {showEditModal && (
           <EditProfile user={user} setShowModal={setShowEditModal} />
         )}
-        <div className="flex flex-col justify-center items-center bg-white relative z-[0]">
+        <div className="flex flex-col justify-center items-center bg-white relative z-[0] rounded-xl overflow-hidden">
           <img
             src={
               user.coverImg
@@ -44,11 +49,11 @@ export default function Profile({ user }: { user: User }) {
           <div className="flex gap-5 pb-4">
             <div className="flex items-center gap-1">
               <Pencil size={15} color="#7a7a7a" />
-              <p>{user.posts!.length + " Posts"}</p>
+              <p>{user._count!.posts + " Posts"}</p>
             </div>
             <div className="flex items-center gap-1">
               <Users size={15} color="#7a7a7a" />
-              <p>{user.friends!.length + " Friends"}</p>
+              <p>{user._count!.friends + " Friends"}</p>
             </div>
             <div className="flex items-center gap-1">
               <CalendarDays size={15} color="#7a7a7a" />
@@ -67,7 +72,8 @@ export default function Profile({ user }: { user: User }) {
           )}
         </div>
       </Container>
-      <PostList posts={user.posts!} />
+      <ProfileFeed user={user} />
+      {/* <PostList posts={user.posts!} /> */}
     </>
   );
 }

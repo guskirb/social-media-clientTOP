@@ -1,8 +1,8 @@
-import { QueryFilters, useMutation } from "@tanstack/react-query";
+import { InfiniteData, QueryFilters, useMutation } from "@tanstack/react-query";
 
 import axios from "../../../../lib/axios";
 import { queryClient } from "../../../../lib/react-query";
-import { Post } from "../../../../types/types";
+import { Page } from "../../../../types/types";
 
 export const likePost = async (postId: string) => {
   try {
@@ -25,12 +25,27 @@ export const unlikePost = async (postId: string) => {
 export const useLikePost = () => {
   return useMutation({
     mutationFn: (postId: string) => likePost(postId),
-    onSuccess: (data) => {
-      queryClient.setQueryData(["posts"], (posts?: Array<Post>) => {
-        return posts!.map((post) =>
-          post.id === data.post.id ? data.post : post
-        );
-      });
+    onSuccess: async (data) => {
+      const queryFilter: QueryFilters = { queryKey: ["posts"] };
+
+      await queryClient.cancelQueries(queryFilter);
+
+      queryClient.setQueriesData<InfiniteData<Page, string | null>>(
+        queryFilter,
+        (oldData) => {
+          if (!oldData) return;
+
+          return {
+            pageParams: oldData.pageParams,
+            pages: oldData.pages.map((page) => ({
+              nextPage: page.nextPage,
+              posts: page.posts.map((post) =>
+                post.id === data.post.id ? data.post : post
+              ),
+            })),
+          };
+        }
+      );
     },
   });
 };
@@ -38,12 +53,27 @@ export const useLikePost = () => {
 export const useUnlikePost = () => {
   return useMutation({
     mutationFn: (postId: string) => unlikePost(postId),
-    onSuccess: (data) => {
-      queryClient.setQueryData(["posts"], (posts?: Array<Post>) => {
-        return posts!.map((post) =>
-          post.id === data.post.id ? data.post : post
-        );
-      });
+    onSuccess: async (data) => {
+      const queryFilter: QueryFilters = { queryKey: ["posts"] };
+
+      await queryClient.cancelQueries(queryFilter);
+
+      queryClient.setQueriesData<InfiniteData<Page, string | null>>(
+        queryFilter,
+        (oldData) => {
+          if (!oldData) return;
+
+          return {
+            pageParams: oldData.pageParams,
+            pages: oldData.pages.map((page) => ({
+              nextPage: page.nextPage,
+              posts: page.posts.map((post) =>
+                post.id === data.post.id ? data.post : post
+              ),
+            })),
+          };
+        }
+      );
     },
   });
 };

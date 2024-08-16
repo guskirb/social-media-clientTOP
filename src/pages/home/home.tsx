@@ -11,17 +11,12 @@ import {
   CreatePostFormFields,
   createPostSchema,
 } from "./api/create-post";
-import { Post } from "../../types/types";
+import { Page, Post } from "../../types/types";
 import Loader from "../../components/ui/loader/loader";
+import { InfiniteData } from "@tanstack/react-query";
 
 interface HomeProps {
-  posts:
-    | Array<{
-        success: boolean;
-        posts: Array<Post>;
-        nextPage: number | null;
-      }>
-    | undefined;
+  posts: InfiniteData<Page, string | null>;
   isLoading: boolean;
   fetchNextPage: any;
   isFetchingNextPage: boolean;
@@ -81,7 +76,7 @@ export default function Home({
         <Loader />
       ) : (
         <>
-          {posts!.map((page, index) => {
+          {posts!.pages.map((page, index) => {
             return (
               <div key={index}>
                 <PostList posts={page.posts} />
