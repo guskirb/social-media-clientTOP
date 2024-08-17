@@ -16,14 +16,14 @@ export default function Comment({ comment }: { comment: CommentType }) {
 
   return (
     <Container>
-      <div className="p-4 flex gap-2 bg-white rounded-xl">
+      <div className="flex p-4 gap-2 bg-white rounded-xl w-full">
         <div
           onClick={(e) => {
             e.stopPropagation();
             e.preventDefault();
             navigate(`/profile/${comment.author.username}`);
           }}
-          className="w-[45px] h-[45px] cursor-pointer" 
+          className="min-w-[45px] h-[45px] cursor-pointer"
         >
           <ProfileImg image={comment.author.profileImg!} />
         </div>
@@ -61,7 +61,7 @@ export default function Comment({ comment }: { comment: CommentType }) {
             </Dropdown>
           </div>
           <div className="mt-[-5px] flex flex-col gap-1">
-            <p className="whitespace-pre-wrap">{comment.comment}</p>
+            <p className="whitespace-pre-line break-words lg:w-[495px]">{comment.comment}</p>
             {comment.commentImg && (
               <img src={comment.commentImg} className="rounded-xl w-full" />
             )}

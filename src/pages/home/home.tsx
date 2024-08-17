@@ -12,6 +12,7 @@ import {
 import { Page } from "../../types/types";
 import Loader from "../../components/ui/loader/loader";
 import { InfiniteData } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 interface HomeProps {
   posts: InfiniteData<Page, string | null>;
@@ -30,8 +31,7 @@ export default function Home({
     register,
     handleSubmit,
     resetField,
-    reset,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitSuccessful },
   } = useForm<CreatePostFormFields>({
     resolver: zodResolver(createPostSchema),
   });
@@ -53,6 +53,10 @@ export default function Home({
     }
   };
 
+  useEffect(() => {
+    console.log(errors)
+  },[errors])
+
   return (
     <>
       <PostForm
@@ -62,6 +66,8 @@ export default function Home({
         name="post"
         placeholder="What's on your mind?"
         resetField={resetField}
+        errors={errors}
+        isSubmitSuccessful={isSubmitSuccessful}
       />
       {isLoading ? (
         <Loader />

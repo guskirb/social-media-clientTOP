@@ -6,7 +6,9 @@ import { queryClient } from "../../../lib/react-query";
 
 export const createCommentSchema = z
   .object({
-    comment: z.string(),
+    comment: z
+      .string()
+      .max(200, { message: "Comment cannot exceed 200 characters." }),
     image: z.any(),
   })
   .partial()

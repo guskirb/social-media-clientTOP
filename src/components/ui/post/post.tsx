@@ -67,7 +67,7 @@ export default function Post({ post }: { post: PostType }) {
             </Dropdown>
           </div>
           <div className="mt-[-5px] flex flex-col gap-1">
-            <p className="whitespace-pre-wrap">{currPost.post}</p>
+            <p className="whitespace-pre-wrap break-words">{currPost.post}</p>
             {currPost.postImg && (
               <img src={currPost.postImg} className="rounded-xl w-full" />
             )}

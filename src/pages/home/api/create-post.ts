@@ -7,7 +7,9 @@ import { Page } from "../../../types/types";
 
 export const createPostSchema = z
   .object({
-    post: z.string(),
+    post: z
+      .string()
+      .max(200, { message: "Post cannot exceed 200 characters." }),
     image: z.any(),
   })
   .partial()

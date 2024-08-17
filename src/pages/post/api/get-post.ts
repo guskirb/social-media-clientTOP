@@ -1,11 +1,10 @@
 import { queryOptions, useQuery } from "@tanstack/react-query";
 import axios from "../../../lib/axios";
 
-export const getPostQueryOptions = (post: any, id: string) => {
+export const getPostQueryOptions = (id: string) => {
   return queryOptions({
     queryKey: ["post", id],
     queryFn: () => getPost(id),
-    initialData: post,
   });
 };
 
@@ -18,6 +17,6 @@ export const getPost = async (id: string) => {
   }
 };
 
-export const usePost = (post: any, id: string) => {
-  return useQuery({ ...getPostQueryOptions(post, id) });
+export const usePost = (id: string) => {
+  return useQuery({ ...getPostQueryOptions(id) });
 };

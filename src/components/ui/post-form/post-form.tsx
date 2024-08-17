@@ -1,5 +1,5 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -17,6 +17,8 @@ interface PostFormProps {
   name: string;
   placeholder: string;
   resetField: any;
+  errors: any;
+  isSubmitSuccessful: boolean;
 }
 
 export default function PostForm({
@@ -26,9 +28,20 @@ export default function PostForm({
   name,
   placeholder,
   resetField,
+  errors,
+  isSubmitSuccessful,
 }: PostFormProps) {
   const [img, setImg] = useState(null);
   const [value, setValue] = useState("");
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      setImg(null);
+      setValue("");
+      resetField(name === "post" ? "post" : "comment");
+      resetField("image");
+    }
+  }, [isSubmitSuccessful]);
 
   const clearImg = () => {
     setImg(null);
@@ -62,13 +75,7 @@ export default function PostForm({
         <div className="flex items-center gap-3">
           <ImgUpload register={register} setImg={setImg} />
           <Emoji value={value} setValue={setValue} />
-          <button
-            onClick={() => {
-              setImg(null);
-              setValue("");
-            }}
-            className="ml-auto"
-          >
+          <button className="ml-auto">
             {name === "post" ? "Post" : "Comment"}
           </button>
         </div>
