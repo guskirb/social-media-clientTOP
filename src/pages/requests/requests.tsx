@@ -3,8 +3,17 @@ import { useEffect, useState } from "react";
 import { cn } from "../../utils/cn";
 import Request from "./request";
 import Outgoing from "./outgoing";
+import { Request as RequestType } from "../../types/types";
 
-export default function Requests({ requests }) {
+export default function Requests({
+  requests,
+}: {
+  requests: {
+    success: boolean;
+    requests: Array<RequestType>;
+    outgoingRequests: Array<RequestType>;
+  };
+}) {
   const [showing, setShowing] = useState("requests");
 
   useEffect(() => {

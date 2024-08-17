@@ -53,6 +53,7 @@ export interface Request {
   from: User;
   fromUserId: string;
   sentAt: string;
+  sentFormatted: string;
 }
 
 export interface Page {
