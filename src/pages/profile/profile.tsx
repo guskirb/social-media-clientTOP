@@ -73,7 +73,6 @@ export default function Profile({ user }: { user: User }) {
         </div>
       </Container>
       <ProfileFeed user={user} />
-      {/* <PostList posts={user.posts!} /> */}
     </>
   );
 }

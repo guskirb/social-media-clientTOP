@@ -5,6 +5,7 @@ import {
   useRequests,
 } from "../../../pages/requests/api/get-requests";
 import Requests from "../../../pages/requests/requests";
+import Head from "../../../components/seo/head";
 
 export const requestsLoader = (queryClient: QueryClient) => async () => {
   const requestsQuery = getRequestsQueryOptions();
@@ -18,5 +19,10 @@ export const requestsLoader = (queryClient: QueryClient) => async () => {
 export const RequestsRoute = () => {
   const { data: requests } = useRequests();
 
-  return <Requests requests={requests} />;
+  return (
+    <>
+      <Head title="Requests" />
+      <Requests requests={requests} />
+    </>
+  );
 };
