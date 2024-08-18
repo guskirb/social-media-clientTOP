@@ -1,26 +1,12 @@
 import { useState } from "react";
+
 import { cn } from "../../utils/cn";
-import { useLikes } from "../likes/api/get-likes";
-import { Page, User } from "../../types/types";
-import PostList from "../../components/ui/post-list/post-list";
-import Loader from "../../components/ui/loader/loader";
-import { InfiniteData } from "@tanstack/react-query";
-import { useUserPosts } from "./api/get-user-posts";
+import { User } from "../../types/types";
+import ProfilePosts from "./profile-posts";
+import ProfileLikes from "./profile-likes";
 
 export default function ProfileFeed({ user }: { user: User }) {
   const [showing, setShowing] = useState("posts");
-  const {
-    data: likes,
-    isLoading: likesLoading,
-    fetchNextPage: likesFetch,
-    isFetchingNextPage: likesFetching,
-  } = useLikes(user!.username);
-  const {
-    data: posts,
-    isLoading: postsLoading,
-    fetchNextPage: postsFetch,
-    isFetchingNextPage: postsFetching,
-  } = useUserPosts(user!.username);
 
   return (
     <>
@@ -45,23 +31,9 @@ export default function ProfileFeed({ user }: { user: User }) {
         </div>
       </div>
       {showing === "posts" ? (
-        postsLoading ? (
-          <Loader />
-        ) : (
-          <PostList
-            posts={posts as InfiniteData<Page, string | null>}
-            fetchNextPage={postsFetch}
-            isFetchingNextPage={postsFetching}
-          />
-        )
-      ) : likesLoading ? (
-        <Loader />
+        <ProfilePosts user={user} />
       ) : (
-        <PostList
-          posts={likes as InfiniteData<Page, string | null>}
-          fetchNextPage={likesFetch}
-          isFetchingNextPage={likesFetching}
-        />
+        <ProfileLikes user={user} />
       )}
     </>
   );
