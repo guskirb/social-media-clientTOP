@@ -39,7 +39,10 @@ export const useAcceptRequest = () => {
 
       setUser({
         ...user!,
-        friends: [data.from.id, ...user!.friends],
+        friends: [data.request.fromUserId, ...user!.friends],
+        requests: user!.requests.filter(
+          (request) => request !== data.request.fromUserId
+        ),
       });
     },
   });
@@ -55,6 +58,9 @@ export const declineRequest = async (userId: string) => {
 };
 
 export const useDeclineRequest = () => {
+  const user = useAuthStore((state) => state.user);
+  const setUser = useAuthStore((state) => state.setUser);
+
   return useMutation({
     mutationFn: (userId: string) => declineRequest(userId),
     onSuccess: (data) => {
@@ -72,6 +78,14 @@ export const useDeclineRequest = () => {
           ),
           outgoingRequests: oldData!.outgoingRequests,
         };
+      });
+
+      setUser({
+        ...user!,
+        friends: [data.request.fromUserId, ...user!.friends],
+        requests: user!.requests.filter(
+          (request) => request !== data.request.fromUserId
+        ),
       });
     },
   });

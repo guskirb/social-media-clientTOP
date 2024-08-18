@@ -1,9 +1,8 @@
 import { Users, CalendarDays, Pencil } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Container from "../../components/ui/container/container";
 import ProfileImg from "../../components/ui/profile/profile-img";
-import PostList from "../../components/ui/post-list/post-list";
 import useAuthStore from "../../hooks/use-auth-store";
 import EditProfile from "../../components/ui/edit-profile/edit-profile";
 import AddFriend from "./add-friend";
@@ -14,10 +13,6 @@ export default function Profile({ user }: { user: User }) {
   const myUser = useAuthStore((state) => state.user);
   const [showEditModal, setShowEditModal] = useState(false);
 
-  useEffect(() => {
-   console.log(user)
-  },[user])
-  
   return (
     <>
       <Container>
@@ -72,7 +67,11 @@ export default function Profile({ user }: { user: User }) {
           )}
         </div>
       </Container>
-      <ProfileFeed user={user} />
+      {user.id === myUser!.id || myUser?.friends.includes(user.id) ? (
+        <ProfileFeed user={user} />
+      ) : (
+        <div>You Must be friends to view profile</div>
+      )}
     </>
   );
 }

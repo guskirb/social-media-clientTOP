@@ -3,6 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "../../../lib/axios";
 import { queryClient } from "../../../lib/react-query";
 import useAuthStore from "../../../hooks/use-auth-store";
+import { Request } from "../../../types/types";
 
 export const sendRequest = async (id: string) => {
   try {
@@ -24,10 +25,14 @@ export const useSendRequest = () => {
         outgoingRequests: [data.request.toUserId, ...user?.outgoingRequests!],
       });
 
-      queryClient.setQueryData(["requests"], (requests) => {
+      queryClient.setQueryData<{
+        success: boolean;
+        requests: Array<Request>;
+        outgoingRequests: Array<Request>;
+      }>(["requests"], (requests) => {
         return {
-          ...requests,
-          outgoingRequests: [data.request, ...requests.outgoingRequests],
+          ...requests!,
+          outgoingRequests: [data.request, ...requests!.outgoingRequests],
         };
       });
     },
