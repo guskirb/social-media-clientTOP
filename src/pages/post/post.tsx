@@ -18,6 +18,7 @@ export default function PostPage({ post }: { post: PostType }) {
   const {
     register,
     handleSubmit,
+    reset,
     resetField,
     formState: { errors, isSubmitSuccessful },
   } = useForm<CreateCommentFormFields>({
@@ -58,6 +59,7 @@ export default function PostPage({ post }: { post: PostType }) {
         name="comment"
         placeholder="Post a comment"
         resetField={resetField}
+        reset={reset}
         errors={errors}
         isSubmitSuccessful={isSubmitSuccessful}
       />

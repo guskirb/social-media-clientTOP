@@ -31,7 +31,8 @@ export default function Home({
     register,
     handleSubmit,
     resetField,
-    formState: { errors, isSubmitSuccessful },
+    reset,
+    formState: { errors, isSubmitSuccessful},
   } = useForm<CreatePostFormFields>({
     resolver: zodResolver(createPostSchema),
   });
@@ -53,10 +54,6 @@ export default function Home({
     }
   };
 
-  useEffect(() => {
-    console.log(errors)
-  },[errors])
-
   return (
     <>
       <PostForm
@@ -68,6 +65,7 @@ export default function Home({
         resetField={resetField}
         errors={errors}
         isSubmitSuccessful={isSubmitSuccessful}
+        reset={reset}
       />
       {isLoading ? (
         <Loader />

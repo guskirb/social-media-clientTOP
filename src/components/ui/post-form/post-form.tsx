@@ -19,6 +19,7 @@ interface PostFormProps {
   resetField: any;
   errors: any;
   isSubmitSuccessful: boolean;
+  reset: any;
 }
 
 export default function PostForm({
@@ -30,6 +31,7 @@ export default function PostForm({
   resetField,
   errors,
   isSubmitSuccessful,
+  reset,
 }: PostFormProps) {
   const [img, setImg] = useState(null);
   const [value, setValue] = useState("");
@@ -38,8 +40,7 @@ export default function PostForm({
     if (isSubmitSuccessful) {
       setImg(null);
       setValue("");
-      resetField(name === "post" ? "post" : "comment");
-      resetField("image");
+      reset();
     }
   }, [isSubmitSuccessful]);
 
