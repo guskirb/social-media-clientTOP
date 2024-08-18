@@ -4,7 +4,7 @@ import useAuthStore from "../hooks/use-auth-store";
 import { useEffect, useState } from "react";
 import { getUser, logout } from "./auth";
 import Loader from "../components/ui/loader/loader";
-import { User } from "../types/types";
+import { Request, User } from "../types/types";
 
 export default function PersistAuth() {
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
@@ -22,9 +22,11 @@ export default function PersistAuth() {
           name: user.user.name,
           profileImg: user.user.profileImg,
           friends: user.user.friends.map((user: User) => user.id),
-          requests: user.user.requests.map((request) => request.fromUserId),
+          requests: user.user.requests.map(
+            (request: Request) => request.fromUserId
+          ),
           outgoingRequests: user.user.outgoingRequests.map(
-            (request) => request.toUserId
+            (request: Request) => request.toUserId
           ),
           id: user.user.id,
         });

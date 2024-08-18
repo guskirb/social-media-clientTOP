@@ -12,7 +12,7 @@ import {
 import Button from "../../components/ui/auth-form/button";
 import FormLink from "../../components/ui/auth-form/form-link";
 import useAuthStore from "../../hooks/use-auth-store";
-import { User } from "../../types/types";
+import { Request, User } from "../../types/types";
 
 export default function Login() {
   const {
@@ -41,9 +41,11 @@ export default function Login() {
           name: user.user.name,
           profileImg: user.user.profileImg,
           friends: user.user.friends.map((user: User) => user.id),
-          requests: user.user.requests.map((request) => request.fromUserId),
+          requests: user.user.requests.map(
+            (request: Request) => request.fromUserId
+          ),
           outgoingRequests: user.user.outgoingRequests.map(
-            (request) => request.toUserId
+            (request: Request) => request.toUserId
           ),
           id: user.user.id,
         });
