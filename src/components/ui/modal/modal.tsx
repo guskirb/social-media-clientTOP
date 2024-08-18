@@ -27,7 +27,11 @@ export default function Modal({ title, setShowModal, children }: ModalProps) {
             className="ml-auto cursor-pointer"
             onClick={() => setShowModal(false)}
           >
-            <X color="#7a7a7a" />
+            <X
+              size={24}
+              color="#7a7a7a"
+              className="hover:bg-gray-100 rounded-xl p-1"
+            />
           </div>
         </div>
         {children}

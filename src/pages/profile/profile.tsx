@@ -19,7 +19,7 @@ export default function Profile({ user }: { user: User }) {
         {showEditModal && (
           <EditProfile user={user} setShowModal={setShowEditModal} />
         )}
-        <div className="flex flex-col justify-center items-center bg-white relative z-[0] rounded-xl overflow-hidden">
+        <div className="w-full flex flex-col justify-center items-center bg-white relative z-[0] rounded-xl overflow-hidden">
           <img
             src={
               user.coverImg

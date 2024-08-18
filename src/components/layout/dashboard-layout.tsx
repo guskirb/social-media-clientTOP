@@ -5,16 +5,15 @@ import {
   User,
   Bell,
   BellDot,
-  Ellipsis,
+  Search,
   Pencil,
 } from "lucide-react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { cn } from "../../utils/cn";
 import useAuthStore from "../../hooks/use-auth-store";
-import ProfileImg from "../ui/profile/profile-img";
 import Progress from "../ui/loader/progress";
 import Modal from "../ui/modal/modal";
 import PostForm from "../ui/post-form/post-form";
@@ -23,6 +22,7 @@ import {
   createPostSchema,
   useCreatePost,
 } from "../../pages/home/api/create-post";
+import ProfileMenu from "../ui/profile-menu/profile-menu";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const {
@@ -30,7 +30,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     handleSubmit,
     resetField,
     reset,
-    formState: { isSubmitting },
+    formState: { errors, isSubmitSuccessful },
   } = useForm<CreatePostFormFields>({
     resolver: zodResolver(createPostSchema),
   });
@@ -81,6 +81,9 @@ export default function Layout({ children }: { children: ReactNode }) {
             name="post"
             placeholder="What's on your mind?"
             resetField={resetField}
+            errors={errors}
+            isSubmitSuccessful={isSubmitSuccessful}
+            reset={reset}
           />
         </Modal>
       )}
@@ -108,27 +111,18 @@ export default function Layout({ children }: { children: ReactNode }) {
             <Pencil color="#ffffff" className="lg:hidden block" />
             <p className="text-xl hidden lg:block text-white">Post</p>
           </div>
-          <Link
-            to={`/profile/${user!.username}`}
-            className="flex gap-3 items-center mt-auto w-10 h-10 lg:w-fit lg:h-fit lg:bg-white lg:p-2 lg:rounded-xl lg:pr-3 shadow-sm"
-          >
-            <ProfileImg image={user!.profileImg} />
-            <div>
-              <p className="text-xl font-medium hidden lg:block">
-                {user?.name || user!.username}
-              </p>
-              <p className="text-sm opacity-70 hidden -mt-1 lg:block">
-                {user!.username}
-              </p>
-            </div>
-            <Ellipsis size={18} color="#7a7a7a" className="ml-auto" />
-          </Link>
+          <ProfileMenu user={user!} />
         </div>
       </div>
-      <main className="w-full lg:min-w-[620px] py-4 pr-4 lg:pr-0 flex flex-col gap-4">
+      <main className="w-full lg:min-w-[600px] py-4 pr-4 lg:pr-0 flex flex-col gap-4">
         {children}
       </main>
-      <div className="hidden lg:block lg:w-full"></div>
+      <div className="hidden lg:block lg:w-full">
+        <div className="fixed flex items-center px-8 py-4">
+          <Search size={20} color="#7a7a7a" className="absolute ml-2"/>
+          <input type="text" placeholder="Search" className="pl-8 p-2 rounded-xl"/>
+        </div>
+      </div>
     </div>
   );
 }
