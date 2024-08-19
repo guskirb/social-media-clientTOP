@@ -63,7 +63,9 @@ export default function Profile({ user }: { user: User }) {
               Edit Profile
             </button>
           ) : (
-            <AddFriend myUser={myUser!} user={user} />
+            <div className="absolute m-3 right-0 top-60">
+              <AddFriend myUser={myUser!} user={user} />
+            </div>
           )}
         </div>
       </Container>

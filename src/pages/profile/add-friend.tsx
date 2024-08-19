@@ -25,7 +25,6 @@ export default function AddFriend({ myUser, user }: AddFriendProps) {
         onClick={() => {
           cancelRequest(user.id);
         }}
-        className="absolute m-3 right-0 top-60"
       >
         Cancel Request
       </button>
@@ -37,7 +36,6 @@ export default function AddFriend({ myUser, user }: AddFriendProps) {
       onClick={() => {
         acceptRequest(user.id);
       }}
-      className="absolute m-3 right-0 top-60"
     >
       Accept Request
     </button>;
@@ -49,7 +47,6 @@ export default function AddFriend({ myUser, user }: AddFriendProps) {
         onClick={() => {
           removeFriend(user.id);
         }}
-        className="absolute m-3 right-0 top-60"
       >
         Remove Friend
       </button>
@@ -61,7 +58,6 @@ export default function AddFriend({ myUser, user }: AddFriendProps) {
         onClick={() => {
           sendRequest(user.id);
         }}
-        className="absolute m-3 right-0 top-60"
       >
         Add Friend
       </button>

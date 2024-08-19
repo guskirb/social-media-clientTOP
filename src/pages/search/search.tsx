@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ConditionalButton from "../../components/ui/conditional-button/conditional-button";
 import SearchPosts from "./search-posts";
+import SearchUsers from "./search-users";
 
 export default function Search({ params }: { params: string }) {
   const [showing, setShowing] = useState("posts");
@@ -19,7 +20,7 @@ export default function Search({ params }: { params: string }) {
           </>
         ) : (
           <>
-          
+            <SearchUsers params={params} />
           </>
         )}
       </div>
