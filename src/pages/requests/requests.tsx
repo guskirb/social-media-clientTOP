@@ -4,6 +4,7 @@ import { cn } from "../../utils/cn";
 import Request from "./request";
 import Outgoing from "./outgoing";
 import { Request as RequestType } from "../../types/types";
+import ConditionalButton from "../../components/ui/conditional-button/conditional-button";
 
 export default function Requests({
   requests,
@@ -16,32 +17,13 @@ export default function Requests({
 }) {
   const [showing, setShowing] = useState("requests");
 
-  useEffect(() => {
-    console.log(requests);
-  }, [requests]);
-
   return (
     <>
-      <div className="w-full flex gap-1 bg-white p-1 rounded-xl">
-        <div
-          onClick={() => setShowing("requests")}
-          className={cn(
-            "w-full font-medium p-3 flex justify-center cursor-pointer rounded-xl transition-all opacity-50",
-            showing === "requests" && "bg-gray-100 opacity-100"
-          )}
-        >
-          Requests
-        </div>
-        <div
-          onClick={() => setShowing("outgoing")}
-          className={cn(
-            "w-full font-medium p-3 flex justify-center cursor-pointer rounded-xl transition-all opacity-50",
-            showing === "outgoing" && "bg-gray-100 opacity-100"
-          )}
-        >
-          Sent Requests
-        </div>
-      </div>
+      <ConditionalButton
+        showing={showing}
+        setShowing={setShowing}
+        conditions={["requests", "outgoing"]}
+      />
       <div className="flex flex-col gap-4">
         {showing === "requests" ? (
           <>

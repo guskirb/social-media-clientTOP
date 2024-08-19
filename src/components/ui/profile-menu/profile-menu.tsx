@@ -51,7 +51,7 @@ export default function ProfileMenu({ user }: { user: User }) {
           className="hidden gap-3 items-center w-10 h-10 lg:w-full lg:flex lg:h-fit lg:bg-white lg:py-2 lg:rounded-xl shadow-sm"
         >
           <ul className="w-full">
-            <li className="flex items-center gap-2 cursor-pointer w-full px-2 hover:bg-gray-50 opacity-70 hover:opacity-100 transition-all">
+            <li className="flex items-center gap-2 cursor-pointer w-full px-2 py-1 hover:bg-gray-50 opacity-70 hover:opacity-100 transition-all">
               <LogOut size={18} />
               <p className="font-medium">Log Out</p>
             </li>

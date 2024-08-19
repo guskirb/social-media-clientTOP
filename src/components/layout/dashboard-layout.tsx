@@ -120,7 +120,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <div className="hidden lg:block lg:w-full">
         <div className="fixed flex items-center px-8 py-4">
           <Search size={20} color="#7a7a7a" className="absolute ml-2"/>
-          <input type="text" placeholder="Search" className="pl-8 p-2 rounded-xl"/>
+          <input type="text" placeholder="Search" className="pl-9 p-2 rounded-xl"/>
         </div>
       </div>
     </div>
