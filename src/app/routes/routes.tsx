@@ -67,6 +67,13 @@ export const createRouter = (queryClient: QueryClient) =>
               },
             },
             {
+              path: "/search/:search",
+              lazy: async () => {
+                const { SearchRoute } = await import("./app/search");
+                return { Component: SearchRoute };
+              },
+            },
+            {
               path: "/profile/:username",
               lazy: async () => {
                 const { ProfileRoute } = await import("./app/profile");

@@ -1,7 +1,4 @@
-import {
-  infiniteQueryOptions,
-  useInfiniteQuery,
-} from "@tanstack/react-query";
+import { infiniteQueryOptions, useInfiniteQuery } from "@tanstack/react-query";
 import axios from "../../../lib/axios";
 
 export const getPostsQueryOptions = () => {
@@ -13,7 +10,7 @@ export const getPostsQueryOptions = () => {
   });
 };
 
-export const getPosts = async ({ pageParam }) => {
+export const getPosts = async ({ pageParam }: { pageParam: any }) => {
   try {
     const response = await axios.get(`/posts?page=${pageParam}&limit=10`);
     return response.data;
