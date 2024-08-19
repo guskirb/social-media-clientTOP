@@ -4,7 +4,7 @@ import axios from "../../../lib/axios";
 
 export const getSearchPostsQueryOptions = (search: string) => {
   return infiniteQueryOptions({
-    queryKey: ["posts", "search"],
+    queryKey: ["posts", "search", search],
     queryFn: ({ pageParam = 1 }) => getSearchPosts({ search, pageParam }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage ?? undefined,

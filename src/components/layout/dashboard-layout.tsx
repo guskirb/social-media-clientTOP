@@ -23,6 +23,7 @@ import {
   useCreatePost,
 } from "../../pages/home/api/create-post";
 import ProfileMenu from "../ui/profile-menu/profile-menu";
+import SearchBar from "../ui/search-bar/search-bar";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const {
@@ -118,10 +119,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         {children}
       </main>
       <div className="hidden lg:block lg:w-full">
-        <div className="fixed flex items-center px-8 py-4">
-          <Search size={20} color="#7a7a7a" className="absolute ml-2"/>
-          <input type="text" placeholder="Search" className="pl-9 p-2 rounded-xl"/>
-        </div>
+        <SearchBar />
       </div>
     </div>
   );
