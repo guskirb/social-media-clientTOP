@@ -9,6 +9,8 @@ import LikeButton from "./like-button";
 import Dropdown from "../dropdown/dropdown";
 import PostSettings from "./post-settings";
 import { Post as PostType } from "../../../types/types";
+import { urlifyString } from "../../../utils/url";
+import VideoPlayer from "./video-player";
 
 export default function Post({ post }: { post: PostType }) {
   const [currPost, setCurrPost] = useState(post);
@@ -48,7 +50,9 @@ export default function Post({ post }: { post: PostType }) {
               </p>
               <div className="flex items-center gap-1">
                 <User size={13} color="#7a7a7a" />
-                <p className="text-sm opacity-70">{currPost.author!.username}</p>
+                <p className="text-sm opacity-70">
+                  {currPost.author!.username}
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-1">
@@ -67,10 +71,13 @@ export default function Post({ post }: { post: PostType }) {
             </Dropdown>
           </div>
           <div className="mt-[-5px] flex flex-col gap-1">
-            <p className="whitespace-pre-wrap break-words">{currPost.post}</p>
-            {currPost.postImg && (
+            <div className="whitespace-pre-wrap break-words">
+              {currPost.post ? urlifyString(currPost.post) : ""}
+            </div>
+            {currPost.postImg ? (
               <img src={currPost.postImg} className="rounded-xl w-full" />
-            )}
+            ) : null}
+            <VideoPlayer post={post}/>
           </div>
           <div className="flex gap-5 justify-between  pt-2">
             <div className="flex items-center gap-1">

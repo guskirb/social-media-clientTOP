@@ -60,3 +60,14 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
+
+.string_url {
+  color: #3b82f6;
+}
+.string_url:hover {
+  text-decoration: underline;
+}
+
+.player-wrapper > div {
+  width: auto !important;
+}

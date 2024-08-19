@@ -8,6 +8,7 @@ import EditProfile from "../../components/ui/edit-profile/edit-profile";
 import AddFriend from "./add-friend";
 import { User } from "../../types/types";
 import ProfileFeed from "./profile-feed";
+import { urlifyString } from "../../utils/url";
 
 export default function Profile({ user }: { user: User }) {
   const myUser = useAuthStore((state) => state.user);
@@ -39,7 +40,9 @@ export default function Profile({ user }: { user: User }) {
             <p className="text-sm opacity-70">{user.username}</p>
           </div>
           <div className="min-h-3">
-            <p className="py-3 whitespace-pre-wrap">{user.bio}</p>
+            <p className="py-3 whitespace-pre-wrap text-center">
+              {user.bio ? urlifyString(user.bio) : ""}
+            </p>
           </div>
           <div className="flex gap-5 pb-4">
             <div className="flex items-center gap-1">
