@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import User from "../user/user";
 import { User as UserType } from "../../../types/types";
+import SmallUser from "../user/small-user";
 
-export default function UserList({ users }: { users: Array<UserType> }) {
+interface UserListProps {
+  users: Array<UserType>;
+  size: string;
+}
+
+export default function UserList({ users, size }: UserListProps) {
   return (
     <>
       <div className="flex flex-col gap-4">
@@ -10,7 +16,11 @@ export default function UserList({ users }: { users: Array<UserType> }) {
           return (
             <div key={user.id}>
               <Link to={`/profile/${user.username}`}>
-                <User user={user} />
+                {size === "normal" ? (
+                  <User user={user} />
+                ) : (
+                  <SmallUser user={user} />
+                )}
               </Link>
             </div>
           );

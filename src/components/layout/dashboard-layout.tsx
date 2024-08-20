@@ -24,6 +24,7 @@ import {
 } from "../../pages/home/api/create-post";
 import ProfileMenu from "../ui/profile-menu/profile-menu";
 import SearchBar from "../ui/search-bar/search-bar";
+import RecentUsers from "../ui/recent-users/recent-users";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const {
@@ -119,7 +120,10 @@ export default function Layout({ children }: { children: ReactNode }) {
         {children}
       </main>
       <div className="hidden lg:block lg:w-full">
+        <div className="fixed flex flex-col gap-3 px-5 py-4 lg:px-8 h-full items-center lg:items-start">
         <SearchBar />
+        <RecentUsers />
+        </div>
       </div>
     </div>
   );
