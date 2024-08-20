@@ -10,10 +10,8 @@ interface FriendsProps {
 export default function Friends({ user, setShowFriendsModal }: FriendsProps) {
   return (
     <Modal title="Friends" setShowModal={setShowFriendsModal}>
-      <div className="p-3">
-        <div onClick={() => setShowFriendsModal(false)}>
-          <UserList users={user.friends!} size="small" />
-        </div>
+      <div className="pb-3" onClick={() => setShowFriendsModal(false)}>
+        <UserList users={user.friends!} size="small" />
       </div>
     </Modal>
   );

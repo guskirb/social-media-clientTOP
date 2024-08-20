@@ -8,6 +8,7 @@ import ProfileImg from "../profile/profile-img";
 
 export default function User({ user }: { user: UserType }) {
   const myUser = useAuthStore((state) => state.user);
+  
   return (
     <Container>
       <div className="p-4 flex gap-3 bg-white rounded-xl">
@@ -22,7 +23,7 @@ export default function User({ user }: { user: UserType }) {
               </div>
             </div>
             <div>
-              <AddFriend myUser={myUser!} user={user} />
+              <AddFriend myUser={myUser!} user={user} size="normal"/>
             </div>
           </div>
           <div>

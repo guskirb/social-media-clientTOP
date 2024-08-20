@@ -34,16 +34,14 @@ export default function PostList({
           <div key={index}>
             <div className="flex flex-col gap-4">
               {page.posts.map((post) => (
-                <Link
-                  to={`/post/${post.id}`}
-                  key={post.id}
-                  className="flex flex-col gap-4"
-                >
+                <div key={post.id} className="flex flex-col gap-4">
                   <Post post={post} />
                   {post.comments.length > 0 && (
-                    <CommentList comments={post.comments.slice(0, 1)} />
+                    <Link to={`/post/${post.id}`}>
+                      <CommentList comments={post.comments.slice(0, 1)} />
+                    </Link>
                   )}
-                </Link>
+                </div>
               ))}
             </div>
           </div>

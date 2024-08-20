@@ -8,7 +8,7 @@ export default function SmallUser({ user }: { user: User }) {
   const myUser = useAuthStore((state) => state.user);
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="transition-all flex items-center gap-2 hover:bg-gray-50 px-3 p-1">
       <ProfileImg image={user.profileImg!} />
       <div>
         <p className="font-semibold">{user.name || user.username}</p>

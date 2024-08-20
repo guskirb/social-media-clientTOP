@@ -16,7 +16,7 @@ export default function Comment({ comment }: { comment: CommentType }) {
 
   return (
     <Container>
-      <div className="flex p-4 gap-2 bg-white rounded-xl w-full">
+      <div className="transition-all flex p-4 gap-2 bg-white rounded-xl hover:shadow hover:scale-[1.01]">
         <div
           onClick={(e) => {
             e.stopPropagation();

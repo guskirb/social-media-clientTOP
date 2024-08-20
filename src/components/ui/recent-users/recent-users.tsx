@@ -15,13 +15,17 @@ export default function RecentUsers() {
 
   return (
     <Container>
-      <div className="p-4 flex flex-col gap-3 bg-white rounded-xl">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col bg-white rounded-xl">
+        <div className="flex items-center gap-3 p-3">
           <Users size={22} />
           <p className="text-lg font-medium">Recent Users</p>
         </div>
-        {isLoading ? <Loader/> : (
-            <UserList users={users.users} size="small"/>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div className="pb-3">
+            <UserList users={users.users} size="small" />
+          </div>
         )}
       </div>
     </Container>
