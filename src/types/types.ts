@@ -9,12 +9,12 @@ export interface User {
   lastOnline?: string;
   profileImg?: string;
   coverImg?: string;
-  posts?: Array<any>;
-  likes?: Array<any>;
-  comments?: Array<any>;
-  friends?: Array<any>;
-  requests?: Array<any>;
-  outgoingRequests?: Array<any>;
+  posts?: Array<Post>;
+  likes?: Array<Post>;
+  comments?: Array<Comment>;
+  friends?: Array<User>;
+  requests?: Array<Request>;
+  outgoingRequests?: Array<Request>;
   joinedFormatted?: string;
   _count?: {
     posts: number;

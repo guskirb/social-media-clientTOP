@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { cn } from "../../utils/cn";
 import Request from "./request";
 import Outgoing from "./outgoing";
 import { Request as RequestType } from "../../types/types";

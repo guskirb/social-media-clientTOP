@@ -12,7 +12,6 @@ import {
 import { Page } from "../../types/types";
 import Loader from "../../components/ui/loader/loader";
 import { InfiniteData } from "@tanstack/react-query";
-import { useEffect } from "react";
 
 interface HomeProps {
   posts: InfiniteData<Page, string | null>;

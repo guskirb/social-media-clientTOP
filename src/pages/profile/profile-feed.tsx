@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { cn } from "../../utils/cn";
 import { User } from "../../types/types";
 import ProfilePosts from "./profile-posts";
 import ProfileLikes from "./profile-likes";

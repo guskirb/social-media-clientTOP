@@ -8,11 +8,11 @@ import Input from "./input";
 import ProfileImg from "../profile/profile-img";
 import ImgUpload from "./img-upload";
 import Emoji from "./emoji";
-import { User } from "../../../types/types";
+import { UserObject } from "../../../hooks/use-auth-store";
 
 interface PostFormProps {
   onSubmit: any;
-  user: User;
+  user: UserObject;
   register: UseFormRegister<FieldValues>;
   name: string;
   placeholder: string;

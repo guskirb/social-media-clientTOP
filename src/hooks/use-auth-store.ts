@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
-interface UseAuthStore {
+export interface UseAuthStore {
   user: UserObject | null;
   setUser: (data: UserObject | null) => void;
   setIsLoggedIn: (data: boolean) => void;
   isLoggedIn: boolean;
 }
 
-type UserObject = {
+export interface UserObject {
   username: string;
   name: string;
   profileImg: string;
@@ -15,7 +15,7 @@ type UserObject = {
   requests: Array<string>;
   outgoingRequests: Array<string>;
   id: string;
-};
+}
 
 const useAuthStore = create<UseAuthStore>((set) => ({
   user: null,
