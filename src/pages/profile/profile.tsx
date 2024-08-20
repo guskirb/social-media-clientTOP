@@ -9,16 +9,21 @@ import AddFriend from "./add-friend";
 import { User } from "../../types/types";
 import ProfileFeed from "./profile-feed";
 import { urlifyString } from "../../utils/url";
+import Friends from "./friends";
 
 export default function Profile({ user }: { user: User }) {
   const myUser = useAuthStore((state) => state.user);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [showFriendsModal, setShowFriendsModal] = useState(false);
 
   return (
     <>
       <Container>
         {showEditModal && (
           <EditProfile user={user} setShowModal={setShowEditModal} />
+        )}
+        {showFriendsModal && (
+          <Friends user={user} setShowFriendsModal={setShowFriendsModal} />
         )}
         <div className="w-full flex flex-col justify-center items-center bg-white relative z-[0] rounded-xl overflow-hidden">
           <img
@@ -49,9 +54,15 @@ export default function Profile({ user }: { user: User }) {
               <Pencil size={15} color="#7a7a7a" />
               <p>{user._count!.posts + " Posts"}</p>
             </div>
-            <div className="flex items-center gap-1">
+            <div
+              onClick={() => setShowFriendsModal(true)}
+              className="flex items-center gap-1 cursor-pointer hover:underline"
+            >
               <Users size={15} color="#7a7a7a" />
-              <p>{user._count!.friends + " Friends"}</p>
+              <p>
+                {user._count!.friends +
+                  (user._count!.friends === 1 ? " Friend" : " Friends")}
+              </p>
             </div>
             <div className="flex items-center gap-1">
               <CalendarDays size={15} color="#7a7a7a" />
@@ -60,14 +71,14 @@ export default function Profile({ user }: { user: User }) {
           </div>
           {myUser!.id === user.id ? (
             <button
-              className="absolute m-3 right-0 top-60"
+              className="absolute m-3 right-0 top-60 transition-all border-blue-500 text-blue-500 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50"
               onClick={() => setShowEditModal(true)}
             >
               Edit Profile
             </button>
           ) : (
             <div className="absolute m-3 right-0 top-60">
-              <AddFriend myUser={myUser!} user={user} />
+              <AddFriend myUser={myUser!} user={user} size="normal" />
             </div>
           )}
         </div>
