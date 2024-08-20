@@ -1,14 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Ellipsis, LogOut } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 import ProfileImg from "../profile/profile-img";
 import { User } from "../../../types/types";
-import { useEffect, useRef, useState } from "react";
+import { logout } from "../../../lib/auth";
+import useAuthStore from "../../../hooks/use-auth-store";
 
 export default function ProfileMenu({ user }: { user: User }) {
   const [showing, setShowing] = useState(false);
+  const navigate = useNavigate();
   const buttonRef = useRef<HTMLDivElement | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const setUser = useAuthStore((state) => state.setUser);
+  const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
 
   function handleOutsideClick({ target }: MouseEvent) {
     if (
@@ -30,6 +35,13 @@ export default function ProfileMenu({ user }: { user: User }) {
     setShowing(!showing);
   }
 
+  function logOutHandler() {
+    logout();
+    setUser(null);
+    setIsLoggedIn(false);
+    navigate("/login");
+  }
+
   useEffect(() => {
     document.addEventListener("mousedown", handleOutsideClick);
     return () => {
@@ -40,7 +52,7 @@ export default function ProfileMenu({ user }: { user: User }) {
   return (
     <div className="mt-auto lg:w-[180px] flex flex-col gap-4 lg:gap-2 items-center">
       <div className="flex lg:hidden">
-        <li className="flex items-center gap-2">
+        <li onClick={logOutHandler} className="flex items-center gap-2">
           <LogOut size={23} className="cursor-pointer" />
         </li>
       </div>
@@ -51,7 +63,10 @@ export default function ProfileMenu({ user }: { user: User }) {
           className="hidden gap-3 items-center w-10 h-10 lg:w-full lg:flex lg:h-fit lg:bg-white lg:py-2 lg:rounded-xl shadow-sm"
         >
           <ul className="w-full">
-            <li className="flex items-center gap-2 cursor-pointer w-full px-2 py-1 hover:bg-gray-50 opacity-70 hover:opacity-100 transition-all">
+            <li
+              onClick={logOutHandler}
+              className="flex items-center gap-2 cursor-pointer w-full px-2 py-1 hover:bg-gray-50 opacity-70 hover:opacity-100 transition-all"
+            >
               <LogOut size={18} />
               <p className="font-medium">Log Out</p>
             </li>

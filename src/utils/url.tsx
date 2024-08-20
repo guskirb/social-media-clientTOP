@@ -4,7 +4,7 @@ export const urlifyString = (text: string) => {
   const URL_REGEX = /(https?:\/\/[^\s]+)/g;
   let parsedString = new DOMParser().parseFromString(text, "text/html")
     .documentElement.textContent;
-  let words = parsedString!.split(" ");
+  let words = parsedString!.split(/( |\n)/);
 
   return (
     <p className="whitespace-pre-line">

@@ -32,8 +32,6 @@ export default function PersistAuth() {
         });
       } else {
         logout();
-        setUser(null);
-        setIsLoggedIn(false);
       }
       setLoading(false);
     };

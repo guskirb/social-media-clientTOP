@@ -3,7 +3,7 @@ export function getLink(text: string) {
     /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(?:-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|live\/|v\/)?)([\w\-]+)(\S+)?$/;
   let parsedString = new DOMParser().parseFromString(text, "text/html")
     .documentElement.textContent;
-  let words = parsedString!.split(" ");
+  let words = parsedString!.split(/( |\n)/);
   let link = words.find((word) => word.match(LINK_REGEX));
 
   return link ? link : false;
