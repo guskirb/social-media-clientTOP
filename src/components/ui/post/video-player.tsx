@@ -4,15 +4,17 @@ import { Post } from "../../../types/types";
 import { getLink } from "../../../utils/get-link";
 
 export default function VideoPlayer({ post }: { post: Post }) {
+  let videoLink = getLink(post.post!);
+
   if (post.postImg) {
     return null;
   }
 
   return (
     <>
-      {getLink(post.post!) ? (
+      {videoLink ? (
         <div className="player-wrapper w-auto h-auto">
-          <ReactPlayer url={getLink(post.post!) as string} />
+          <ReactPlayer url={videoLink as string} />
         </div>
       ) : null}
     </>

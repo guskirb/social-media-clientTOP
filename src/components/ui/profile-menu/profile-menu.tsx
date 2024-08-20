@@ -3,11 +3,10 @@ import { Ellipsis, LogOut } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import ProfileImg from "../profile/profile-img";
-import { User } from "../../../types/types";
 import { logout } from "../../../lib/auth";
-import useAuthStore from "../../../hooks/use-auth-store";
+import useAuthStore, { UserObject } from "../../../hooks/use-auth-store";
 
-export default function ProfileMenu({ user }: { user: User }) {
+export default function ProfileMenu({ user }: { user: UserObject }) {
   const [showing, setShowing] = useState(false);
   const navigate = useNavigate();
   const buttonRef = useRef<HTMLDivElement | null>(null);

@@ -5,5 +5,9 @@ import { useSearchUsers } from "./api/search-users";
 export default function SearchUsers({ params }: { params: string }) {
   const { data: users, isLoading } = useSearchUsers(params);
 
-  return <>{isLoading ? <Loader /> : <UserList users={users.users} />}</>;
+  return (
+    <>
+      {isLoading ? <Loader /> : <UserList users={users.users} size="normal" />}
+    </>
+  );
 }

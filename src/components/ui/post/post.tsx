@@ -1,9 +1,9 @@
 import Container from "../container/container";
 import { useNavigate } from "react-router-dom";
 import { MessageSquare, Clock, User } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 
 import ProfileImg from "../profile/profile-img";
-import { useEffect, useState } from "react";
 import useAuthStore from "../../../hooks/use-auth-store";
 import LikeButton from "./like-button";
 import Dropdown from "../dropdown/dropdown";
@@ -14,6 +14,9 @@ import VideoPlayer from "./video-player";
 
 export default function Post({ post }: { post: PostType }) {
   const [currPost, setCurrPost] = useState(post);
+  const postText = currPost.post
+    ? useMemo(() => urlifyString(currPost.post as string), [currPost.post])
+    : "";
   const user = useAuthStore((state) => state.user);
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
@@ -71,13 +74,11 @@ export default function Post({ post }: { post: PostType }) {
             </Dropdown>
           </div>
           <div className="mt-[-5px] flex flex-col gap-1">
-            <div className="whitespace-pre-wrap break-words">
-              {currPost.post ? urlifyString(currPost.post) : ""}
-            </div>
+            <div className="whitespace-pre-wrap break-words">{postText}</div>
             {currPost.postImg ? (
               <img src={currPost.postImg} className="rounded-xl w-full" />
             ) : null}
-            <VideoPlayer post={post}/>
+            <VideoPlayer post={post} />
           </div>
           <div className="flex gap-5 justify-between  pt-2">
             <div className="flex items-center gap-1">
