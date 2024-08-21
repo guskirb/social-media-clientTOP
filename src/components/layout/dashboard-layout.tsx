@@ -1,13 +1,5 @@
-import { ReactNode, useEffect, useState } from "react";
-import {
-  House,
-  ThumbsUp,
-  User,
-  Bell,
-  BellDot,
-  Search,
-  Pencil,
-} from "lucide-react";
+import { ReactNode, useState } from "react";
+import { House, ThumbsUp, User, Bell, BellDot, Pencil } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -32,7 +24,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     handleSubmit,
     resetField,
     reset,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<CreatePostFormFields>({
     resolver: zodResolver(createPostSchema),
   });
@@ -67,10 +59,6 @@ export default function Layout({ children }: { children: ReactNode }) {
     }
   };
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
-
   return (
     <div className="flex justify-center bg-gray-100 min-h-full">
       <Progress />
@@ -86,6 +74,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             errors={errors}
             isSubmitSuccessful={isSubmitSuccessful}
             reset={reset}
+            isSubmitting={isSubmitting}
           />
         </Modal>
       )}
@@ -97,7 +86,7 @@ export default function Layout({ children }: { children: ReactNode }) {
               to={item.to}
               className={({ isActive }) =>
                 cn(
-                  "flex gap-3 font-medium items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white lg:pr-3 hover:shadow-sm opacity-70 hover:opacity-100",
+                  "flex gap-3 font-medium items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white lg:px-4 hover:shadow-sm opacity-70 hover:opacity-100",
                   isActive && "bg-white shadow-sm opacity-1"
                 )
               }
@@ -107,7 +96,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             </NavLink>
           ))}
           <div
-            className="w-full flex font-medium items-center justify-center transition-all duration-200 rounded-xl p-2 bg-blue-500 lg:pr-3 cursor-pointer mt-5"
+            className="w-full flex font-medium items-center justify-center transition-all duration-200 rounded-xl p-2 bg-blue-500 lg:pr-3 cursor-pointer mt-5 hover:bg-blue-600 shadow"
             onClick={() => setShowPostModal(true)}
           >
             <Pencil color="#ffffff" className="lg:hidden block" />
@@ -120,9 +109,9 @@ export default function Layout({ children }: { children: ReactNode }) {
         {children}
       </main>
       <div className="hidden lg:block lg:w-full">
-        <div className="fixed flex flex-col gap-3 px-5 py-4 lg:px-8 h-full items-center lg:items-start">
-        <SearchBar />
-        <RecentUsers />
+        <div className="fixed w-[320px] flex flex-col gap-3 px-5 py-4 lg:px-8 h-full items-center lg:items-start">
+          <SearchBar />
+          <RecentUsers />
         </div>
       </div>
     </div>

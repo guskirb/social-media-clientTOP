@@ -31,7 +31,7 @@ export default function Home({
     handleSubmit,
     resetField,
     reset,
-    formState: { errors, isSubmitSuccessful},
+    formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<CreatePostFormFields>({
     resolver: zodResolver(createPostSchema),
   });
@@ -65,6 +65,7 @@ export default function Home({
         errors={errors}
         isSubmitSuccessful={isSubmitSuccessful}
         reset={reset}
+        isSubmitting={isSubmitting}
       />
       {isLoading ? (
         <Loader />

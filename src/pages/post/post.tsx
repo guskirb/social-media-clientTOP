@@ -20,7 +20,7 @@ export default function PostPage({ post }: { post: PostType }) {
     handleSubmit,
     reset,
     resetField,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<CreateCommentFormFields>({
     resolver: zodResolver(createCommentSchema),
   });
@@ -62,6 +62,7 @@ export default function PostPage({ post }: { post: PostType }) {
         reset={reset}
         errors={errors}
         isSubmitSuccessful={isSubmitSuccessful}
+        isSubmitting={isSubmitting}
       />
       <CommentList comments={post.comments} />
     </>

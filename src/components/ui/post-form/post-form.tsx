@@ -9,6 +9,7 @@ import ProfileImg from "../profile/profile-img";
 import ImgUpload from "./img-upload";
 import Emoji from "./emoji";
 import { UserObject } from "../../../hooks/use-auth-store";
+import Button from "../auth-form/button";
 
 interface PostFormProps {
   onSubmit: any;
@@ -20,6 +21,7 @@ interface PostFormProps {
   errors: any;
   isSubmitSuccessful: boolean;
   reset: any;
+  isSubmitting: boolean;
 }
 
 export default function PostForm({
@@ -32,6 +34,7 @@ export default function PostForm({
   errors,
   isSubmitSuccessful,
   reset,
+  isSubmitting,
 }: PostFormProps) {
   const [img, setImg] = useState(null);
   const [value, setValue] = useState("");
@@ -76,9 +79,12 @@ export default function PostForm({
         <div className="flex items-center gap-3">
           <ImgUpload register={register} setImg={setImg} />
           <Emoji value={value} setValue={setValue} />
-          <button className="ml-auto">
-            {name === "post" ? "Post" : "Comment"}
-          </button>
+          <div className="ml-auto">
+            <Button
+              text={name === "post" ? "Post" : "Comment"}
+              isSubmitting={isSubmitting}
+            />
+          </div>
         </div>
       </div>
     </Form>
