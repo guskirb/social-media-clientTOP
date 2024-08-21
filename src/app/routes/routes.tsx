@@ -5,8 +5,6 @@ import RequireAuth from "../../lib/require-auth";
 import PersistAuth from "../../lib/persist-auth";
 import AppRoot from "./app/root";
 import { userLoader } from "./app/profile";
-import { postsLoader } from "./app/home";
-import { likesLoader } from "./app/likes";
 import { requestsLoader } from "./app/requests";
 
 export const createRouter = (queryClient: QueryClient) =>

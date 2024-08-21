@@ -70,5 +70,5 @@ input {
 
 input:hover,
 input:focus {
-  outline: 1px solid #3b82f6;
+  outline: none;
 }

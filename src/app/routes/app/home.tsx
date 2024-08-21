@@ -1,10 +1,7 @@
-import { InfiniteData, QueryClient } from "@tanstack/react-query";
+import { InfiniteData } from "@tanstack/react-query";
 
 import Head from "../../../components/seo/head";
-import {
-  getPostsQueryOptions,
-  usePosts,
-} from "../../../pages/home/api/get-posts";
+import { usePosts } from "../../../pages/home/api/get-posts";
 import Home from "../../../pages/home/home";
 import { Page } from "../../../types/types";
 

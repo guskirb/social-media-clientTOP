@@ -1,10 +1,7 @@
-import { InfiniteData, QueryClient } from "@tanstack/react-query";
+import { InfiniteData } from "@tanstack/react-query";
 
 import Head from "../../../components/seo/head";
-import {
-  getLikesQueryOptions,
-  useLikes,
-} from "../../../pages/likes/api/get-likes";
+import { useLikes } from "../../../pages/likes/api/get-likes";
 import Likes from "../../../pages/likes/likes";
 import useAuthStore from "../../../hooks/use-auth-store";
 import { Page } from "../../../types/types";

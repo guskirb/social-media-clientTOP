@@ -31,7 +31,6 @@ export default function PostForm({
   name,
   placeholder,
   resetField,
-  errors,
   isSubmitSuccessful,
   reset,
   isSubmitting,

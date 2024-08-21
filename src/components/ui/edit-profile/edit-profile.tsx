@@ -24,8 +24,6 @@ export default function EditProfile({ user, setShowModal }: EditProfileProps) {
   const {
     register,
     handleSubmit,
-    setError,
-    formState: { errors, isSubmitting },
   } = useForm<EditUserFormFields>({
     resolver: zodResolver(editUserSchema),
   });
