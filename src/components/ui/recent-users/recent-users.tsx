@@ -21,9 +21,11 @@ export default function RecentUsers() {
           <p className="text-lg font-medium">Recent Users</p>
         </div>
         {isLoading ? (
+          <div className="p-5">
           <Loader />
+          </div>
         ) : (
-          <div className="pb-3">
+          <div className="pb-2">
             <UserList users={users.users} size="small" />
           </div>
         )}

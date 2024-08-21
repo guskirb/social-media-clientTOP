@@ -89,7 +89,7 @@ export default function Post({ post }: { post: PostType }) {
             <div className="flex gap-5 justify-between  pt-2">
               <div className="flex items-center gap-1">
                 <MessageSquare size={17} color="#7a7a7a" />
-                <p className="text-sm opacity-70">
+                <p className="text-sm opacity-70 hover:underline">
                   {currPost.comments.length +
                     (currPost.comments.length === 1 ? " Comment" : " Comments")}
                 </p>

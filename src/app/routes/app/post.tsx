@@ -11,9 +11,12 @@ export const PostRoute = () => {
   return (
     <>
       <Head
-        title={post && `${
-          post?.author?.name ? post?.author.name : post?.author.username
-        }: "${post?.post.slice(0, 30)}..."`}
+        title={
+          post &&
+          `${post?.author?.name ? post?.author.name : post?.author.username}${
+            post.post ? ": " + post?.post.slice(0, 25) + "..." : ""
+          }`
+        }
       />
       {post ? <PostPage post={post} /> : <Loader />}
     </>
