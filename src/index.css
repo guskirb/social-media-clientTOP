@@ -64,6 +64,10 @@ input:-webkit-autofill:active {
   width: auto !important;
 }
 
+input {
+  color: #213547;
+}
+
 input:hover,
 input:focus {
   outline: 1px solid #3b82f6;

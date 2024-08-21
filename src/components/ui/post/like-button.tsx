@@ -45,8 +45,7 @@ export default function LikeButton({ post, setCurrPost }: LikeButtonProps) {
       ) : (
         <ThumbsUp
           size={17}
-          color="#7a7a7a"
-          className="cursor-pointer hover:scale-110 hover:rotate-12 hover:stroke-red-500 transition-all"
+          className="opacity-70 cursor-pointer hover:scale-110 hover:rotate-12 hover:stroke-red-500 transition-all"
           onClick={onClickLike}
         />
       )}

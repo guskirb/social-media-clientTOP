@@ -1,6 +1,14 @@
 import { ReactNode, useState } from "react";
-import { House, ThumbsUp, User, Bell, BellDot, Pencil } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import {
+  House,
+  ThumbsUp,
+  User,
+  Bell,
+  BellDot,
+  Pencil,
+  Share2,
+} from "lucide-react";
+import { Link, NavLink } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -81,6 +89,9 @@ export default function Layout({ children }: { children: ReactNode }) {
       )}
       <div className="flex flex-col items-end min-w-[80px] lg:w-full">
         <div className="fixed flex flex-col gap-3 px-5 py-4 lg:px-8 h-full items-center lg:items-start">
+          <Link to={"/home"} className="transition-all text-blue-500 dark:text-white mb-4">
+            <Share2 size={40} />
+          </Link>
           {navigation.map((item) => (
             <NavLink
               key={item.name}

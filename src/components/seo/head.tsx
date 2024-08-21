@@ -11,7 +11,7 @@ export default function Head({ title = "", description = "" }: HeadProps) {
   return (
     <Helmet
       helmetData={helmetData}
-      title={title ? `${title} | Social Media` : undefined}
+      title={title ? `${title} | Connect` : undefined}
     >
       <meta name="description" content={description} />
     </Helmet>

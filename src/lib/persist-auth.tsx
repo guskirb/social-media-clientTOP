@@ -43,7 +43,7 @@ export default function PersistAuth() {
 
   if (loading) {
     return (
-      <div className="w-full h-full dark:bg-slate-800">
+      <div className="w-screen h-screen dark:bg-slate-800">
         <Loader />
       </div>
     );

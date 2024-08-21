@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Head from "../seo/head";
 import DarkMode from "./dark-mode/dark-mode";
+import { Share2 } from "lucide-react";
 
 interface LayoutProps {
   children: ReactNode;
@@ -11,7 +12,11 @@ export default function Layout({ children, title }: LayoutProps) {
   return (
     <>
       <Head title={title} />
-      <div className="transition-all w-full h-full flex justify-center items-center bg-gray-100 dark:bg-slate-800">
+      <div className="transition-all flex flex-col gap-8 w-full h-full justify-center items-center bg-gray-100 dark:bg-slate-800">
+        <div className="transition-all text-blue-500 dark:text-white flex items-center gap-2">
+          <Share2 size={40} />
+          <p className="text-4xl font-medium">Connect</p>
+        </div>
         {children}
       </div>
       <DarkMode />

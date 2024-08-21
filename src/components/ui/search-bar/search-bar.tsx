@@ -22,7 +22,7 @@ export default function SearchBar() {
         type="text"
         ref={queryRef}
         placeholder="Search"
-        className="transition-all pl-9 p-2 rounded-xl w-full dark:bg-slate-700"
+        className="transition-all pl-9 p-2 rounded-xl w-full dark:bg-slate-700 dark:text-white"
       />
     </form>
   );
