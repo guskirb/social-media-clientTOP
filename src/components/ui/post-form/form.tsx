@@ -12,7 +12,7 @@ export default function Form({ children, onSubmit }: FormProps) {
       <form
         method="post"
         action=""
-        className="flex p-4 bg-white rounded-xl"
+        className="flex p-4 bg-white dark:bg-slate-700 dark:text-white rounded-xl"
         onSubmit={onSubmit}
       >
         {children}

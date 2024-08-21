@@ -51,7 +51,7 @@ export default function ProfileMenu({ user }: { user: UserObject }) {
   return (
     <div className="mt-auto lg:w-[180px] flex flex-col gap-4 lg:gap-2 items-center">
       <div className="flex lg:hidden">
-        <li onClick={logOutHandler} className="flex items-center gap-2">
+        <li onClick={logOutHandler} className="flex items-center gap-2 dark:text-white opacity-70 hover:opacity-100">
           <LogOut size={23} className="cursor-pointer" />
         </li>
       </div>
@@ -59,12 +59,12 @@ export default function ProfileMenu({ user }: { user: UserObject }) {
         <div
           ref={dropdownRef}
           onClick={stopPropogation}
-          className="hidden gap-3 items-center w-10 h-10 lg:w-full lg:flex lg:h-fit lg:bg-white lg:py-2 lg:rounded-xl shadow-sm"
+          className="dark:text-white hidden gap-3 items-center w-10 h-10 lg:w-full lg:flex lg:h-fit lg:bg-white dark:bg-slate-700 lg:py-2 lg:rounded-xl shadow-sm"
         >
           <ul className="w-full">
             <li
               onClick={logOutHandler}
-              className="flex items-center gap-2 cursor-pointer w-full px-2 py-1 hover:bg-gray-50 opacity-70 hover:opacity-100 transition-all"
+              className="flex items-center gap-2 cursor-pointer w-full px-2 py-1 hover:bg-gray-50 dark:hover:dark:bg-slate-600 opacity-70 hover:opacity-100 transition-all"
             >
               <LogOut size={18} />
               <p className="font-medium">Log Out</p>
@@ -75,7 +75,7 @@ export default function ProfileMenu({ user }: { user: UserObject }) {
 
       <Link
         to={`/profile/${user.username}`}
-        className="cursor-pointer flex gap-3 items-center w-10 h-10 lg:w-full lg:h-fit lg:bg-white lg:p-2 lg:rounded-xl lg:pr-3 shadow-sm"
+        className="dark:text-white cursor-pointer flex gap-3 items-center w-10 h-10 lg:w-full lg:h-fit lg:bg-white lg:dark:bg-slate-700 lg:p-2 lg:rounded-xl lg:pr-3 shadow-sm"
       >
         <ProfileImg image={user!.profileImg!} />
         <div>
@@ -93,8 +93,7 @@ export default function ProfileMenu({ user }: { user: UserObject }) {
         >
           <Ellipsis
             size={25}
-            color="#7a7a7a"
-            className="ml-auto hover:bg-gray-100 rounded-xl p-1"
+            className="opacity-70 ml-auto hover:bg-gray-100 dark:hover:dark:bg-slate-600 rounded-xl p-1"
           />
         </div>
       </Link>

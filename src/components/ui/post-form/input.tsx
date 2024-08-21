@@ -33,7 +33,7 @@ export default function Input({
 
   return (
     <textarea
-      className="p-2 resize-none focus:outline-none w-full"
+      className="p-2 resize-none focus:outline-none w-full dark:bg-slate-700"
       ref={(e) => {
         ref(e);
         textAreaRef.current = e;

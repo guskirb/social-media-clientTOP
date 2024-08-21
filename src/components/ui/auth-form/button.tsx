@@ -1,6 +1,6 @@
 interface ButtonProps {
   text: string;
-  isSubmitting: boolean;
+  isSubmitting?: boolean;
 };
 
 export default function Button({ text, isSubmitting }: ButtonProps) {
@@ -9,7 +9,7 @@ export default function Button({ text, isSubmitting }: ButtonProps) {
       <button
         disabled
         type="button"
-        className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-600 inline-flex items-center justify-center w-full"
+        className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-700 inline-flex items-center justify-center w-full"
       >
         <svg
           aria-hidden="true"
@@ -34,7 +34,7 @@ export default function Button({ text, isSubmitting }: ButtonProps) {
   }
 
   return (
-    <button className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-600 inline-flex items-center justify-center w-full">
+    <button className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-700 inline-flex items-center justify-center w-full">
       {text}
     </button>
   );

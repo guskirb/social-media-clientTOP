@@ -15,7 +15,7 @@ export default function RecentUsers() {
 
   return (
     <Container>
-      <div className="flex flex-col bg-white rounded-xl">
+      <div className="flex flex-col bg-white dark:bg-slate-700 dark:text-white rounded-xl">
         <div className="flex items-center gap-3 p-3">
           <Users size={22} />
           <p className="text-lg font-medium">Recent Users</p>

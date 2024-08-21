@@ -29,7 +29,7 @@ export default function AddFriend({
   if (myUser.outgoingRequests!.includes(user.id)) {
     return (
       <button
-        className="transition-all border-blue-500 text-blue-500 hover:border-red-500 hover:text-red-500 hover:bg-red-50"
+        className="transition-all border-blue-500 dark:border-blue-600 text-blue-500 dark:text-blue-600 hover:border-red-500 hover:text-red-500 hover:bg-slate-700"
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -73,7 +73,7 @@ export default function AddFriend({
   if (myUser?.friends!.includes(user.id)) {
     return (
       <button
-        className="transition-all border-blue-500 text-blue-500 hover:border-red-500 hover:text-red-500 hover:bg-red-50"
+        className="transition-all border-blue-500 dark:border-blue-600 text-blue-500 dark:text-blue-600 hover:border-red-500 hover:text-red-500 hover:bg-red-50 dark:bg-slate-700 hover:dark:bg-slate-700"
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -94,7 +94,7 @@ export default function AddFriend({
   return (
     <>
       <button
-        className="transition-all bg-blue-500 text-white hover:bg-blue-600"
+        className="transition-all bg-blue-500 dark:bg-blue-600 text-white hover:bg-blue-600 dark:hover:bg-blue-700"
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();

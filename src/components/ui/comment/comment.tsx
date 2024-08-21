@@ -16,7 +16,7 @@ export default function Comment({ comment }: { comment: CommentType }) {
 
   return (
     <Container>
-      <div className="transition-all flex p-4 gap-2 bg-white rounded-xl hover:shadow hover:scale-[1.01]">
+      <div className="transition-all flex p-4 gap-2 bg-white dark:bg-slate-700 dark:text-white rounded-xl hover:shadow hover:scale-[1.01]">
         <div
           onClick={(e) => {
             e.stopPropagation();
@@ -41,12 +41,12 @@ export default function Comment({ comment }: { comment: CommentType }) {
                 {comment.author.name || comment.author.username}
               </p>
               <div className="hidden lg:flex items-center gap-1">
-                <User size={13} color="#7a7a7a" />
+                <User size={13} className="opacity-70" />
                 <p className="text-sm opacity-70">{comment.author.username}</p>
               </div>
             </div>
             <div className="flex items-center gap-1">
-              <Clock size={13} color="#7a7a7a" />
+              <Clock size={13} className="opacity-70" />
               <p className="text-xs opacity-70">{comment.createdFormatted}</p>
             </div>
             <Dropdown
@@ -61,7 +61,7 @@ export default function Comment({ comment }: { comment: CommentType }) {
             </Dropdown>
           </div>
           <div className="mt-[-5px] flex flex-col gap-1">
-            <p className="whitespace-pre-line break-words lg:w-[495px]">{comment.comment}</p>
+            <p className="whitespace-pre-line break-words">{comment.comment}</p>
             {comment.commentImg && (
               <img src={comment.commentImg} className="rounded-xl w-full" />
             )}

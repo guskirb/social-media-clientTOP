@@ -15,14 +15,14 @@ export default function SearchBar() {
     <form
       action=""
       onSubmit={searchHandler}
-      className="flex items-center w-full"
+      className="flex items-center w-full dark:text-white"
     >
-      <Search size={20} color="#7a7a7a" className="absolute ml-2" />
+      <Search size={20} className="absolute ml-2 opacity-70" />
       <input
         type="text"
         ref={queryRef}
         placeholder="Search"
-        className="pl-9 p-2 rounded-xl w-full"
+        className="pl-9 p-2 rounded-xl w-full dark:bg-slate-700"
       />
     </form>
   );

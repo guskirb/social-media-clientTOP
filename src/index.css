@@ -63,3 +63,8 @@ input:-webkit-autofill:active {
 .player-wrapper > div {
   width: auto !important;
 }
+
+input:hover,
+input:focus {
+  outline: 1px solid #3b82f6;
+}

@@ -13,6 +13,7 @@ import {
   useEditUser,
 } from "./api/edit-user";
 import { User } from "../../../types/types";
+import Button from "../auth-form/button";
 
 interface EditProfileProps {
   user: User;
@@ -84,7 +85,7 @@ export default function EditProfile({ user, setShowModal }: EditProfileProps) {
 
   return (
     <Modal title="Edit Profile" setShowModal={setShowModal}>
-      <div className="flex flex-col justify-center items-center bg-white relative">
+      <div className="flex flex-col justify-center items-center bg-white dark:bg-slate-700 relative">
         <img
           src={
             coverImg
@@ -100,7 +101,7 @@ export default function EditProfile({ user, setShowModal }: EditProfileProps) {
         >
           <Pencil size={20} color="#ffff" />
         </div>
-        <div className="border-[6px] border-white rounded-full mt-[-50px] relative">
+        <div className="border-[6px] border-white dark:border-slate-700 rounded-full mt-[-50px] relative">
           <ProfileImg image={profileImg!} size={100} />
           <div
             onClick={handleProfileClick}
@@ -143,7 +144,7 @@ export default function EditProfile({ user, setShowModal }: EditProfileProps) {
           }}
           {...profileImgRest}
         />
-        <button className="w-fit ml-auto">Save</button>
+        <div className="w-fit ml-auto"><Button text="Save"/></div>
       </form>
     </Modal>
   );

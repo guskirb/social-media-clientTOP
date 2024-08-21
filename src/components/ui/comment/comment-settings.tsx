@@ -20,7 +20,7 @@ export default function CommentSettings({
       <ul>
         {comment.authorId === user.id && (
           <li
-            className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 px-2 py-1"
+            className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 px-2 py-1"
             onClick={() => {
               deleteComment(comment);
               setShowDropdown(false);

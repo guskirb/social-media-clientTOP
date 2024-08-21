@@ -11,14 +11,14 @@ export default function User({ user }: { user: UserType }) {
   
   return (
     <Container>
-      <div className="p-4 flex gap-3 bg-white rounded-xl">
+      <div className="p-4 flex gap-3 bg-white dark:bg-slate-700 dark:text-white rounded-xl">
         <ProfileImg image={user.profileImg!} />
         <div className="flex flex-col gap-1 w-full">
           <div className="flex justify-between w-full">
             <div>
               <p className="font-semibold">{user.name || user.username}</p>
               <div className="flex items-center gap-1">
-                <UserIcon size={13} color="#7a7a7a" />
+                <UserIcon size={13} className="opacity-70" />
                 <p className="text-sm opacity-70">{user.username}</p>
               </div>
             </div>

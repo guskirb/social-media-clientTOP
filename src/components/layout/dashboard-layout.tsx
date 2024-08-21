@@ -17,6 +17,7 @@ import {
 import ProfileMenu from "../ui/profile-menu/profile-menu";
 import SearchBar from "../ui/search-bar/search-bar";
 import RecentUsers from "../ui/recent-users/recent-users";
+import DarkMode from "./dark-mode/dark-mode";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const {
@@ -60,7 +61,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   };
 
   return (
-    <div className="flex justify-center bg-gray-100 min-h-full">
+    <div className="transition-all flex justify-center bg-gray-100 dark:bg-slate-800 min-h-full">
       <Progress />
       {showPostModal && (
         <Modal title={"Post"} setShowModal={setShowPostModal}>
@@ -86,8 +87,8 @@ export default function Layout({ children }: { children: ReactNode }) {
               to={item.to}
               className={({ isActive }) =>
                 cn(
-                  "flex gap-3 font-medium items-center w-fit justify-start transition-all duration-200 rounded-xl bg-gray-100 p-2 hover:bg-white lg:px-4 hover:shadow-sm opacity-70 hover:opacity-100",
-                  isActive && "bg-white shadow-sm opacity-1"
+                  "dark:text-white flex gap-3 font-medium items-center w-fit justify-start transition-all rounded-xl bg-gray-100 dark:bg-slate-800 p-2 hover:bg-white dark:hover:bg-slate-700 lg:px-4 hover:shadow-sm opacity-70 hover:opacity-100",
+                  isActive && "bg-white dark:bg-slate-700 shadow-sm opacity-1"
                 )
               }
             >
@@ -96,7 +97,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             </NavLink>
           ))}
           <div
-            className="w-full flex font-medium items-center justify-center transition-all duration-200 rounded-xl p-2 bg-blue-500 lg:pr-3 cursor-pointer mt-5 hover:bg-blue-600 shadow"
+            className="w-full flex font-medium items-center justify-center transition-all duration-200 rounded-xl p-2 bg-blue-500 dark:bg-blue-600 lg:pr-3 cursor-pointer mt-5 hover:bg-blue-600 dark:hover:bg-blue-700 shadow"
             onClick={() => setShowPostModal(true)}
           >
             <Pencil color="#ffffff" className="lg:hidden block" />
@@ -114,6 +115,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <RecentUsers />
         </div>
       </div>
+      <DarkMode />
     </div>
   );
 }

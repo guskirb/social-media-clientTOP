@@ -45,7 +45,7 @@ export default function PostPage({ post }: { post: PostType }) {
 
   return (
     <>
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-5 dark:text-white">
         <div onClick={() => navigate(-1)} className="cursor-pointer">
           <ArrowLeft />
         </div>
