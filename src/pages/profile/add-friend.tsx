@@ -29,7 +29,7 @@ export default function AddFriend({
   if (myUser.outgoingRequests!.includes(user.id)) {
     return (
       <button
-        className="transition-all border-blue-500 dark:border-blue-600 text-blue-500 dark:text-blue-600 hover:border-red-500 hover:text-red-500 hover:bg-slate-700"
+        className="transition-all border-blue-500 dark:border-blue-600 text-blue-500 dark:text-blue-600 hover:border-red-500 hover:text-red-500 dark:hover:bg-slate-700 dark:bg-slate-700"
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();

@@ -75,7 +75,7 @@ export default function ProfileMenu({ user }: { user: UserObject }) {
 
       <Link
         to={`/profile/${user.username}`}
-        className="dark:text-white cursor-pointer flex gap-3 items-center w-10 h-10 lg:w-full lg:h-fit lg:bg-white lg:dark:bg-slate-700 lg:p-2 lg:rounded-xl lg:pr-3 shadow-sm"
+        className="transition-all dark:text-white cursor-pointer flex gap-3 items-center w-10 h-10 lg:w-full lg:h-fit lg:bg-white lg:dark:bg-slate-700 lg:p-2 lg:rounded-xl lg:pr-3 shadow-sm"
       >
         <ProfileImg image={user!.profileImg!} />
         <div>

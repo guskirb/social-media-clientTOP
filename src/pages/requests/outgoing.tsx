@@ -15,7 +15,7 @@ export default function Outgoing({ request }: { request: Request }) {
 
   return (
     <Container>
-      <div className="p-4 flex gap-3 bg-white rounded-xl items-center">
+      <div className="p-4 flex gap-3 bg-white dark:bg-slate-700 dark:text-white rounded-xl items-center">
         <Link
           to={`/profile/${request.to!.username}`}
           className="min-w-[60px] min-h-[60px]"
@@ -32,7 +32,7 @@ export default function Outgoing({ request }: { request: Request }) {
                 {request.to.name || request.to.username}
               </p>
               <div className="flex items-center gap-1">
-                <User size={13} color="#7a7a7a" />
+                <User size={13} className="opacity-70" />
                 <p className="text-sm opacity-70">{request.to.username}</p>
               </div>
             </Link>
@@ -40,7 +40,7 @@ export default function Outgoing({ request }: { request: Request }) {
               {request.sentFormatted}
             </p>
           </div>
-          <button className="w-full" onClick={onClickCancel}>
+          <button className="w-full text-red-500 border-red-500 bg-white dark:bg-slate-700 hover:text-white hover:bg-red-500" onClick={onClickCancel}>
             Cancel
           </button>
         </div>

@@ -42,7 +42,11 @@ export default function PersistAuth() {
   }, []);
 
   if (loading) {
-    return <Loader />;
+    return (
+      <div className="w-full h-full dark:bg-slate-800">
+        <Loader />
+      </div>
+    );
   }
 
   return <Outlet />;

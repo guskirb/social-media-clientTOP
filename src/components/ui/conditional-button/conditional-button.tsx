@@ -12,7 +12,7 @@ export default function ConditionalButton({
   conditions,
 }: ConditionalButtonProps) {
   return (
-    <div className="w-full flex gap-1 bg-white dark:bg-slate-700 dark:text-white p-1 rounded-xl">
+    <div className="transition-all w-full flex gap-1 bg-white dark:bg-slate-700 dark:text-white p-1 rounded-xl">
       <div
         onClick={() => setShowing(conditions[0])}
         className={cn(
