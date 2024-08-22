@@ -1,30 +1,19 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# Connect | Social Network Application Client
+This is the frontend of the Connect social network application. A React Typescript application that allows users to create a profile and connect with others.
+## Links
+* [Live Demo](https://connect-social-network.netlify.app/) (It may take a moment to load due to the API host wake up time.)
+* [Backend Repository](https://github.com/guskirb/social-media-apiTOP)
+## Features
+* Persistant login and authentication using JWTs stored in localStorage.
+* Ability to create a profile and update your profile information (profile picture, cover picture, display name and bio).
+* Create posts and comments that support text, images, emojis, links and embedded youtube videos.
+* Fully responsive layout that adjusts to your screen size.
+* Light/Dark mode.
+* Infinite pagination for posts, likes and comments.
+* Search by post content or user.
+* Send and receive friend requests which can be accepted, declined and cancelled.
+## Project Stack
+Frontend: <br>
+[![My Skills](https://skillicons.dev/icons?i=ts,react,tailwind,vite)](https://skillicons.dev)<br>
+Backend: <br>
+[![My Skills](https://skillicons.dev/icons?i=ts,nodejs,express,postgresql,prisma)](https://skillicons.dev)
