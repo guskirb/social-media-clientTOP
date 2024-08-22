@@ -31,7 +31,7 @@ export default function UserList({ users, size }: UserListProps) {
             );
           })
         ) : (
-          <div className="dark:text-white w-full p-10 flex flex-col gap-3 justify-center items-center">
+          <div className="opacity-70 dark:text-white w-full p-10 flex flex-col gap-3 justify-center items-center">
             <UserX size={60} strokeWidth={1.5} />
             <p className="font-medium">No users to display.</p>
           </div>

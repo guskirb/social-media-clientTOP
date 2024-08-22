@@ -16,7 +16,7 @@ export default function CommentList({
           </div>
         ))
       ) : (
-        <div className="dark:text-white w-full p-10 flex flex-col gap-3 justify-center items-center">
+        <div className="opacity-70 dark:text-white w-full p-10 flex flex-col gap-3 justify-center items-center">
           <MessageSquareDashed size={60} strokeWidth={1.5} />
           <p className="font-medium">No comments to display.</p>
         </div>

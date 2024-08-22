@@ -86,7 +86,7 @@ export default function Profile({ user }: { user: User }) {
       {user.id === myUser!.id || myUser?.friends.includes(user.id) ? (
         <ProfileFeed user={user} />
       ) : (
-        <div className="dark:text-white w-full p-10 flex flex-col gap-3 justify-center items-center">
+        <div className="opacity-70 dark:text-white w-full p-10 flex flex-col gap-3 justify-center items-center">
           <LockKeyhole size={60}  strokeWidth={1.5}/>
           <p className="font-medium">You must be friends to view this profile.</p>
         </div>

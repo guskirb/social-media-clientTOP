@@ -70,7 +70,7 @@ export default function PostForm({
               onClick={clearImg}
               className="absolute right-3 top-3 bg-white p-1 rounded-full w-fit cursor-pointer opacity-60 hover:opacity-100 transition-all"
             >
-              <X />
+              <X color="#334155"/>
             </div>
             <img src={img} className="rounded-xl w-full" />
           </div>
