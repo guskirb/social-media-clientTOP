@@ -1,4 +1,4 @@
-import { Users, CalendarDays, Pencil } from "lucide-react";
+import { Users, CalendarDays, Pencil, LockKeyhole } from "lucide-react";
 import { useState } from "react";
 
 import Container from "../../components/ui/container/container";
@@ -86,8 +86,9 @@ export default function Profile({ user }: { user: User }) {
       {user.id === myUser!.id || myUser?.friends.includes(user.id) ? (
         <ProfileFeed user={user} />
       ) : (
-        <div className="dark:text-white">
-          You Must be friends to view profile
+        <div className="dark:text-white w-full p-10 flex flex-col gap-3 justify-center items-center">
+          <LockKeyhole size={60}  strokeWidth={1.5}/>
+          <p className="font-medium">You must be friends to view this profile.</p>
         </div>
       )}
     </>

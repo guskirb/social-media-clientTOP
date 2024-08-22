@@ -7,6 +7,7 @@ import { Page } from "../../../types/types";
 import { InfiniteData } from "@tanstack/react-query";
 import Loader from "../loader/loader";
 import { useEffect } from "react";
+import { CircleOff } from "lucide-react";
 
 interface PostListProps {
   posts: InfiniteData<Page, string | null>;
@@ -29,24 +30,31 @@ export default function PostList({
 
   return (
     <>
-      {posts!.pages.map((page, index) => {
-        return (
-          <div key={index}>
-            <div className="flex flex-col gap-4">
-              {page.posts.map((post) => (
-                <div key={post.id} className="flex flex-col gap-4">
-                  <Post post={post} />
-                  {post.comments.length > 0 && (
-                    <Link to={`/post/${post.id}`}>
-                      <CommentList comments={post.comments.slice(0, 1)} />
-                    </Link>
-                  )}
-                </div>
-              ))}
+      {posts.pages[0].posts.length > 0 ? (
+        posts!.pages.map((page, index) => {
+          return (
+            <div key={index}>
+              <div className="flex flex-col gap-4">
+                {page.posts.map((post) => (
+                  <div key={post.id} className="flex flex-col gap-4">
+                    <Post post={post} />
+                    {post.comments.length > 0 && (
+                      <Link to={`/post/${post.id}`}>
+                        <CommentList comments={post.comments.slice(0, 1)} />
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })
+      ) : (
+        <div className="dark:text-white w-full p-10 flex flex-col gap-3 justify-center items-center">
+          <CircleOff size={60} strokeWidth={1.5} />
+          <p className="font-medium">No posts to display.</p>
+        </div>
+      )}
       <div ref={ref}>
         {isFetchingNextPage && (
           <div className="h-[100px]">
