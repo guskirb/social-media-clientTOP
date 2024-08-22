@@ -5,6 +5,7 @@ This is the frontend of the Connect social network application. A React Typescri
 * [Backend Repository](https://github.com/guskirb/social-media-apiTOP)
 ## Features
 * Persistant login and authentication using JWTs stored in localStorage.
+* Uses [zustand](https://github.com/pmndrs/zustand) for global state management and [tanstack query](https://tanstack.com/query/latest) for query state management.
 * Ability to create a profile and update your profile information (profile picture, cover picture, display name and bio).
 * Create posts and comments that support text, images, emojis, links and embedded youtube videos.
 * Fully responsive layout that adjusts to your screen size.
