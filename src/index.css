@@ -66,6 +66,7 @@ input:-webkit-autofill:active {
 
 input {
   color: #213547;
+  background-color: white;
 }
 
 input:hover,
