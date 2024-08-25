@@ -56,28 +56,30 @@ export default function Post({ post }: { post: PostType }) {
                   {currPost.author!.name || currPost.author!.username}
                 </p>
                 <div className="flex items-center gap-1">
-                  <User size={13} className="opacity-70"/>
+                  <User size={13} className="opacity-70" />
                   <p className="text-sm opacity-70">
                     {currPost.author!.username}
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-1">
-                <Clock size={13} className="opacity-70"/>
+                <Clock size={13} className="opacity-70" />
                 <p className="text-xs opacity-70">
                   {currPost.createdFormatted}
                 </p>
               </div>
-              <Dropdown
-                showDropdown={showDropdown}
-                setShowDropdown={setShowDropdown}
-              >
-                <PostSettings
-                  user={user!}
-                  post={currPost}
+              {user!.id === post.authorId ? (
+                <Dropdown
+                  showDropdown={showDropdown}
                   setShowDropdown={setShowDropdown}
-                />
-              </Dropdown>
+                >
+                  <PostSettings
+                    user={user!}
+                    post={currPost}
+                    setShowDropdown={setShowDropdown}
+                  />
+                </Dropdown>
+              ) : null}
             </div>
             <div className="mt-[-5px] flex flex-col gap-1">
               <div className="whitespace-pre-wrap break-words">{postText}</div>

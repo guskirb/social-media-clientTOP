@@ -49,16 +49,18 @@ export default function Comment({ comment }: { comment: CommentType }) {
               <Clock size={13} className="opacity-70" />
               <p className="text-xs opacity-70">{comment.createdFormatted}</p>
             </div>
-            <Dropdown
-              showDropdown={showDropdown}
-              setShowDropdown={setShowDropdown}
-            >
-              <CommentSettings
-                user={user}
-                comment={comment}
+            {user!.id === comment.authorId ? (
+              <Dropdown
+                showDropdown={showDropdown}
                 setShowDropdown={setShowDropdown}
-              />
-            </Dropdown>
+              >
+                <CommentSettings
+                  user={user}
+                  comment={comment}
+                  setShowDropdown={setShowDropdown}
+                />
+              </Dropdown>
+            ) : null}
           </div>
           <div className="mt-[-5px] flex flex-col gap-1">
             <p className="whitespace-pre-line break-words">{comment.comment}</p>

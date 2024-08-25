@@ -2,16 +2,11 @@ import { Users } from "lucide-react";
 
 import Container from "../container/container";
 import { useRecentUsers } from "./api/get-recent-users";
-import { useEffect } from "react";
 import Loader from "../loader/loader";
 import UserList from "../user-list/user-list";
 
 export default function RecentUsers() {
   const { data: users, isLoading } = useRecentUsers();
-
-  useEffect(() => {
-    console.log(users);
-  }, [users]);
 
   return (
     <Container>

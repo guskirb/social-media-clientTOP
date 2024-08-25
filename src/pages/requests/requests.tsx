@@ -40,7 +40,7 @@ export default function Requests({
           </>
         ) : (
           <>
-            {requests.outgoingRequests.length > 1 ? (
+            {requests.outgoingRequests.length > 0 ? (
               requests.outgoingRequests.map((request) => (
                 <Outgoing key={request.id} request={request} />
               ))
