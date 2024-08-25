@@ -73,3 +73,8 @@ input:hover,
 input:focus {
   outline: none;
 }
+
+textarea {
+  color: #213547;
+  background-color: white;
+}
