@@ -22,6 +22,7 @@ interface PostFormProps {
   isSubmitSuccessful: boolean;
   reset: any;
   isSubmitting: boolean;
+  setVal: any;
 }
 
 export default function PostForm({
@@ -34,6 +35,7 @@ export default function PostForm({
   isSubmitSuccessful,
   reset,
   isSubmitting,
+  setVal,
 }: PostFormProps) {
   const [img, setImg] = useState(null);
   const [value, setValue] = useState("");
@@ -45,6 +47,10 @@ export default function PostForm({
       reset();
     }
   }, [isSubmitSuccessful]);
+
+  useEffect(() => {
+    setVal(name, value);
+  }, [value]);
 
   const clearImg = () => {
     setImg(null);
@@ -65,14 +71,14 @@ export default function PostForm({
           setValue={setValue}
         />
         {img && (
-          <div className="relative">
+          <div className="relative max-h-[300px]">
             <div
               onClick={clearImg}
               className="absolute right-3 top-3 bg-white p-1 rounded-full w-fit cursor-pointer opacity-60 hover:opacity-100 transition-all"
             >
               <X color="#334155"/>
             </div>
-            <img src={img} className="rounded-xl w-full" />
+            <img src={img} className="rounded-xl w-full max-h-[300px] object-cover" />
           </div>
         )}
         <div className="flex items-center gap-3">

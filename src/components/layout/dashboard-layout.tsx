@@ -33,6 +33,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     handleSubmit,
     resetField,
     reset,
+    setValue,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<CreatePostFormFields>({
     resolver: zodResolver(createPostSchema),
@@ -84,6 +85,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             isSubmitSuccessful={isSubmitSuccessful}
             reset={reset}
             isSubmitting={isSubmitting}
+            setVal={setValue}
           />
         </Modal>
       )}

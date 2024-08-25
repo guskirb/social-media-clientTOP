@@ -83,3 +83,7 @@ textarea {
   color: #213547;
   background-color: white;
 }
+
+.dark textarea {
+  color: white;
+}
