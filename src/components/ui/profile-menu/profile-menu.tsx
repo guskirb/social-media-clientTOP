@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import ProfileImg from "../profile/profile-img";
 import { logout } from "../../../lib/auth";
 import useAuthStore, { UserObject } from "../../../hooks/use-auth-store";
+import DarkMode from "../../layout/dark-mode/dark-mode";
 
 export default function ProfileMenu({ user }: { user: UserObject }) {
   const [showing, setShowing] = useState(false);
@@ -50,7 +51,10 @@ export default function ProfileMenu({ user }: { user: UserObject }) {
 
   return (
     <div className="mt-auto lg:w-[180px] flex flex-col gap-4 lg:gap-2 items-center">
-      <div className="flex lg:hidden">
+      <div className="flex lg:hidden flex-col gap-4 items-center">
+      <div>
+        <DarkMode />
+      </div>
         <li onClick={logOutHandler} className="flex items-center gap-2 dark:text-white opacity-70 hover:opacity-100">
           <LogOut size={23} className="cursor-pointer" />
         </li>

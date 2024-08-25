@@ -33,7 +33,7 @@ export default function DarkMode() {
     localStorage.theme = "light";
   };
   return (
-    <div className="fixed left-[22px] bottom-28 lg:left-auto lg:right-14 lg:bottom-14">
+    <div>
       <button
         onClick={toggleMode}
         className="transition-all bg-white dark:bg-slate-700 dark:text-white p-1 shadow-sm hover:shadow hover:scale-110"

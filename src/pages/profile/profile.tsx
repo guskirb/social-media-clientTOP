@@ -52,17 +52,19 @@ export default function Profile({ user }: { user: User }) {
           <div className="flex gap-5 pb-4">
             <div className="flex items-center gap-1">
               <Pencil size={15} className="opacity-70" />
-              <p>{user._count!.posts + " Posts"}</p>
+              <p className="hidden lg:block">{user._count!.posts + " Posts"}</p>
+              <p className="lg:hidden block">{user._count!.posts}</p>
             </div>
             <div
               onClick={() => setShowFriendsModal(true)}
               className="flex items-center gap-1 cursor-pointer hover:underline"
             >
               <Users size={15} className="opacity-70" />
-              <p>
+              <p className="hidden lg:block">
                 {user._count!.friends +
                   (user._count!.friends === 1 ? " Friend" : " Friends")}
               </p>
+              <p className="lg:hidden block">{user._count!.friends}</p>
             </div>
             <div className="flex items-center gap-1">
               <CalendarDays size={15} className="opacity-70" />
@@ -74,7 +76,8 @@ export default function Profile({ user }: { user: User }) {
               className="absolute m-3 right-0 top-60 transition-all border-blue-500 dark:border-blue-600 text-blue-500 dark:text-blue-600 hover:border-blue-600 dark:hover:border-blue-700 hover:text-blue-600 dark:hover:text-blue-700 hover:bg-blue-50 dark:bg-slate-700 dark:hover:bg-slate-700"
               onClick={() => setShowEditModal(true)}
             >
-              Edit Profile
+              <p className="hidden lg:block">Edit Profile</p>
+              <p className="lg:hidden block">Edit</p>
             </button>
           ) : (
             <div className="absolute m-3 right-0 top-60">
@@ -87,8 +90,10 @@ export default function Profile({ user }: { user: User }) {
         <ProfileFeed user={user} />
       ) : (
         <div className="opacity-70 dark:text-white w-full p-10 flex flex-col gap-3 justify-center items-center">
-          <LockKeyhole size={60}  strokeWidth={1.5}/>
-          <p className="font-medium">You must be friends to view this profile.</p>
+          <LockKeyhole size={60} strokeWidth={1.5} />
+          <p className="font-medium">
+            You must be friends to view this profile.
+          </p>
         </div>
       )}
     </>

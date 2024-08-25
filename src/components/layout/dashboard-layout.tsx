@@ -87,9 +87,12 @@ export default function Layout({ children }: { children: ReactNode }) {
           />
         </Modal>
       )}
-      <div className="flex flex-col items-end min-w-[80px] lg:w-full">
-        <div className="fixed flex flex-col gap-3 px-5 py-4 lg:px-8 h-full items-center lg:items-start">
-          <Link to={"/home"} className="transition-all text-blue-500 dark:text-white mb-4">
+      <div className="flex flex-col items-end min-w-[60px] lg:w-full">
+        <div className="fixed flex flex-col gap-3 px-3 py-4 lg:py-4 lg:px-8 h-full items-center lg:items-start">
+          <Link
+            to={"/home"}
+            className="transition-all text-blue-500 dark:text-white mb-4"
+          >
             <Share2 size={40} />
           </Link>
           {navigation.map((item) => (
@@ -117,7 +120,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <ProfileMenu user={user!} />
         </div>
       </div>
-      <main className="w-full lg:min-w-[600px] py-4 pr-4 lg:pr-0 flex flex-col gap-4">
+      <main className="w-[90%] sm:w-full lg:min-w-[600px] py-4 pr-4 lg:pr-0 flex flex-col gap-4">
         {children}
       </main>
       <div className="hidden lg:block lg:w-full">
@@ -126,7 +129,9 @@ export default function Layout({ children }: { children: ReactNode }) {
           <RecentUsers />
         </div>
       </div>
-      <DarkMode />
+      <div className="hidden lg:block fixed lg:left-auto lg:right-14 lg:bottom-14">
+        <DarkMode />
+      </div>
     </div>
   );
 }

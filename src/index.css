@@ -66,6 +66,7 @@ input:-webkit-autofill:active {
 
 .player-wrapper > div {
   width: auto !important;
+  height: auto !important;
 }
 
 input {

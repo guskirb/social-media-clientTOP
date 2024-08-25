@@ -19,7 +19,9 @@ export default function Layout({ children, title }: LayoutProps) {
         </div>
         {children}
       </div>
-      <DarkMode />
+      <div className="fixed right-4 bottom-4 lg:right-14 lg:bottom-14">
+        <DarkMode />
+      </div>
     </>
   );
 }
